@@ -118,9 +118,67 @@ public class PcPortShot : MonoBehaviour
             Object.FindFirstObjectByType<UIIAP>().m_ExchangeButtons[0].SendMessage("OnClick", SendMessageOptions.DontRequireReceiver);
             LogMoney("traded with the 1st option");
         }
+        else if (scene == "show-splash")
+        {
+            // Title splash screen as loaded at startup
+        }
+        else if (scene == "show-title")
+        {
+            yield return new WaitForSecondsRealtime(2f);
+            UIStart start = Object.FindFirstObjectByType<UIStart>();
+            if (start != null && start.m_TouchScreen != null)
+                UICamera.Notify(start.m_TouchScreen, "OnClick", null);
+        }
+        else if (scene == "show-char")
+        {
+            yield return new WaitForSecondsRealtime(2f);
+            if (GameApp.GetInstance().GetUIStateManager() != null)
+                GameApp.GetInstance().GetUIStateManager().FrGoToPhase(20, false, false, false);
+            float limit = Time.realtimeSinceStartup + 30f;
+            while (Time.realtimeSinceStartup < limit && UICharacter.instance == null)
+                yield return null;
+        }
+        else if (scene == "show-iap")
+        {
+            yield return WaitForHud();
+            UIIAP.Show(UIIAP.Type.IAP);
+        }
+        else if (scene == "show-city" || scene.StartsWith("show-city-"))
+        {
+            yield return WaitForHud();
+            if (scene.StartsWith("show-city-") && PortalEnterTrigger.instance != null)
+            {
+                PortalEnterTrigger.instance.SetDest(scene.Substring(10), 0);
+                PortalEnterTrigger.instance.OnEffectsEnd(EffectsCamera.Type.FadeIn);
+                yield return new WaitForSecondsRealtime(1f);
+                yield return WaitForFade();
+            }
+            yield return FrameCityView();
+        }
+        else if (scene.StartsWith("show-combat-"))
+        {
+            yield return WaitForHud();
+            PortalEnterTrigger.instance.SetDest(scene.Substring(12), 0);
+            PortalEnterTrigger.instance.OnEffectsEnd(EffectsCamera.Type.FadeIn);
+            yield return new WaitForSecondsRealtime(1f);
+            yield return WaitForFade();
+            string lower = SceneManager.GetActiveScene().name.ToLower();
+            for (int i = 1; i < 10; i++)
+            {
+                Object chest = PcPortBundle.Load("scenes/" + lower + "/android_prefab_" + lower + "-" + i).mainAsset;
+                if (chest == null)
+                    break;
+                Object.Instantiate(chest);
+            }
+            foreach (BaseEnemySpawnScript spawner in Object.FindObjectsByType<BaseEnemySpawnScript>(FindObjectsSortMode.None))
+                spawner.Activate();
+            yield return new WaitForSecondsRealtime(2.5f);
+            yield return FrameCombatView();
+        }
         else if (scene != "-")
             SceneManager.LoadScene(scene);
-        yield return new WaitForSecondsRealtime(wait);
+        if (scene != "show-city" && !scene.StartsWith("show-city-") && !scene.StartsWith("show-combat-"))
+            yield return new WaitForSecondsRealtime(wait);
         LogSceneState();
         LogTextures();
         LogWidgets("final");
@@ -165,7 +223,19 @@ public class PcPortShot : MonoBehaviour
                 GameApp.GetInstance().GetUIStateManager().FrGoToPhase(20, false, false, false);
             yield return null;
         }
-        yield return new WaitForSecondsRealtime(3f);
+        yield return WaitForFade();
+    }
+
+    static IEnumerator WaitForFade()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        float limit = Time.realtimeSinceStartup + 15f;
+        while (Time.realtimeSinceStartup < limit && EffectsCamera.instance != null
+            && (EffectsCamera.instance.IsRunning()
+                || (EffectsCamera.instance.m_FadeOut != null && EffectsCamera.instance.m_FadeOut.gameObject.activeInHierarchy)
+                || (EffectsCamera.instance.m_FadeIn != null && EffectsCamera.instance.m_FadeIn.gameObject.activeInHierarchy)))
+            yield return null;
+        yield return new WaitForSecondsRealtime(0.5f);
     }
 
     static void LogMoney(string when)
@@ -301,5 +371,182 @@ public class PcPortShot : MonoBehaviour
             string msg = LocalizationManager.GetInstance().GetString("MSG_CREATE_ROLE_SUCCESS");
             UIMsgBox.instance.ShowMessage(UIMsg.EMPTY, msg, 3, 2);
         }
+    }
+
+    static bool HasGroundedEnemy(GameScene gs, int groundMask)
+    {
+        foreach (Enemy e in gs.GetEnemies().Values)
+            if (e != null && e.IsActive() && e.GetTransform() != null
+                && Physics.Raycast(e.GetPosition() + Vector3.up * 1.5f, Vector3.down, 4f, groundMask, QueryTriggerInteraction.Ignore))
+                return true;
+        return false;
+    }
+
+    static bool ClearSight(Vector3 eye, Vector3 target, Transform targetRoot, int sightMask)
+    {
+        if (!Physics.Linecast(eye, target, out RaycastHit hit, sightMask, QueryTriggerInteraction.Ignore))
+            return true;
+        return targetRoot != null && hit.transform.IsChildOf(targetRoot);
+    }
+
+    static IEnumerator PlaceAndAim(LocalPlayer player, FirstPersonCameraScript fpcs, Vector3 pos, Vector3 aimTarget)
+    {
+        CharacterController cc = player.GetTransform().GetComponent<CharacterController>();
+        if (cc != null) cc.enabled = false;
+        player.GetTransform().position = pos;
+        if (cc != null) cc.enabled = true;
+        yield return AimAt(player, fpcs, aimTarget);
+    }
+
+    static IEnumerator AimAt(LocalPlayer player, FirstPersonCameraScript fpcs, Vector3 aimTarget)
+    {
+        Vector3 eye = player.GetTransform().position + Vector3.up * 1.6f;
+        Vector3 dir = aimTarget - eye;
+        float yaw = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+        float flat = Mathf.Sqrt(dir.x * dir.x + dir.z * dir.z);
+        float pitch = Mathf.Atan2(dir.y, Mathf.Max(0.01f, flat)) * Mathf.Rad2Deg;
+        player.GetTransform().rotation = Quaternion.Euler(0f, yaw, 0f);
+        fpcs.AngelH = yaw;
+        fpcs.AngelV = pitch;
+        if (Camera.main != null)
+            Camera.main.transform.position = eye;
+        for (int i = 0; i < 6; i++)
+            yield return null;
+        Debug.Log("[PcPortShot] aimed at " + aimTarget + " from " + player.GetTransform().position + " yaw=" + yaw.ToString("0.0"));
+    }
+
+    static IEnumerator FrameCityView()
+    {
+        GameScene gs = GameApp.GetInstance().GetGameScene();
+        LocalPlayer player = GameApp.GetInstance().GetGameWorld().GetLocalPlayer();
+        FirstPersonCameraScript fpcs = gs != null ? gs.GetCamera() : null;
+        if (gs == null || player == null || fpcs == null)
+            yield break;
+
+        int groundMask = (1 << PhysicsLayer.FLOOR) | (1 << PhysicsLayer.DEFAULT);
+        int sightMask = (1 << PhysicsLayer.WALL) | (1 << PhysicsLayer.FLOOR) | (1 << PhysicsLayer.DEFAULT);
+
+        var targets = new List<(Transform tr, int priority)>();
+        foreach (Npc npc in gs.GetNpc().Values)
+            if (npc != null && npc.GetTransform() != null)
+                targets.Add((npc.GetTransform(), npc.m_type == NpcType.Businessman ? 5 : 15));
+        foreach (GameObject portal in gs.GetPortal())
+            if (portal != null)
+                targets.Add((portal.transform, 10));
+        targets.Sort((a, b) => b.priority.CompareTo(a.priority));
+
+        foreach (var entry in targets)
+        {
+            Vector3 tPos = entry.tr.position;
+            Vector3 aimTarget = tPos + Vector3.up * 1.35f;
+            float baseYaw = entry.tr.eulerAngles.y;
+            foreach (float dist in new[] { 5.2f, 6.5f, 4.2f })
+            {
+                for (int a = 0; a < 12; a++)
+                {
+                    float deg = baseYaw + (a % 2 == 0 ? 1 : -1) * (a / 2) * 30f;
+                    Vector3 offset = Quaternion.Euler(0f, deg, 0f) * Vector3.forward * dist;
+                    Vector3 probe = tPos + offset;
+                    if (!Physics.Raycast(probe + Vector3.up * 1.8f, Vector3.down, out RaycastHit floor, 4f, groundMask, QueryTriggerInteraction.Ignore))
+                        continue;
+                    if (Mathf.Abs(floor.point.y - tPos.y) > 0.6f)
+                        continue;
+                    Vector3 cand = floor.point + Vector3.up * 0.05f;
+                    Vector3 eye = cand + Vector3.up * 1.6f;
+                    Vector3 waist = cand + Vector3.up * 0.85f;
+                    if (!ClearSight(eye, aimTarget, entry.tr, sightMask) || !ClearSight(waist, tPos + Vector3.up * 0.85f, entry.tr, sightMask))
+                        continue;
+                    yield return PlaceAndAim(player, fpcs, cand, aimTarget);
+                    yield break;
+                }
+            }
+        }
+    }
+
+    static IEnumerator FrameCombatView()
+    {
+        GameScene gs = GameApp.GetInstance().GetGameScene();
+        LocalPlayer player = GameApp.GetInstance().GetGameWorld().GetLocalPlayer();
+        FirstPersonCameraScript fpcs = gs != null ? gs.GetCamera() : null;
+        if (gs == null || player == null || fpcs == null)
+            yield break;
+
+        int groundMask = (1 << PhysicsLayer.FLOOR) | (1 << PhysicsLayer.DEFAULT);
+        int sightMask = (1 << PhysicsLayer.WALL) | (1 << PhysicsLayer.FLOOR) | (1 << PhysicsLayer.DEFAULT);
+
+        if (!HasGroundedEnemy(gs, groundMask))
+        {
+            foreach (SceneStreamingTriggerScript trig in Object.FindObjectsByType<SceneStreamingTriggerScript>(FindObjectsSortMode.None))
+                trig.Load();
+            float limit = Time.realtimeSinceStartup + 10f;
+            while (Time.realtimeSinceStartup < limit && !GameApp.GetInstance().GetSceneStreaingManager().IsSceneStreamingCompleted())
+                yield return null;
+            yield return new WaitForSecondsRealtime(1.5f);
+        }
+
+        var active = new List<Enemy>();
+        foreach (Enemy e in gs.GetEnemies().Values)
+            if (e != null && e.IsActive() && e.GetTransform() != null)
+                active.Add(e);
+
+        Vector3 bestPlayerPos = Vector3.zero, bestAimTarget = Vector3.zero;
+        Enemy bestEnemy = null;
+        int bestScore = int.MinValue;
+        foreach (Enemy e in active)
+        {
+            Vector3 ePos = e.GetPosition();
+            if (!Physics.Raycast(ePos + Vector3.up * 1.5f, Vector3.down, 4f, groundMask, QueryTriggerInteraction.Ignore))
+                continue;
+            int nearby = 0;
+            foreach (Enemy other in active)
+                if (Vector3.Distance(ePos, other.GetPosition()) <= 10f)
+                    nearby++;
+            Vector3 aimTarget = ePos + Vector3.up * 1.1f;
+            foreach (float dist in new[] { 8.5f, 10.5f, 6.5f })
+            {
+                for (int a = 0; a < 12; a++)
+                {
+                    float rad = a * 30f * Mathf.Deg2Rad;
+                    Vector3 raw = ePos + new Vector3(Mathf.Cos(rad), 0f, Mathf.Sin(rad)) * dist;
+                    if (!UnityEngine.AI.NavMesh.SamplePosition(raw, out UnityEngine.AI.NavMeshHit navHit, 1.5f, UnityEngine.AI.NavMesh.AllAreas))
+                        continue;
+                    Vector3 cand = navHit.position;
+                    if (!Physics.Raycast(cand + Vector3.up * 1.5f, Vector3.down, 3f, groundMask, QueryTriggerInteraction.Ignore))
+                        continue;
+                    Vector3 eye = cand + Vector3.up * 1.6f;
+                    if (!ClearSight(eye, aimTarget, e.GetTransform(), sightMask))
+                        continue;
+                    Vector3 fwd = (aimTarget - eye).normalized;
+                    int visibleCount = 0;
+                    foreach (Enemy other in active)
+                    {
+                        Vector3 targetOther = other.GetPosition() + Vector3.up * 1.0f;
+                        Vector3 toOther = targetOther - eye;
+                        if (toOther.magnitude < 25f && Vector3.Dot(fwd, toOther.normalized) > 0.7f
+                            && ClearSight(eye, targetOther, other.GetTransform(), sightMask))
+                            visibleCount++;
+                    }
+                    int score = visibleCount * 100 + nearby * 10 - Mathf.RoundToInt(Mathf.Abs(dist - 8.5f));
+                    if (score > bestScore)
+                    {
+                        bestScore = score;
+                        bestPlayerPos = cand;
+                        bestAimTarget = aimTarget;
+                        bestEnemy = e;
+                    }
+                }
+            }
+        }
+        if (bestScore > int.MinValue)
+        {
+            yield return PlaceAndAim(player, fpcs, bestPlayerPos, bestAimTarget);
+            foreach (BaseEnemySpawnScript s in Object.FindObjectsByType<BaseEnemySpawnScript>(FindObjectsSortMode.None))
+                s.InformTarget(player);
+            yield return new WaitForSecondsRealtime(0.75f);
+            if (bestEnemy != null && bestEnemy.GetTransform() != null)
+                yield return AimAt(player, fpcs, bestEnemy.GetPosition() + Vector3.up * 1.1f);
+        }
+        else if (active.Count > 0)
+            yield return AimAt(player, fpcs, active[0].GetPosition() + Vector3.up * 1.1f);
     }
 }
