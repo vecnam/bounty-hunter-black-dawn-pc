@@ -1,0 +1,18 @@
+diff --git a/Scripts/Assembly-CSharp/PlayerView.cs b/Scripts/Assembly-CSharp/PlayerView.cs
+index 8b82431..a9d1231 100644
+--- a/Scripts/Assembly-CSharp/PlayerView.cs
++++ b/Scripts/Assembly-CSharp/PlayerView.cs
+@@ -16,10 +16,10 @@ public class PlayerView
+ 
+ 	public void PlayTeleportAnimation()
+ 	{
+-		chuangsongObj.animation.Stop();
++		chuangsongObj.GetComponent<Animation>().Stop();
+ 		chuangsongObj.SetActiveRecursively(true);
+-		chuangsongObj.animation["Take 001"].wrapMode = WrapMode.ClampForever;
+-		chuangsongObj.animation.Play("Take 001");
++		chuangsongObj.GetComponent<Animation>()["Take 001"].wrapMode = WrapMode.ClampForever;
++		chuangsongObj.GetComponent<Animation>().Play("Take 001");
+ 	}
+ 
+ 	public bool TeleportAnimationEnds()

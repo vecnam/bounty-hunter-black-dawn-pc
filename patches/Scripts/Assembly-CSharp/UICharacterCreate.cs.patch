@@ -1,0 +1,17 @@
+diff --git a/Scripts/Assembly-CSharp/UICharacterCreate.cs b/Scripts/Assembly-CSharp/UICharacterCreate.cs
+index c74c689..27fd90e 100644
+--- a/Scripts/Assembly-CSharp/UICharacterCreate.cs
++++ b/Scripts/Assembly-CSharp/UICharacterCreate.cs
+@@ -230,9 +230,9 @@ public class UICharacterCreate : UIDelegateMenu, UIMsgListener
+ 		{
+ 			if (avatarList[i].activeSelf)
+ 			{
+-				GameObject gameObject = avatarList[i].transform.FindChild("Entity").gameObject;
+-				gameObject.animation.wrapMode = WrapMode.Loop;
+-				gameObject.animation.Play(GameApp.GetInstance().GetUserState().GetRoleState()
++				GameObject gameObject = avatarList[i].transform.Find("Entity").gameObject;
++				gameObject.GetComponent<Animation>().wrapMode = WrapMode.Loop;
++				gameObject.GetComponent<Animation>().Play(GameApp.GetInstance().GetUserState().GetRoleState()
+ 					.GetUIIdleAnimation(weaponTypeList[i]));
+ 			}
+ 		}

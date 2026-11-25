@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/Npc.cs b/Scripts/Assembly-CSharp/Npc.cs
+index 35ad208..fb081c3 100644
+--- a/Scripts/Assembly-CSharp/Npc.cs
++++ b/Scripts/Assembly-CSharp/Npc.cs
+@@ -47,7 +47,7 @@ public class Npc : GameUnit
+ 		base.Name = obj.name;
+ 		m_initRotation = obj.transform.localRotation;
+ 		m_initForward = obj.transform.forward;
+-		animation = obj.animation;
++		animation = obj.GetComponent<Animation>();
+ 		m_questScript = obj.GetComponent<QuestScript>();
+ 		m_type = GameConfig.GetInstance().npcConfig[obj.name].m_type;
+ 	}

@@ -1,0 +1,15 @@
+diff --git a/Scripts/Assembly-CSharp/UISprite.cs b/Scripts/Assembly-CSharp/UISprite.cs
+index 976e167..f00d0fa 100644
+--- a/Scripts/Assembly-CSharp/UISprite.cs
++++ b/Scripts/Assembly-CSharp/UISprite.cs
+@@ -430,6 +430,10 @@ public class UISprite : UIWidget
+ 			localScale3.z = 1f;
+ 			base.cachedTransform.localScale = localScale3;
+ 		}
++		if (mSprite == null) // PC: sprite not resolved yet (StateBar changes its name every 0.2 s); without it there is no padding
++		{
++			return;
++		}
+ 		int num = Mathf.RoundToInt(Mathf.Abs(localScale3.x) * (1f + mSprite.paddingLeft + mSprite.paddingRight));
+ 		int num2 = Mathf.RoundToInt(Mathf.Abs(localScale3.y) * (1f + mSprite.paddingTop + mSprite.paddingBottom));
+ 		Vector3 localPosition3 = base.cachedTransform.localPosition;

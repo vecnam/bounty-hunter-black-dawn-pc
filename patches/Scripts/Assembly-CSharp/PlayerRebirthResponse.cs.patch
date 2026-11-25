@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/PlayerRebirthResponse.cs b/Scripts/Assembly-CSharp/PlayerRebirthResponse.cs
+index fffa203..934bc4d 100644
+--- a/Scripts/Assembly-CSharp/PlayerRebirthResponse.cs
++++ b/Scripts/Assembly-CSharp/PlayerRebirthResponse.cs
+@@ -28,7 +28,7 @@ internal class PlayerRebirthResponse : Response
+ 		int channelID = Lobby.GetInstance().GetChannelID();
+ 		if (playerID == channelID)
+ 		{
+-			FirstPersonCameraScript component = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++			FirstPersonCameraScript component = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 			if (null != component)
+ 			{
+ 				component.ResetAngleV();

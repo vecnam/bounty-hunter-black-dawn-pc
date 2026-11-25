@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/ItemFirstAid.cs b/Scripts/Assembly-CSharp/ItemFirstAid.cs
+index af3a8a5..a651d0d 100644
+--- a/Scripts/Assembly-CSharp/ItemFirstAid.cs
++++ b/Scripts/Assembly-CSharp/ItemFirstAid.cs
+@@ -23,7 +23,7 @@ public class ItemFirstAid : ItemBase
+ 
+ 	protected override void OnTriggerEnter(Collider c)
+ 	{
+-		if (c.collider.gameObject.layer == PhysicsLayer.PLAYER_COLLIDER)
++		if (c.GetComponent<Collider>().gameObject.layer == PhysicsLayer.PLAYER_COLLIDER)
+ 		{
+ 			Debug.Log("Player Touched FirstAid!");
+ 			GameApp.GetInstance().GetGameWorld().GetLocalPlayer()

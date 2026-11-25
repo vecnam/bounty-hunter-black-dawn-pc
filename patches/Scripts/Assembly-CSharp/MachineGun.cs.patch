@@ -1,0 +1,65 @@
+diff --git a/Scripts/Assembly-CSharp/MachineGun.cs b/Scripts/Assembly-CSharp/MachineGun.cs
+index ea8805f..2c71c7d 100644
+--- a/Scripts/Assembly-CSharp/MachineGun.cs
++++ b/Scripts/Assembly-CSharp/MachineGun.cs
+@@ -64,7 +64,7 @@ public class MachineGun : Weapon
+ 	{
+ 		if (gunfireObj != null)
+ 		{
+-			gunfireObj.renderer.enabled = false;
++			gunfireObj.GetComponent<Renderer>().enabled = false;
+ 		}
+ 		if (firelineObjectPool != null)
+ 		{
+@@ -85,7 +85,7 @@ public class MachineGun : Weapon
+ 		}
+ 		if (Time.time - stopFireTime > 1f)
+ 		{
+-			entityObject.animation.Stop();
++			entityObject.GetComponent<Animation>().Stop();
+ 		}
+ 	}
+ 
+@@ -104,8 +104,8 @@ public class MachineGun : Weapon
+ 	public override void CreateTrajectory()
+ 	{
+ 		base.CreateTrajectory();
+-		entityObject.animation["Take 001"].wrapMode = WrapMode.Loop;
+-		entityObject.animation.Play("Take 001");
++		entityObject.GetComponent<Animation>()["Take 001"].wrapMode = WrapMode.Loop;
++		entityObject.GetComponent<Animation>().Play("Take 001");
+ 		if (Time.time - startFireTime < 1f)
+ 		{
+ 			AudioManager.GetInstance().PlaySoundSingle("Audio/machinegun/" + base.Name + "_FiringSound_01");
+@@ -124,13 +124,13 @@ public class MachineGun : Weapon
+ 			component.beginPos = gunfire.position;
+ 			component.endPos = gunfire.position + normalized * 100f;
+ 		}
+-		gunfireObj.renderer.enabled = true;
++		gunfireObj.GetComponent<Renderer>().enabled = true;
+ 	}
+ 
+ 	public override void Attack(float deltaTime)
+ 	{
+-		entityObject.animation["Take 001"].wrapMode = WrapMode.Loop;
+-		entityObject.animation.Play("Take 001");
++		entityObject.GetComponent<Animation>()["Take 001"].wrapMode = WrapMode.Loop;
++		entityObject.GetComponent<Animation>().Play("Take 001");
+ 		stopped = false;
+ 		if (Time.time - startFireTime < 1f)
+ 		{
+@@ -142,11 +142,11 @@ public class MachineGun : Weapon
+ 		GameApp.GetInstance().GetUserState().UseEnegy(enegyConsume);
+ 		if (gunfire != null)
+ 		{
+-			gunfireObj.renderer.enabled = true;
++			gunfireObj.GetComponent<Renderer>().enabled = true;
+ 		}
+-		Camera mainCamera = Camera.mainCamera;
++		Camera mainCamera = Camera.main;
+ 		Transform transform = mainCamera.transform;
+-		FirstPersonCameraScript component = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++		FirstPersonCameraScript component = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 		Ray ray = default(Ray);
+ 		Vector3 vector = mainCamera.ScreenToWorldPoint(new Vector3(component.ReticlePosition.x, (float)Screen.height - component.ReticlePosition.y, 0.1f));
+ 		Vector3 normalized = (vector - transform.position).normalized;

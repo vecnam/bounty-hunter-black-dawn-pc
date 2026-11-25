@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetBackgroundColor.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetBackgroundColor.cs
+index 8d66267..973d3dd 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetBackgroundColor.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetBackgroundColor.cs
+@@ -41,7 +41,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject gameObject = ((this.gameObject.OwnerOption != OwnerDefaultOption.UseOwner) ? this.gameObject.GameObject.Value : base.Owner);
+ 			if (!(gameObject == null))
+ 			{
+-				Camera camera = gameObject.camera;
++				Camera camera = gameObject.GetComponent<Camera>();
+ 				if (camera == null)
+ 				{
+ 					LogError("Missing Camera Component!");

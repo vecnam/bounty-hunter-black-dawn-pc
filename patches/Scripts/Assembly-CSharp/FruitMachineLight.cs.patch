@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/FruitMachineLight.cs b/Scripts/Assembly-CSharp/FruitMachineLight.cs
+index 73a9daf..f629f72 100644
+--- a/Scripts/Assembly-CSharp/FruitMachineLight.cs
++++ b/Scripts/Assembly-CSharp/FruitMachineLight.cs
+@@ -57,7 +57,7 @@ public class FruitMachineLight : MonoBehaviour
+ 	{
+ 		if (mBlinkState && (DateTime.Now - mLastUpdateTime).TotalMilliseconds > (double)duration)
+ 		{
+-			if (Camera.mainCamera != null)
++			if (Camera.main != null)
+ 			{
+ 				AudioManager.GetInstance().PlaySound("RPG_Audio/Menu/fruit_machine_stop");
+ 			}

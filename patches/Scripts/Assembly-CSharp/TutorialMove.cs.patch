@@ -1,0 +1,26 @@
+diff --git a/Scripts/Assembly-CSharp/TutorialMove.cs b/Scripts/Assembly-CSharp/TutorialMove.cs
+index e4c8452..4c49ff7 100644
+--- a/Scripts/Assembly-CSharp/TutorialMove.cs
++++ b/Scripts/Assembly-CSharp/TutorialMove.cs
+@@ -15,8 +15,8 @@ public class TutorialMove : TutorialScript
+ 			GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 				.InputController.CanFire = false;
+ 			HUDManager.instance.m_HotKeyManager.ForbidAll();
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = true;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = true;
+ 			initPos = GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 				.GetPosition();
+ 			dis = 0f;
+@@ -32,8 +32,8 @@ public class TutorialMove : TutorialScript
+ 			GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 				.InputController.CanFire = true;
+ 			HUDManager.instance.m_HotKeyManager.CancelFobid();
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = false;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = false;
+ 		}
+ 	}
+ 

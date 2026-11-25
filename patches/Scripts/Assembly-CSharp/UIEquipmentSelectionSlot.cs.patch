@@ -1,0 +1,28 @@
+diff --git a/Scripts/Assembly-CSharp/UIEquipmentSelectionSlot.cs b/Scripts/Assembly-CSharp/UIEquipmentSelectionSlot.cs
+index f0198aa..67b5467 100644
+--- a/Scripts/Assembly-CSharp/UIEquipmentSelectionSlot.cs
++++ b/Scripts/Assembly-CSharp/UIEquipmentSelectionSlot.cs
+@@ -51,18 +51,18 @@ public class UIEquipmentSelectionSlot : MonoBehaviour
+ 				GameObject original = Resources.Load("RPG_effect/RPG_UI_Orange001") as GameObject;
+ 				QualityEffectObject = Object.Instantiate(original) as GameObject;
+ 				QualityEffectObject.transform.parent = base.transform;
+-				QualityEffectObject.transform.localPosition = base.transform.FindChild("Background").localPosition + Vector3.forward * -100f;
+-				QualityEffectObject.transform.localScale = base.transform.FindChild("Background").localScale + new Vector3(7f, 7f, 7f);
++				QualityEffectObject.transform.localPosition = base.transform.Find("Background").localPosition + Vector3.forward * -100f;
++				QualityEffectObject.transform.localScale = base.transform.Find("Background").localScale + new Vector3(7f, 7f, 7f);
+ 			}
+ 			else if (EquipItem.baseItem.Quality == ItemQuality.Epic)
+ 			{
+ 				GameObject original2 = Resources.Load("RPG_effect/RPG_UI_Purple001") as GameObject;
+ 				QualityEffectObject = Object.Instantiate(original2) as GameObject;
+ 				QualityEffectObject.transform.parent = base.transform;
+-				QualityEffectObject.transform.localPosition = base.transform.FindChild("Background").localPosition + Vector3.forward * -100f;
+-				QualityEffectObject.transform.localScale = base.transform.FindChild("Background").localScale + new Vector3(5f, 5f, 5f);
++				QualityEffectObject.transform.localPosition = base.transform.Find("Background").localPosition + Vector3.forward * -100f;
++				QualityEffectObject.transform.localScale = base.transform.Find("Background").localScale + new Vector3(5f, 5f, 5f);
+ 			}
+-			if (QualityEffectObject != null && !base.collider.enabled)
++			if (QualityEffectObject != null && !base.GetComponent<Collider>().enabled)
+ 			{
+ 				QualityEffectObject.SetActive(false);
+ 			}

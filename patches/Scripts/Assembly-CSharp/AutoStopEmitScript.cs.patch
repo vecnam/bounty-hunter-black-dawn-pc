@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/AutoStopEmitScript.cs b/Scripts/Assembly-CSharp/AutoStopEmitScript.cs
+index b345683..e2b2539 100644
+--- a/Scripts/Assembly-CSharp/AutoStopEmitScript.cs
++++ b/Scripts/Assembly-CSharp/AutoStopEmitScript.cs
+@@ -13,9 +13,9 @@ public class AutoStopEmitScript : MonoBehaviour
+ 
+ 	private void Update()
+ 	{
+-		if (Time.time - createdTime > life && base.particleEmitter != null)
++		if (Time.time - createdTime > life && this.GetLegacyEmitter() != null)
+ 		{
+-			base.particleEmitter.emit = false;
++			this.GetLegacyEmitter().emit = false;
+ 		}
+ 	}
+ }

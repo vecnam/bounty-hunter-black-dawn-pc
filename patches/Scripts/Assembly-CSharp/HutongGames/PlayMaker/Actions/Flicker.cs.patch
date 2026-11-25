@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Flicker.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Flicker.cs
+index 94b3f37..1a8098b 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Flicker.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Flicker.cs
+@@ -60,9 +60,9 @@ namespace HutongGames.PlayMaker.Actions
+ 			bool active = Random.Range(0f, 1f) < amountOn.Value;
+ 			if (rendererOnly)
+ 			{
+-				if (ownerDefaultTarget.renderer != null)
++				if (ownerDefaultTarget.GetComponent<Renderer>() != null)
+ 				{
+-					ownerDefaultTarget.renderer.enabled = active;
++					ownerDefaultTarget.GetComponent<Renderer>().enabled = active;
+ 				}
+ 			}
+ 			else

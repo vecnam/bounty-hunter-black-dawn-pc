@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AudioStop.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AudioStop.cs
+index f531550..9c566ae 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AudioStop.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AudioStop.cs
+@@ -20,7 +20,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (ownerDefaultTarget != null)
+ 			{
+-				AudioSource audio = ownerDefaultTarget.audio;
++				AudioSource audio = ownerDefaultTarget.GetComponent<AudioSource>();
+ 				if (audio != null)
+ 				{
+ 					audio.Stop();

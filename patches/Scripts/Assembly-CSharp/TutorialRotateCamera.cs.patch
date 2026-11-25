@@ -1,0 +1,35 @@
+diff --git a/Scripts/Assembly-CSharp/TutorialRotateCamera.cs b/Scripts/Assembly-CSharp/TutorialRotateCamera.cs
+index 6694718..98e0b42 100644
+--- a/Scripts/Assembly-CSharp/TutorialRotateCamera.cs
++++ b/Scripts/Assembly-CSharp/TutorialRotateCamera.cs
+@@ -13,9 +13,9 @@ public class TutorialRotateCamera : TutorialScript
+ 			GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 				.InputController.CanFire = false;
+ 			HUDManager.instance.m_HotKeyManager.ForbidAll();
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = true;
+-			initForward = Camera.mainCamera.transform.forward;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = true;
++			initForward = Camera.main.transform.forward;
+ 			angle = 0f;
+ 		}
+ 	}
+@@ -27,14 +27,14 @@ public class TutorialRotateCamera : TutorialScript
+ 			GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 				.InputController.CanFire = true;
+ 			HUDManager.instance.m_HotKeyManager.CancelFobid();
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = false;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = false;
+ 		}
+ 	}
+ 
+ 	protected override void OnTutorialUpdate()
+ 	{
+-		Vector3 forward = Camera.mainCamera.transform.forward;
++		Vector3 forward = Camera.main.transform.forward;
+ 		angle += Vector3.Angle(forward, initForward);
+ 		initForward = forward;
+ 		if (angle > 60f)

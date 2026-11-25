@@ -1,0 +1,21 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAnimationTime.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAnimationTime.cs
+index 101b018..27df863 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAnimationTime.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAnimationTime.cs
+@@ -49,13 +49,13 @@ namespace HutongGames.PlayMaker.Actions
+ 			{
+ 				return;
+ 			}
+-			if (go.animation == null)
++			if (go.GetComponent<Animation>() == null)
+ 			{
+ 				LogWarning("Missing animation component: " + go.name);
+ 				return;
+ 			}
+-			go.animation.Play(animName.Value);
+-			AnimationState animationState = go.animation[animName.Value];
++			go.GetComponent<Animation>().Play(animName.Value);
++			AnimationState animationState = go.GetComponent<Animation>()[animName.Value];
+ 			if (animationState == null)
+ 			{
+ 				LogWarning("Missing animation: " + animName.Value);

@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/iTweenFsmAction.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/iTweenFsmAction.cs
+index 5521b78..8832b05 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/iTweenFsmAction.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/iTweenFsmAction.cs
+@@ -56,7 +56,7 @@ namespace HutongGames.PlayMaker.Actions
+ 		protected void OnEnteriTween(FsmOwnerDefault anOwner)
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(anOwner);
+-			itweenEvents = (iTweenFSMEvents)ownerDefaultTarget.AddComponent("iTweenFSMEvents");
++			itweenEvents = (iTweenFSMEvents)ownerDefaultTarget.AddComponent<iTweenFSMEvents>();
+ 			itweenEvents.itweenFSMAction = this;
+ 			iTweenFSMEvents.itweenIDCount++;
+ 			itweenID = iTweenFSMEvents.itweenIDCount;

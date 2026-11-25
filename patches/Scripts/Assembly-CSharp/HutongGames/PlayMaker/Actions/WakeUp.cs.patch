@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/WakeUp.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/WakeUp.cs
+index 04eb889..dae9191 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/WakeUp.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/WakeUp.cs
+@@ -24,9 +24,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoWakeUp()
+ 		{
+ 			GameObject gameObject = ((this.gameObject.OwnerOption != OwnerDefaultOption.UseOwner) ? this.gameObject.GameObject.Value : base.Owner);
+-			if (!(gameObject == null) && !(gameObject.rigidbody == null))
++			if (!(gameObject == null) && !(gameObject.GetComponent<Rigidbody>() == null))
+ 			{
+-				gameObject.rigidbody.WakeUp();
++				gameObject.GetComponent<Rigidbody>().WakeUp();
+ 			}
+ 		}
+ 	}

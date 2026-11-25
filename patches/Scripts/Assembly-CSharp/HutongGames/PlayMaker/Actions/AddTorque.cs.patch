@@ -1,0 +1,27 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddTorque.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddTorque.cs
+index a65f2f1..880aca3 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddTorque.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddTorque.cs
+@@ -70,7 +70,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			{
+ 				return;
+ 			}
+-			if (ownerDefaultTarget.rigidbody == null)
++			if (ownerDefaultTarget.GetComponent<Rigidbody>() == null)
+ 			{
+ 				LogWarning("Missing rigid body: " + ownerDefaultTarget.name);
+ 				return;
+@@ -90,11 +90,11 @@ namespace HutongGames.PlayMaker.Actions
+ 			}
+ 			if (space == Space.World)
+ 			{
+-				ownerDefaultTarget.rigidbody.AddTorque(torque, forceMode);
++				ownerDefaultTarget.GetComponent<Rigidbody>().AddTorque(torque, forceMode);
+ 			}
+ 			else
+ 			{
+-				ownerDefaultTarget.rigidbody.AddRelativeTorque(torque, forceMode);
++				ownerDefaultTarget.GetComponent<Rigidbody>().AddRelativeTorque(torque, forceMode);
+ 			}
+ 		}
+ 	}

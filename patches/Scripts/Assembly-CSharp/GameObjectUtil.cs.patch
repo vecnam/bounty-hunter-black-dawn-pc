@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/GameObjectUtil.cs b/Scripts/Assembly-CSharp/GameObjectUtil.cs
+index f504695..1491686 100644
+--- a/Scripts/Assembly-CSharp/GameObjectUtil.cs
++++ b/Scripts/Assembly-CSharp/GameObjectUtil.cs
+@@ -7,7 +7,7 @@ public class GameObjectUtil
+ 	{
+ 		SetActiveSelf(t.gameObject, true);
+ 		int i = 0;
+-		for (int childCount = t.GetChildCount(); i < childCount; i++)
++		for (int childCount = t.childCount; i < childCount; i++)
+ 		{
+ 			Transform child = t.GetChild(i);
+ 			if (child.gameObject.activeSelf)
+@@ -16,7 +16,7 @@ public class GameObjectUtil
+ 			}
+ 		}
+ 		int j = 0;
+-		for (int childCount2 = t.GetChildCount(); j < childCount2; j++)
++		for (int childCount2 = t.childCount; j < childCount2; j++)
+ 		{
+ 			Transform child2 = t.GetChild(j);
+ 			Activate(child2);

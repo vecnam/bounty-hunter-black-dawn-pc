@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Blink.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Blink.cs
+index 420f381..1d9b816 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Blink.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Blink.cs
+@@ -76,9 +76,9 @@ namespace HutongGames.PlayMaker.Actions
+ 			}
+ 			if (rendererOnly)
+ 			{
+-				if (gameObject.renderer != null)
++				if (gameObject.GetComponent<Renderer>() != null)
+ 				{
+-					gameObject.renderer.enabled = state;
++					gameObject.GetComponent<Renderer>().enabled = state;
+ 				}
+ 			}
+ 			else

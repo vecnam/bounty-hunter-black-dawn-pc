@@ -1,0 +1,29 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetMaterial.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetMaterial.cs
+index 23b3ac2..8457bc9 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetMaterial.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetMaterial.cs
+@@ -33,19 +33,19 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (!(ownerDefaultTarget == null))
+ 			{
+-				if (ownerDefaultTarget.renderer == null)
++				if (ownerDefaultTarget.GetComponent<Renderer>() == null)
+ 				{
+ 					LogError("Missing Renderer!");
+ 				}
+ 				else if (materialIndex.Value == 0)
+ 				{
+-					ownerDefaultTarget.renderer.material = material.Value;
++					ownerDefaultTarget.GetComponent<Renderer>().material = material.Value;
+ 				}
+-				else if (ownerDefaultTarget.renderer.materials.Length > materialIndex.Value)
++				else if (ownerDefaultTarget.GetComponent<Renderer>().materials.Length > materialIndex.Value)
+ 				{
+-					Material[] materials = ownerDefaultTarget.renderer.materials;
++					Material[] materials = ownerDefaultTarget.GetComponent<Renderer>().materials;
+ 					materials[materialIndex.Value] = material.Value;
+-					ownerDefaultTarget.renderer.materials = materials;
++					ownerDefaultTarget.GetComponent<Renderer>().materials = materials;
+ 				}
+ 			}
+ 		}

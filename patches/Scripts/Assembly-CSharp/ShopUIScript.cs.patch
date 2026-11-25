@@ -1,0 +1,149 @@
+diff --git a/Scripts/Assembly-CSharp/ShopUIScript.cs b/Scripts/Assembly-CSharp/ShopUIScript.cs
+index 82d1d74..54ffac6 100644
+--- a/Scripts/Assembly-CSharp/ShopUIScript.cs
++++ b/Scripts/Assembly-CSharp/ShopUIScript.cs
+@@ -269,10 +269,10 @@ public class ShopUIScript : UIGameMenuShop, UIMsgListener
+ 				RefreshButton.GetComponent<RefreshShopItemScript>().Mithril = 15;
+ 			}
+ 			CurrentPage = ShopPageType.BlackMarket;
+-			ChangeBuyPage.transform.FindChild("Background").GetComponent<UISprite>().spriteName = "sure_bk_n";
+-			ChangeBuyPage.transform.FindChild("Icon").GetComponent<UISprite>().spriteName = "buy_n";
+-			ChangeSellPage.transform.FindChild("Background").GetComponent<UISprite>().spriteName = "sure_bk_n";
+-			ChangeSellPage.transform.FindChild("Icon").GetComponent<UISprite>().spriteName = "sell_n";
++			ChangeBuyPage.transform.Find("Background").GetComponent<UISprite>().spriteName = "sure_bk_n";
++			ChangeBuyPage.transform.Find("Icon").GetComponent<UISprite>().spriteName = "buy_n";
++			ChangeSellPage.transform.Find("Background").GetComponent<UISprite>().spriteName = "sure_bk_n";
++			ChangeSellPage.transform.Find("Icon").GetComponent<UISprite>().spriteName = "sell_n";
+ 			break;
+ 		}
+ 		SelectedItem = null;
+@@ -372,10 +372,10 @@ public class ShopUIScript : UIGameMenuShop, UIMsgListener
+ 		{
+ 			if (CurrentPage == ShopPageType.Sell || CurrentPage == ShopPageType.BlackMarket)
+ 			{
+-				ChangeBuyPage.transform.FindChild("Background").GetComponent<UISprite>().spriteName = "sure_bk_d";
+-				ChangeBuyPage.transform.FindChild("Icon").GetComponent<UISprite>().spriteName = "buy_d";
+-				ChangeSellPage.transform.FindChild("Background").GetComponent<UISprite>().spriteName = "sure_bk_n";
+-				ChangeSellPage.transform.FindChild("Icon").GetComponent<UISprite>().spriteName = "sell_n";
++				ChangeBuyPage.transform.Find("Background").GetComponent<UISprite>().spriteName = "sure_bk_d";
++				ChangeBuyPage.transform.Find("Icon").GetComponent<UISprite>().spriteName = "buy_d";
++				ChangeSellPage.transform.Find("Background").GetComponent<UISprite>().spriteName = "sure_bk_n";
++				ChangeSellPage.transform.Find("Icon").GetComponent<UISprite>().spriteName = "sell_n";
+ 				ChangePage(ShopPageType.Equip);
+ 			}
+ 		}
+@@ -383,10 +383,10 @@ public class ShopUIScript : UIGameMenuShop, UIMsgListener
+ 		{
+ 			if (CurrentPage != ShopPageType.Sell)
+ 			{
+-				ChangeBuyPage.transform.FindChild("Background").GetComponent<UISprite>().spriteName = "sure_bk_n";
+-				ChangeBuyPage.transform.FindChild("Icon").GetComponent<UISprite>().spriteName = "buy_n";
+-				ChangeSellPage.transform.FindChild("Background").GetComponent<UISprite>().spriteName = "sure_bk_d";
+-				ChangeSellPage.transform.FindChild("Icon").GetComponent<UISprite>().spriteName = "sell_d";
++				ChangeBuyPage.transform.Find("Background").GetComponent<UISprite>().spriteName = "sure_bk_n";
++				ChangeBuyPage.transform.Find("Icon").GetComponent<UISprite>().spriteName = "buy_n";
++				ChangeSellPage.transform.Find("Background").GetComponent<UISprite>().spriteName = "sure_bk_d";
++				ChangeSellPage.transform.Find("Icon").GetComponent<UISprite>().spriteName = "sell_d";
+ 				ChangePage(ShopPageType.Sell);
+ 			}
+ 		}
+@@ -431,24 +431,24 @@ public class ShopUIScript : UIGameMenuShop, UIMsgListener
+ 			if (shopItemSlotScript.ShopType == ShopListType.Weapon && shopItemSlotScript.ListID == 0)
+ 			{
+ 				Debug.Log("First Gun Find!");
+-				shopItemSlotScript.collider.enabled = true;
++				shopItemSlotScript.GetComponent<Collider>().enabled = true;
+ 			}
+ 		}
+-		BuyButton.collider.enabled = true;
++		BuyButton.GetComponent<Collider>().enabled = true;
+ 	}
+ 
+ 	public void BlockForRefreshTutorial(bool isBlock)
+ 	{
+ 		isInRefreshShopTutorial = isBlock;
+ 		BlockAllButton(isBlock);
+-		RefreshButton.collider.enabled = true;
++		RefreshButton.GetComponent<Collider>().enabled = true;
+ 	}
+ 
+ 	public void BlockForBulletTutorial(bool isBlock)
+ 	{
+ 		isInBulletTutorial = isBlock;
+ 		BlockAllButton(isBlock);
+-		ExtendSMGButton.collider.enabled = true;
++		ExtendSMGButton.GetComponent<Collider>().enabled = true;
+ 	}
+ 
+ 	public void BlockForSellItemTutorial(bool isBlock)
+@@ -461,10 +461,10 @@ public class ShopUIScript : UIGameMenuShop, UIMsgListener
+ 			if (shopItemSlotScript.ShopType == ShopListType.InBag && shopItemSlotScript.ListID == 0)
+ 			{
+ 				Debug.Log("First Item In Bag Find!");
+-				shopItemSlotScript.collider.enabled = true;
++				shopItemSlotScript.GetComponent<Collider>().enabled = true;
+ 			}
+ 		}
+-		SellButton.collider.enabled = true;
++		SellButton.GetComponent<Collider>().enabled = true;
+ 	}
+ 
+ 	public void BlockForBuyBackTutorial(bool isBlock)
+@@ -477,10 +477,10 @@ public class ShopUIScript : UIGameMenuShop, UIMsgListener
+ 			if (shopItemSlotScript.ShopType == ShopListType.BuyBack && shopItemSlotScript.ListID == 0)
+ 			{
+ 				Debug.Log("First Item In Buy Back Find!");
+-				shopItemSlotScript.collider.enabled = true;
++				shopItemSlotScript.GetComponent<Collider>().enabled = true;
+ 			}
+ 		}
+-		BuyButton.collider.enabled = true;
++		BuyButton.GetComponent<Collider>().enabled = true;
+ 	}
+ 
+ 	public void OpenChangeToBulletPageButton()
+@@ -490,37 +490,37 @@ public class ShopUIScript : UIGameMenuShop, UIMsgListener
+ 		{
+ 			if (collider.name == "BulletButton")
+ 			{
+-				collider.collider.enabled = true;
++				collider.GetComponent<Collider>().enabled = true;
+ 			}
+ 		}
+ 	}
+ 
+ 	public void OpenChangeToBuyBackPageButton()
+ 	{
+-		ChangeBuyPage.collider.enabled = true;
++		ChangeBuyPage.GetComponent<Collider>().enabled = true;
+ 		Collider[] componentsInChildren = base.transform.GetComponentsInChildren<Collider>(true);
+ 		foreach (Collider collider in componentsInChildren)
+ 		{
+ 			if (collider.name == "BuyBackButton")
+ 			{
+-				collider.collider.enabled = true;
++				collider.GetComponent<Collider>().enabled = true;
+ 			}
+ 		}
+ 	}
+ 
+ 	public void OpenChangeToSellPageButton()
+ 	{
+-		ChangeSellPage.collider.enabled = true;
++		ChangeSellPage.GetComponent<Collider>().enabled = true;
+ 	}
+ 
+ 	public void OpenChangeToBuyPageButton()
+ 	{
+-		ChangeBuyPage.collider.enabled = true;
++		ChangeBuyPage.GetComponent<Collider>().enabled = true;
+ 	}
+ 
+ 	public void CloseExtendSMGButton()
+ 	{
+-		ExtendSMGButton.collider.enabled = false;
+-		BuySMGButton.collider.enabled = true;
++		ExtendSMGButton.GetComponent<Collider>().enabled = false;
++		BuySMGButton.GetComponent<Collider>().enabled = true;
+ 	}
+ }

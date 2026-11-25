@@ -1,0 +1,25 @@
+diff --git a/Scripts/Assembly-CSharp/UINormal.cs b/Scripts/Assembly-CSharp/UINormal.cs
+index 9a24d4b..3636143 100644
+--- a/Scripts/Assembly-CSharp/UINormal.cs
++++ b/Scripts/Assembly-CSharp/UINormal.cs
+@@ -32,8 +32,20 @@ public class UINormal : MonoBehaviour
+ 		m_bDrag = false;
+ 	}
+ 
++	private int mOpenedFrame;
++
++	private void Update()
++	{
++		// PC: E advances the dialog like a tap; skips the frame in which that same E opened the conversation
++		if (Input.GetKeyDown(KeyCode.E) && Time.frameCount > mOpenedFrame)
++		{
++			OnClickConfirm(null);
++		}
++	}
++
+ 	private void OnEnable()
+ 	{
++		mOpenedFrame = Time.frameCount;
+ 		if (UIBubble.m_instance != null)
+ 		{
+ 			Debug.Log("init bubble....");

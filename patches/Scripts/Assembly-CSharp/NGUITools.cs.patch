@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/NGUITools.cs b/Scripts/Assembly-CSharp/NGUITools.cs
+index af73eb3..784f9f6 100644
+--- a/Scripts/Assembly-CSharp/NGUITools.cs
++++ b/Scripts/Assembly-CSharp/NGUITools.cs
+@@ -42,7 +42,7 @@ public static class NGUITools
+ 	{
+ 		get
+ 		{
+-			return Application.platform != RuntimePlatform.WindowsWebPlayer && Application.platform != RuntimePlatform.OSXWebPlayer;
++			return true;
+ 		}
+ 	}
+ 
+@@ -96,7 +96,7 @@ public static class NGUITools
+ 			}
+ 			if (mListener != null && mListener.enabled && GetActive(mListener.gameObject))
+ 			{
+-				AudioSource audioSource = mListener.audio;
++				AudioSource audioSource = mListener.GetComponent<AudioSource>();
+ 				if (audioSource == null)
+ 				{
+ 					audioSource = mListener.gameObject.AddComponent<AudioSource>();

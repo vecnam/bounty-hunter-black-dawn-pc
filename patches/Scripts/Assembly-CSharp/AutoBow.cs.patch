@@ -1,0 +1,23 @@
+diff --git a/Scripts/Assembly-CSharp/AutoBow.cs b/Scripts/Assembly-CSharp/AutoBow.cs
+index 356fb78..10f700e 100644
+--- a/Scripts/Assembly-CSharp/AutoBow.cs
++++ b/Scripts/Assembly-CSharp/AutoBow.cs
+@@ -49,15 +49,15 @@ public class AutoBow : Weapon
+ 	public override void Init(Player player)
+ 	{
+ 		gameScene = GameApp.GetInstance().GetGameScene();
+-		gameCamera = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
+-		cameraComponent = gameCamera.camera;
++		gameCamera = Camera.main.GetComponent<FirstPersonCameraScript>();
++		cameraComponent = gameCamera.GetComponent<Camera>();
+ 		cameraTransform = gameCamera.CameraTransform;
+ 		base.player = player;
+ 		hitForce = 0f;
+ 		weaponBoneTrans = player.GetTransform().Find(BoneName.WeaponL);
+ 		CreateGun();
+ 		entityObject.transform.parent = weaponBoneTrans;
+-		shootAudio = entityObject.audio;
++		shootAudio = entityObject.GetComponent<AudioSource>();
+ 		if (shootAudio == null)
+ 		{
+ 		}

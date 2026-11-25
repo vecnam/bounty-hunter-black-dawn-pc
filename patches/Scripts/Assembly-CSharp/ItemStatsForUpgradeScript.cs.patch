@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/ItemStatsForUpgradeScript.cs b/Scripts/Assembly-CSharp/ItemStatsForUpgradeScript.cs
+index 8ae3d4c..2ab35a3 100644
+--- a/Scripts/Assembly-CSharp/ItemStatsForUpgradeScript.cs
++++ b/Scripts/Assembly-CSharp/ItemStatsForUpgradeScript.cs
+@@ -7,7 +7,7 @@ public class ItemStatsForUpgradeScript : ItemStatsScript
+ 
+ 	public override void SetObserveItem(NGUIBaseItem baseItem)
+ 	{
+-		int childCount = base.transform.GetChildCount();
++		int childCount = base.transform.childCount;
+ 		List<GameObject> list = new List<GameObject>();
+ 		for (int i = 0; i < childCount; i++)
+ 		{

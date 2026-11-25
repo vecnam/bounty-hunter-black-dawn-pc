@@ -1,0 +1,21 @@
+diff --git a/Scripts/Assembly-CSharp/NetworkManager.cs b/Scripts/Assembly-CSharp/NetworkManager.cs
+index 97bfc26..633f95d 100644
+--- a/Scripts/Assembly-CSharp/NetworkManager.cs
++++ b/Scripts/Assembly-CSharp/NetworkManager.cs
+@@ -38,14 +38,14 @@ public class NetworkManager
+ 	public NetworkManager()
+ 	{
+ 		conn = new Connection(this);
+-		strIP = "174.36.196.91";
++		strIP = "127.0.0.1"; // the original server is gone; the connection is refused at once
+ 		port = 10295;
+ 	}
+ 
+ 	public NetworkManager(bool robot)
+ 	{
+ 		robotConn = new RobotConnection(this);
+-		strIP = "124.232.150.72";
++		strIP = "127.0.0.1"; // the original server is gone; the connection is refused at once
+ 		port = 10295;
+ 	}
+ 

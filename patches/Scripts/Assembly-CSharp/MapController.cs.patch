@@ -1,0 +1,81 @@
+diff --git a/Scripts/Assembly-CSharp/MapController.cs b/Scripts/Assembly-CSharp/MapController.cs
+index e262e46..5495396 100644
+--- a/Scripts/Assembly-CSharp/MapController.cs
++++ b/Scripts/Assembly-CSharp/MapController.cs
+@@ -108,7 +108,7 @@ public class MapController : UIDelegateMenu
+ 	{
+ 		SceneConfig currentSceneConfig = GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 			.GetCurrentSceneConfig();
+-		if (m_MiniMap.transform.GetChildCount() > 0)
++		if (m_MiniMap.transform.childCount > 0)
+ 		{
+ 			UnityEngine.Object.Destroy(m_MiniMap.transform.GetChild(0).gameObject);
+ 		}
+@@ -137,7 +137,7 @@ public class MapController : UIDelegateMenu
+ 		float num3 = num / screenWidth;
+ 		float height = num2 / screenHeight;
+ 		float num4 = num2 / m_Background.localScale.y * (float)UIRatio.BASE_SCREEN_HEIGHT / screenHeight;
+-		base.camera.rect = new Rect((1f - num3) / 2f, (1f - num4) / 2f, num3, height);
++		base.GetComponent<Camera>().rect = new Rect((1f - num3) / 2f, (1f - num4) / 2f, num3, height);
+ 		MiniMap component = m_MiniMap.GetComponent<MiniMap>();
+ 		component.onFingerDrag = OnFingerDrag;
+ 		component.onFingerStretch = OnFingerStretch;
+@@ -155,8 +155,8 @@ public class MapController : UIDelegateMenu
+ 		component.Range = new Vector4(num5 - num7 / 2f + 100f, num6 - num8 / 2f, num7 - 100f, num8);
+ 		mapWidth = m_MiniMap.transform.localScale.x;
+ 		mapHeight = m_MiniMap.transform.localScale.y;
+-		maxSize = Mathf.Min(maxSize, mapWidth / (screenWidth * base.camera.rect.width / base.camera.rect.height), mapHeight / screenHeight);
+-		base.camera.orthographicSize = maxSize;
++		maxSize = Mathf.Min(maxSize, mapWidth / (screenWidth * base.GetComponent<Camera>().rect.width / base.GetComponent<Camera>().rect.height), mapHeight / screenHeight);
++		base.GetComponent<Camera>().orthographicSize = maxSize;
+ 	}
+ 
+ 	private void Start()
+@@ -186,10 +186,10 @@ public class MapController : UIDelegateMenu
+ 
+ 	private void Reposition()
+ 	{
+-		base.camera.orthographicSize = Mathf.Clamp(base.camera.orthographicSize, minSize, maxSize);
+-		m_Slider.sliderValue = (base.camera.orthographicSize - minSize) / (maxSize - minSize);
+-		float num = Mathf.Abs((screenWidth * base.camera.rect.width / base.camera.rect.height * base.camera.orthographicSize - mapWidth) * 0.5f);
+-		float num2 = Mathf.Abs((screenHeight * base.camera.orthographicSize - mapHeight) * 0.5f);
++		base.GetComponent<Camera>().orthographicSize = Mathf.Clamp(base.GetComponent<Camera>().orthographicSize, minSize, maxSize);
++		m_Slider.sliderValue = (base.GetComponent<Camera>().orthographicSize - minSize) / (maxSize - minSize);
++		float num = Mathf.Abs((screenWidth * base.GetComponent<Camera>().rect.width / base.GetComponent<Camera>().rect.height * base.GetComponent<Camera>().orthographicSize - mapWidth) * 0.5f);
++		float num2 = Mathf.Abs((screenHeight * base.GetComponent<Camera>().orthographicSize - mapHeight) * 0.5f);
+ 		float x = Mathf.Clamp(base.transform.localPosition.x, 0f - num, num);
+ 		float y = Mathf.Clamp(base.transform.localPosition.y, 0f - num2, num2);
+ 		base.transform.localPosition = new Vector3(x, y, base.transform.localPosition.z);
+@@ -403,7 +403,7 @@ public class MapController : UIDelegateMenu
+ 
+ 	private void OnFingerStretch(float delta)
+ 	{
+-		base.camera.orthographicSize -= delta / 8f;
++		base.GetComponent<Camera>().orthographicSize -= delta / 8f;
+ 		Reposition();
+ 	}
+ 
+@@ -411,12 +411,12 @@ public class MapController : UIDelegateMenu
+ 	{
+ 		if (go.Equals(m_ZoomIn))
+ 		{
+-			base.camera.orthographicSize -= 0.1f;
++			base.GetComponent<Camera>().orthographicSize -= 0.1f;
+ 			Reposition();
+ 		}
+ 		else if (go.Equals(m_ZoomOut))
+ 		{
+-			base.camera.orthographicSize += 0.1f;
++			base.GetComponent<Camera>().orthographicSize += 0.1f;
+ 			Reposition();
+ 		}
+ 		else if (go.Equals(m_OffOn))
+@@ -434,7 +434,7 @@ public class MapController : UIDelegateMenu
+ 	private void OnScrollBarChange(float value)
+ 	{
+ 		Debug.Log("value : " + value);
+-		base.camera.orthographicSize = minSize + (maxSize - minSize) * value;
++		base.GetComponent<Camera>().orthographicSize = minSize + (maxSize - minSize) * value;
+ 		Reposition();
+ 	}
+ }

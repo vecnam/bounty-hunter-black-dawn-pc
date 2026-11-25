@@ -1,0 +1,44 @@
+diff --git a/Scripts/Assembly-CSharp/LocalPlayer.cs b/Scripts/Assembly-CSharp/LocalPlayer.cs
+index dc2c003..db92713 100644
+--- a/Scripts/Assembly-CSharp/LocalPlayer.cs
++++ b/Scripts/Assembly-CSharp/LocalPlayer.cs
+@@ -1,5 +1,6 @@
+ using System.Collections.Generic;
+ using UnityEngine;
++using UnityEngine.AI;
+ 
+ public class LocalPlayer : Player
+ {
+@@ -129,7 +130,7 @@ public class LocalPlayer : Player
+ 	public override void SetObject(GameObject obj)
+ 	{
+ 		base.SetObject(obj);
+-		mEntityLocalPosition = entityTransform.FindChild("Entity").localPosition;
++		mEntityLocalPosition = entityTransform.Find("Entity").localPosition;
+ 	}
+ 
+ 	public override void Init()
+@@ -208,12 +209,12 @@ public class LocalPlayer : Player
+ 		{
+ 			m_tweenPos.enabled = false;
+ 		}
+-		entityTransform.FindChild("Entity").transform.localPosition = mEntityLocalPosition;
++		entityTransform.Find("Entity").transform.localPosition = mEntityLocalPosition;
+ 	}
+ 
+ 	public void SetEntityLocalPositionInDying()
+ 	{
+-		entityTransform.FindChild("Entity").transform.localPosition = new Vector3(0f, Player.FALL_DOWN_OFFSET, 0f);
++		entityTransform.Find("Entity").transform.localPosition = new Vector3(0f, Player.FALL_DOWN_OFFSET, 0f);
+ 	}
+ 
+ 	public void OnLevelUpInMenu()
+@@ -903,7 +904,7 @@ public class LocalPlayer : Player
+ 		SetState(Player.FALL_DOWN_STATE);
+ 		AudioManager.GetInstance().PlaySound("RPG_Audio/Player/player_fall");
+ 		fallDownTimer.SetTimer(0.7f, false);
+-		GameObject gameObject = entityTransform.FindChild("Entity").gameObject;
++		GameObject gameObject = entityTransform.Find("Entity").gameObject;
+ 		gameObject.transform.localPosition = new Vector3(gameObject.transform.localPosition.x, 0f, gameObject.transform.localPosition.z);
+ 		if (m_tweenPos == null)
+ 		{

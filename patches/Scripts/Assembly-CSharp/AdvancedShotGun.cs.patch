@@ -1,0 +1,17 @@
+diff --git a/Scripts/Assembly-CSharp/AdvancedShotGun.cs b/Scripts/Assembly-CSharp/AdvancedShotGun.cs
+index 132f989..d4ed202 100644
+--- a/Scripts/Assembly-CSharp/AdvancedShotGun.cs
++++ b/Scripts/Assembly-CSharp/AdvancedShotGun.cs
+@@ -66,9 +66,9 @@ public class AdvancedShotGun : Weapon
+ 
+ 	protected void PlayGunAnimation()
+ 	{
+-		entityObject.animation["fire"].wrapMode = WrapMode.Once;
+-		entityObject.animation["fire"].speed = 1f;
+-		entityObject.animation.Play("fire");
++		entityObject.GetComponent<Animation>()["fire"].wrapMode = WrapMode.Once;
++		entityObject.GetComponent<Animation>()["fire"].speed = 1f;
++		entityObject.GetComponent<Animation>().Play("fire");
+ 	}
+ 
+ 	public override void GunOn()

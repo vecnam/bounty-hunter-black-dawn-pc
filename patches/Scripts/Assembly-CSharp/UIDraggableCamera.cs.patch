@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/UIDraggableCamera.cs b/Scripts/Assembly-CSharp/UIDraggableCamera.cs
+index 0df1936..625984d 100644
+--- a/Scripts/Assembly-CSharp/UIDraggableCamera.cs
++++ b/Scripts/Assembly-CSharp/UIDraggableCamera.cs
+@@ -46,7 +46,7 @@ public class UIDraggableCamera : IgnoreTimeScale
+ 
+ 	private void Awake()
+ 	{
+-		mCam = base.camera;
++		mCam = base.GetComponent<Camera>();
+ 		mTrans = base.transform;
+ 		if (rootForBounds == null)
+ 		{

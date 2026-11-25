@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetLightRange.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetLightRange.cs
+index 70660ab..b04f379 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetLightRange.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetLightRange.cs
+@@ -40,7 +40,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (!(ownerDefaultTarget == null))
+ 			{
+-				Light light = ownerDefaultTarget.light;
++				Light light = ownerDefaultTarget.GetComponent<Light>();
+ 				if (light == null)
+ 				{
+ 					LogError("Missing Light Component!");

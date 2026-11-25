@@ -1,0 +1,128 @@
+diff --git a/Scripts/Assembly-CSharp/LootManager.cs b/Scripts/Assembly-CSharp/LootManager.cs
+index 0a7bcce..6f3e238 100644
+--- a/Scripts/Assembly-CSharp/LootManager.cs
++++ b/Scripts/Assembly-CSharp/LootManager.cs
+@@ -524,8 +524,8 @@ public class LootManager
+ 			}
+ 			if (itemType != 5)
+ 			{
+-				gameObject2.rigidbody.detectCollisions = true;
+-				gameObject2.rigidbody.AddForce(x, y, z, ForceMode.Impulse);
++				gameObject2.GetComponent<Rigidbody>().detectCollisions = true;
++				gameObject2.GetComponent<Rigidbody>().AddForce(x, y, z, ForceMode.Impulse);
+ 			}
+ 			else
+ 			{
+@@ -653,8 +653,8 @@ public class LootManager
+ 		gameObject2 = UnityEngine.Object.Instantiate(gameObject) as GameObject;
+ 		gameObject2.transform.position = position;
+ 		gameObject2.name = "QuestItem_" + sequenceID;
+-		gameObject2.rigidbody.detectCollisions = true;
+-		gameObject2.rigidbody.AddForce(force, ForceMode.Impulse);
++		gameObject2.GetComponent<Rigidbody>().detectCollisions = true;
++		gameObject2.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+ 		CreateItemBaseFromGameObject(gameObject2, 1, specialItemConfig.ItemClass, 0, ItemQuality.Common, specialID);
+ 	}
+ 
+@@ -682,7 +682,7 @@ public class LootManager
+ 			case ItemClasses.Sniper:
+ 			case ItemClasses.RPG:
+ 			case ItemClasses.Grenade:
+-				obj.AddComponent("ItemWeapon");
++				obj.AddComponent<ItemWeapon>();
+ 				component = obj.GetComponent<ItemWeapon>();
+ 				itemType = 0;
+ 				equipmentSlot = NGUIBaseItem.EquipmentSlot.Weapon;
+@@ -693,31 +693,31 @@ public class LootManager
+ 				}
+ 				break;
+ 			case ItemClasses.U_Shield:
+-				obj.AddComponent("ItemShield");
++				obj.AddComponent<ItemShield>();
+ 				component = obj.GetComponent<ItemShield>();
+ 				itemType = 2;
+ 				equipmentSlot = NGUIBaseItem.EquipmentSlot.Shield;
+ 				break;
+ 			case ItemClasses.V_Slot:
+-				obj.AddComponent("ItemSlot");
++				obj.AddComponent<ItemSlot>();
+ 				component = obj.GetComponent<ItemSlot>();
+ 				itemType = 3;
+ 				equipmentSlot = NGUIBaseItem.EquipmentSlot.SkillSlot;
+ 				break;
+ 			case ItemClasses.W_Pills:
+-				obj.AddComponent("ItemPill");
++				obj.AddComponent<ItemPill>();
+ 				component = obj.GetComponent<ItemPill>();
+ 				itemType = 4;
+ 				equipmentSlot = NGUIBaseItem.EquipmentSlot.Pill;
+ 				break;
+ 			case ItemClasses.StoryItem:
+-				obj.AddComponent("ItemSpecial");
++				obj.AddComponent<ItemSpecial>();
+ 				component = obj.GetComponent<ItemSpecial>();
+ 				itemType = 7;
+ 				equipmentSlot = NGUIBaseItem.EquipmentSlot.None;
+ 				break;
+ 			case ItemClasses.FirstAid:
+-				obj.AddComponent("ItemFirstAid");
++				obj.AddComponent<ItemFirstAid>();
+ 				component = obj.GetComponent<ItemFirstAid>();
+ 				itemType = 9;
+ 				equipmentSlot = NGUIBaseItem.EquipmentSlot.None;
+@@ -897,7 +897,7 @@ public class LootManager
+ 				break;
+ 			}
+ 		}
+-		component.gameObject.layer = LayerMask.NameToLayer("UI");
++		component.gameObject.layer = PcPortLayer.NameToLayer("UI");
+ 		return component.gameObject;
+ 	}
+ 
+@@ -908,7 +908,7 @@ public class LootManager
+ 		ItemIcon component = gameObject.GetComponent<ItemIcon>();
+ 		component.SetItemIcon("besticon");
+ 		component.background.spriteName = "besticon";
+-		component.gameObject.layer = LayerMask.NameToLayer("UI");
++		component.gameObject.layer = PcPortLayer.NameToLayer("UI");
+ 		return component.gameObject;
+ 	}
+ 
+@@ -946,8 +946,8 @@ public class LootManager
+ 		GameObject gameObject2 = UnityEngine.Object.Instantiate(gameObject) as GameObject;
+ 		gameObject2.transform.position = dropPosition;
+ 		gameObject2.transform.Rotate(0f, yAngle, 0f, Space.World);
+-		gameObject2.rigidbody.detectCollisions = true;
+-		gameObject2.rigidbody.AddForce(dropVelocity, ForceMode.Impulse);
++		gameObject2.GetComponent<Rigidbody>().detectCollisions = true;
++		gameObject2.GetComponent<Rigidbody>().AddForce(dropVelocity, ForceMode.Impulse);
+ 		gameObject2.GetComponent<ItemBase>().ItemName = name;
+ 		gameObject2.GetComponent<ItemBase>().ItemType = itemType;
+ 		gameObject2.GetComponent<ItemBase>().ItemLevel = itemLevel;
+@@ -1181,7 +1181,7 @@ public class LootManager
+ 
+ 	public void AddPromptLine(Transform transform, string resourceName, string panelName)
+ 	{
+-		if (transform.FindChild("Prompt") != null)
++		if (transform.Find("Prompt") != null)
+ 		{
+ 			return;
+ 		}
+@@ -1274,7 +1274,7 @@ public class LootManager
+ 			case ItemClasses.Sniper:
+ 			case ItemClasses.RPG:
+ 			case ItemClasses.Grenade:
+-				obj.AddComponent("ItemWeapon");
++				obj.AddComponent<ItemWeapon>();
+ 				component = obj.GetComponent<ItemWeapon>();
+ 				b = 0;
+ 				equipmentSlot = NGUIBaseItem.EquipmentSlot.Weapon;
+@@ -1285,7 +1285,7 @@ public class LootManager
+ 				}
+ 				break;
+ 			case ItemClasses.U_Shield:
+-				obj.AddComponent("ItemShield");
++				obj.AddComponent<ItemShield>();
+ 				component = obj.GetComponent<ItemShield>();
+ 				b = 2;
+ 				equipmentSlot = NGUIBaseItem.EquipmentSlot.Shield;

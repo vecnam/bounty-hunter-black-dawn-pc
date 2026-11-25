@@ -1,0 +1,58 @@
+diff --git a/Scripts/Assembly-CSharp/Terminator.cs b/Scripts/Assembly-CSharp/Terminator.cs
+index 9178d75..f77d3f9 100644
+--- a/Scripts/Assembly-CSharp/Terminator.cs
++++ b/Scripts/Assembly-CSharp/Terminator.cs
+@@ -1,6 +1,7 @@
+ using System;
+ using System.Collections.Generic;
+ using UnityEngine;
++using UnityEngine.AI;
+ 
+ public class Terminator : EnemyBoss
+ {
+@@ -305,13 +306,13 @@ public class Terminator : EnemyBoss
+ 		SetCanTurn(false);
+ 		SetBodyCanTurn(false);
+ 		mBodyEntity = new GameEntity();
+-		mBodyEntity.SetObject(entityObject.transform.FindChild(BoneName.TerminatorBody).gameObject);
+-		mBodyAnimation = mBodyEntity.GetObject().animation;
++		mBodyEntity.SetObject(entityObject.transform.Find(BoneName.TerminatorBody).gameObject);
++		mBodyAnimation = mBodyEntity.GetObject().GetComponent<Animation>();
+ 		mBodyAnimation[AnimationString.TMX_BODY_FIRE].speed = 0.2f / mRangedOneShotTime1;
+ 		mBodyAnimation[AnimationString.TMX_BODY_MISSILE].speed = 1f / mRangedOneShotTime2;
+ 		animation[AnimationString.TMX_LEG_MISSILE].speed = 1f / mRangedOneShotTime2;
+-		mBodyRotateTransform = entityObject.transform.FindChild(BoneName.TerminatorRotateNode);
+-		mRightHandTransform = entityObject.transform.FindChild(BoneName.TerminatorRightHand);
++		mBodyRotateTransform = entityObject.transform.Find(BoneName.TerminatorRotateNode);
++		mRightHandTransform = entityObject.transform.Find(BoneName.TerminatorRightHand);
+ 		GameObject original = Resources.Load("RPG_effect/RPG_TMXL_GunFire_001") as GameObject;
+ 		mGunFireEffect = UnityEngine.Object.Instantiate(original) as GameObject;
+ 		mGunFireEffect.name = "GunFire";
+@@ -324,14 +325,14 @@ public class Terminator : EnemyBoss
+ 		GameObject gameObject = new GameObject();
+ 		gameObject.name = "MissileMuzzle";
+ 		mMissileMuzzleTransform = gameObject.transform;
+-		mMissileMuzzleTransform.parent = entityObject.transform.FindChild(BoneName.TerminatorRocket);
++		mMissileMuzzleTransform.parent = entityObject.transform.Find(BoneName.TerminatorRocket);
+ 		mMissileMuzzleTransform.localPosition = new Vector3(0f, -2.69f, 0.27f);
+ 		mMissileMuzzleTransform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+ 		mMissileMuzzleTransform.localScale = Vector3.one;
+ 		GameObject gameObject2 = new GameObject();
+ 		gameObject2.name = "MissileRear";
+ 		mMissileRearTransform = gameObject2.transform;
+-		mMissileRearTransform.parent = entityObject.transform.FindChild(BoneName.TerminatorRocket);
++		mMissileRearTransform.parent = entityObject.transform.Find(BoneName.TerminatorRocket);
+ 		mMissileRearTransform.localPosition = new Vector3(0f, 0.43f, 0.29f);
+ 		mMissileRearTransform.localRotation = Quaternion.identity;
+ 		mMissileRearTransform.localScale = Vector3.one;
+@@ -358,8 +359,8 @@ public class Terminator : EnemyBoss
+ 			mLaserBeamArray[i].SetActive(false);
+ 			if (i > 0)
+ 			{
+-				mLaserBeamArray[i].collider.isTrigger = false;
+-				mLaserBeamArray[i].collider.enabled = false;
++				mLaserBeamArray[i].GetComponent<Collider>().isTrigger = false;
++				mLaserBeamArray[i].GetComponent<Collider>().enabled = false;
+ 			}
+ 		}
+ 		mGrenadeTransformArray = new Transform[4];

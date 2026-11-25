@@ -1,0 +1,26 @@
+diff --git a/Scripts/Assembly-CSharp/TutorialEquipmentUpgrade.cs b/Scripts/Assembly-CSharp/TutorialEquipmentUpgrade.cs
+index 5736710..4f4b604 100644
+--- a/Scripts/Assembly-CSharp/TutorialEquipmentUpgrade.cs
++++ b/Scripts/Assembly-CSharp/TutorialEquipmentUpgrade.cs
+@@ -8,8 +8,8 @@ public class TutorialEquipmentUpgrade : TutorialScript, UIMsgListener
+ 		if (HUDManager.instance != null)
+ 		{
+ 			HUDManager.instance.m_HotKeyManager.ForbidAll();
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = true;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = true;
+ 			GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 				.InputController.Block = true;
+ 		}
+@@ -22,8 +22,8 @@ public class TutorialEquipmentUpgrade : TutorialScript, UIMsgListener
+ 		if (HUDManager.instance != null)
+ 		{
+ 			HUDManager.instance.m_HotKeyManager.CancelFobid();
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = false;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = false;
+ 			GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 				.InputController.Block = false;
+ 		}

@@ -1,0 +1,40 @@
+diff --git a/Scripts/Assembly-CSharp/MeleeAttackState.cs b/Scripts/Assembly-CSharp/MeleeAttackState.cs
+index 2373f14..936f584 100644
+--- a/Scripts/Assembly-CSharp/MeleeAttackState.cs
++++ b/Scripts/Assembly-CSharp/MeleeAttackState.cs
+@@ -68,9 +68,9 @@ public class MeleeAttackState : PlayerState
+ 				{
+ 					continue;
+ 				}
+-				Vector3 position = Camera.mainCamera.transform.position;
++				Vector3 position = Camera.main.transform.position;
+ 				Vector3 position2 = collider.transform.position;
+-				Vector3 vector = Camera.mainCamera.transform.InverseTransformPoint(position2);
++				Vector3 vector = Camera.main.transform.InverseTransformPoint(position2);
+ 				if (!(0f < vector.z) || !(vector.z < 3.5f) || !(-2f < vector.x) || !(vector.x < 2f) || !(-0.5f < vector.y) || !(vector.y < 1f))
+ 				{
+ 					continue;
+@@ -124,9 +124,9 @@ public class MeleeAttackState : PlayerState
+ 				{
+ 					continue;
+ 				}
+-				Vector3 position = Camera.mainCamera.transform.position;
++				Vector3 position = Camera.main.transform.position;
+ 				Vector3 position2 = collider.transform.position;
+-				Vector3 vector = Camera.mainCamera.transform.InverseTransformPoint(position2);
++				Vector3 vector = Camera.main.transform.InverseTransformPoint(position2);
+ 				if (!(0f < vector.z) || !(vector.z < 3.2f) || !(-1.2f < vector.x) || !(vector.x < 1.2f) || !(-2f < vector.y) || !(vector.y < 0.5f))
+ 				{
+ 					continue;
+@@ -183,9 +183,9 @@ public class MeleeAttackState : PlayerState
+ 					{
+ 						continue;
+ 					}
+-					Vector3 position3 = Camera.mainCamera.transform.position;
++					Vector3 position3 = Camera.main.transform.position;
+ 					Vector3 position4 = collider2.transform.position;
+-					Vector3 vector2 = Camera.mainCamera.transform.InverseTransformPoint(position4);
++					Vector3 vector2 = Camera.main.transform.InverseTransformPoint(position4);
+ 					Debug.Log(summoned.Key + vector2);
+ 					if (!(0f < vector2.z) || !(vector2.z < 3.2f) || !(-1.2f < vector2.x) || !(vector2.x < 1.2f) || !(-1.5f < vector2.y) || !(vector2.y < 0.7f))
+ 					{

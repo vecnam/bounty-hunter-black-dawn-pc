@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/FrShop.cs b/Scripts/Assembly-CSharp/FrShop.cs
+index 75d17ed..22a5f45 100644
+--- a/Scripts/Assembly-CSharp/FrShop.cs
++++ b/Scripts/Assembly-CSharp/FrShop.cs
+@@ -2,7 +2,7 @@ using HutongGames.PlayMaker;
+ using UnityEngine;
+ 
+ [ActionCategory("GameEvent")]
+-[Tooltip("Custom Action...")]
++[HutongGames.PlayMaker.Tooltip("Custom Action...")]
+ public class FrShop : FsmStateAction
+ {
+ 	public GameObject m_ShopUI;

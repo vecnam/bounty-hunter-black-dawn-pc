@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Sleep.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Sleep.cs
+index 60d294f..bb463d5 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Sleep.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Sleep.cs
+@@ -24,9 +24,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoSleep()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.rigidbody == null))
++			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.GetComponent<Rigidbody>() == null))
+ 			{
+-				ownerDefaultTarget.rigidbody.Sleep();
++				ownerDefaultTarget.GetComponent<Rigidbody>().Sleep();
+ 			}
+ 		}
+ 	}

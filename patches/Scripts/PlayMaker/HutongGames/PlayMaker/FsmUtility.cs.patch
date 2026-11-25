@@ -1,0 +1,15 @@
+diff --git a/Scripts/PlayMaker/HutongGames/PlayMaker/FsmUtility.cs b/Scripts/PlayMaker/HutongGames/PlayMaker/FsmUtility.cs
+index e87459e..2cfdb2e 100644
+--- a/Scripts/PlayMaker/HutongGames/PlayMaker/FsmUtility.cs
++++ b/Scripts/PlayMaker/HutongGames/PlayMaker/FsmUtility.cs
+@@ -475,10 +475,6 @@ namespace HutongGames.PlayMaker
+ 
+ 		public static Texture2D LoadDllResource(string resourceName, int width, int height)
+ 		{
+-			if (Application.isWebPlayer)
+-			{
+-				return null;
+-			}
+ 			Texture2D texture2D = (Texture2D)Resources.Load(resourceName);
+ 			if (texture2D != null)
+ 			{

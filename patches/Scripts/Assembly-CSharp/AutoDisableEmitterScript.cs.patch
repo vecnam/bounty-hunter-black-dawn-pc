@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/AutoDisableEmitterScript.cs b/Scripts/Assembly-CSharp/AutoDisableEmitterScript.cs
+index 9b62043..b1007d4 100644
+--- a/Scripts/Assembly-CSharp/AutoDisableEmitterScript.cs
++++ b/Scripts/Assembly-CSharp/AutoDisableEmitterScript.cs
+@@ -13,7 +13,7 @@ public class AutoDisableEmitterScript : MonoBehaviour
+ 	{
+ 		if (timer.Ready())
+ 		{
+-			base.particleEmitter.emit = false;
++			this.GetLegacyEmitter().emit = false;
+ 			timer.Do();
+ 		}
+ 	}

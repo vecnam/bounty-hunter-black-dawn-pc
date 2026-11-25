@@ -1,0 +1,26 @@
+diff --git a/Scripts/Assembly-CSharp/TutorialFire.cs b/Scripts/Assembly-CSharp/TutorialFire.cs
+index 3d56cdf..2a5992b 100644
+--- a/Scripts/Assembly-CSharp/TutorialFire.cs
++++ b/Scripts/Assembly-CSharp/TutorialFire.cs
+@@ -14,8 +14,8 @@ public class TutorialFire : TutorialScript
+ 			return;
+ 		}
+ 		HUDManager.instance.m_HotKeyManager.ForbidAll();
+-		Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-		transform.collider.enabled = true;
++		Transform transform = Camera.main.transform.Find("Npc_Collision");
++		transform.GetComponent<Collider>().enabled = true;
+ 		button = HUDManager.instance.m_Joystick.m_ShootJoystick.gameObject;
+ 		if (button != null)
+ 		{
+@@ -33,8 +33,8 @@ public class TutorialFire : TutorialScript
+ 		if (HUDManager.instance != null)
+ 		{
+ 			HUDManager.instance.m_HotKeyManager.CancelFobid();
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = false;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = false;
+ 		}
+ 	}
+ 

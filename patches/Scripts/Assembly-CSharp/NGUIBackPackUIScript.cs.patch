@@ -1,0 +1,174 @@
+diff --git a/Scripts/Assembly-CSharp/NGUIBackPackUIScript.cs b/Scripts/Assembly-CSharp/NGUIBackPackUIScript.cs
+index 5e1ba01..83a8420 100644
+--- a/Scripts/Assembly-CSharp/NGUIBackPackUIScript.cs
++++ b/Scripts/Assembly-CSharp/NGUIBackPackUIScript.cs
+@@ -117,7 +117,7 @@ public class NGUIBackPackUIScript : UIGameMenuNormal, UIMsgListener
+ 
+ 	private IEnumerator SetAds()
+ 	{
+-		WWW getAppStatusWWW = new WWW("http://174.36.196.91:8088/AdvertServer/GetAppStatus?appcode=ag003&v=" + GlobalState.version);
++		WWW getAppStatusWWW = new WWW("http://127.0.0.1:1/AdvertServer/GetAppStatus?appcode=ag003&v=" + GlobalState.version);
+ 		while (!getAppStatusWWW.isDone)
+ 		{
+ 			yield return new WaitForSeconds(0.5f);
+@@ -133,7 +133,7 @@ public class NGUIBackPackUIScript : UIGameMenuNormal, UIMsgListener
+ 			Exception ex2 = ex;
+ 			Debug.Log(ex2.Message);
+ 		}
+-		getAppStatusWWW = new WWW("http://174.36.196.91:8088/AdvertServer/GetAdvertControl?appcode=ig003&v=" + GlobalState.version + "&adcodes=ad001,ad002,ad003");
++		getAppStatusWWW = new WWW("http://127.0.0.1:1/AdvertServer/GetAdvertControl?appcode=ig003&v=" + GlobalState.version + "&adcodes=ad001,ad002,ad003");
+ 		while (!getAppStatusWWW.isDone)
+ 		{
+ 			yield return new WaitForSeconds(0.5f);
+@@ -272,8 +272,8 @@ public class NGUIBackPackUIScript : UIGameMenuNormal, UIMsgListener
+ 		float num = UpdateRealTimeDelta();
+ 		if (num != 0f && m_Character != null)
+ 		{
+-			GameObject gameObject = m_Character.transform.FindChild("Entity").gameObject;
+-			AnimationState animationState = gameObject.animation[GameApp.GetInstance().GetUserState().GetRoleState()
++			GameObject gameObject = m_Character.transform.Find("Entity").gameObject;
++			AnimationState animationState = gameObject.GetComponent<Animation>()[GameApp.GetInstance().GetUserState().GetRoleState()
+ 				.GetUIIdleAnimation()];
+ 			float num2 = animationState.speed * num;
+ 			animationState.time += num2;
+@@ -286,7 +286,7 @@ public class NGUIBackPackUIScript : UIGameMenuNormal, UIMsgListener
+ 
+ 	private void RemoveLock(NGUIItemEquipmentSlot slot)
+ 	{
+-		Transform transform = slot.transform.FindChild("Lock");
++		Transform transform = slot.transform.Find("Lock");
+ 		if (transform != null)
+ 		{
+ 			NGUITools.SetActive(transform.gameObject, false);
+@@ -636,34 +636,34 @@ public class NGUIBackPackUIScript : UIGameMenuNormal, UIMsgListener
+ 		if (locked)
+ 		{
+ 			mIsBagLocked = true;
+-			mWeapon1Slot.collider.enabled = false;
+-			mWeapon2Slot.collider.enabled = false;
+-			mWeapon3Slot.collider.enabled = false;
+-			mWeapon4Slot.collider.enabled = false;
+-			mGrenadeSlot.collider.enabled = false;
+-			mSlot1Slot.collider.enabled = false;
+-			mSlot2Slot.collider.enabled = false;
+-			mSlot3Slot.collider.enabled = false;
+-			mSlot4Slot.collider.enabled = false;
+-			FreeMithrilButton.collider.enabled = false;
+-			ExtendBag.collider.enabled = false;
+-			ExtendBag2.collider.enabled = false;
++			mWeapon1Slot.GetComponent<Collider>().enabled = false;
++			mWeapon2Slot.GetComponent<Collider>().enabled = false;
++			mWeapon3Slot.GetComponent<Collider>().enabled = false;
++			mWeapon4Slot.GetComponent<Collider>().enabled = false;
++			mGrenadeSlot.GetComponent<Collider>().enabled = false;
++			mSlot1Slot.GetComponent<Collider>().enabled = false;
++			mSlot2Slot.GetComponent<Collider>().enabled = false;
++			mSlot3Slot.GetComponent<Collider>().enabled = false;
++			mSlot4Slot.GetComponent<Collider>().enabled = false;
++			FreeMithrilButton.GetComponent<Collider>().enabled = false;
++			ExtendBag.GetComponent<Collider>().enabled = false;
++			ExtendBag2.GetComponent<Collider>().enabled = false;
+ 		}
+ 		else
+ 		{
+ 			mIsBagLocked = false;
+-			mWeapon1Slot.collider.enabled = true;
+-			mWeapon2Slot.collider.enabled = true;
+-			mWeapon3Slot.collider.enabled = true;
+-			mWeapon4Slot.collider.enabled = true;
+-			mGrenadeSlot.collider.enabled = true;
+-			mSlot1Slot.collider.enabled = true;
+-			mSlot2Slot.collider.enabled = true;
+-			mSlot3Slot.collider.enabled = true;
+-			mSlot4Slot.collider.enabled = true;
+-			FreeMithrilButton.collider.enabled = true;
+-			ExtendBag.collider.enabled = true;
+-			ExtendBag2.collider.enabled = true;
++			mWeapon1Slot.GetComponent<Collider>().enabled = true;
++			mWeapon2Slot.GetComponent<Collider>().enabled = true;
++			mWeapon3Slot.GetComponent<Collider>().enabled = true;
++			mWeapon4Slot.GetComponent<Collider>().enabled = true;
++			mGrenadeSlot.GetComponent<Collider>().enabled = true;
++			mSlot1Slot.GetComponent<Collider>().enabled = true;
++			mSlot2Slot.GetComponent<Collider>().enabled = true;
++			mSlot3Slot.GetComponent<Collider>().enabled = true;
++			mSlot4Slot.GetComponent<Collider>().enabled = true;
++			FreeMithrilButton.GetComponent<Collider>().enabled = true;
++			ExtendBag.GetComponent<Collider>().enabled = true;
++			ExtendBag2.GetComponent<Collider>().enabled = true;
+ 		}
+ 	}
+ 
+@@ -672,46 +672,46 @@ public class NGUIBackPackUIScript : UIGameMenuNormal, UIMsgListener
+ 		if (locked)
+ 		{
+ 			mIsBagLocked = true;
+-			mWeapon1Slot.collider.enabled = false;
+-			mWeapon2Slot.collider.enabled = false;
+-			mWeapon3Slot.collider.enabled = false;
+-			mWeapon4Slot.collider.enabled = false;
+-			mShieldSlot.collider.enabled = false;
+-			mGrenadeSlot.collider.enabled = false;
+-			mSlot1Slot.collider.enabled = false;
+-			mSlot2Slot.collider.enabled = false;
+-			mSlot3Slot.collider.enabled = false;
+-			mSlot4Slot.collider.enabled = false;
+-			FreeMithrilButton.collider.enabled = false;
++			mWeapon1Slot.GetComponent<Collider>().enabled = false;
++			mWeapon2Slot.GetComponent<Collider>().enabled = false;
++			mWeapon3Slot.GetComponent<Collider>().enabled = false;
++			mWeapon4Slot.GetComponent<Collider>().enabled = false;
++			mShieldSlot.GetComponent<Collider>().enabled = false;
++			mGrenadeSlot.GetComponent<Collider>().enabled = false;
++			mSlot1Slot.GetComponent<Collider>().enabled = false;
++			mSlot2Slot.GetComponent<Collider>().enabled = false;
++			mSlot3Slot.GetComponent<Collider>().enabled = false;
++			mSlot4Slot.GetComponent<Collider>().enabled = false;
++			FreeMithrilButton.GetComponent<Collider>().enabled = false;
+ 			Collider[] componentsInChildren = mBackPack.transform.GetComponentsInChildren<Collider>();
+ 			foreach (Collider collider in componentsInChildren)
+ 			{
+ 				collider.enabled = false;
+ 			}
+-			ExtendBag.collider.enabled = false;
+-			ExtendBag2.collider.enabled = false;
++			ExtendBag.GetComponent<Collider>().enabled = false;
++			ExtendBag2.GetComponent<Collider>().enabled = false;
+ 		}
+ 		else
+ 		{
+ 			mIsBagLocked = false;
+-			mWeapon1Slot.collider.enabled = true;
+-			mWeapon2Slot.collider.enabled = true;
+-			mWeapon3Slot.collider.enabled = true;
+-			mWeapon4Slot.collider.enabled = true;
+-			mShieldSlot.collider.enabled = true;
+-			mGrenadeSlot.collider.enabled = true;
+-			mSlot1Slot.collider.enabled = true;
+-			mSlot2Slot.collider.enabled = true;
+-			mSlot3Slot.collider.enabled = true;
+-			mSlot4Slot.collider.enabled = true;
+-			FreeMithrilButton.collider.enabled = true;
++			mWeapon1Slot.GetComponent<Collider>().enabled = true;
++			mWeapon2Slot.GetComponent<Collider>().enabled = true;
++			mWeapon3Slot.GetComponent<Collider>().enabled = true;
++			mWeapon4Slot.GetComponent<Collider>().enabled = true;
++			mShieldSlot.GetComponent<Collider>().enabled = true;
++			mGrenadeSlot.GetComponent<Collider>().enabled = true;
++			mSlot1Slot.GetComponent<Collider>().enabled = true;
++			mSlot2Slot.GetComponent<Collider>().enabled = true;
++			mSlot3Slot.GetComponent<Collider>().enabled = true;
++			mSlot4Slot.GetComponent<Collider>().enabled = true;
++			FreeMithrilButton.GetComponent<Collider>().enabled = true;
+ 			Collider[] componentsInChildren2 = mBackPack.transform.GetComponentsInChildren<Collider>();
+ 			foreach (Collider collider2 in componentsInChildren2)
+ 			{
+ 				collider2.enabled = true;
+ 			}
+-			ExtendBag.collider.enabled = true;
+-			ExtendBag2.collider.enabled = true;
++			ExtendBag.GetComponent<Collider>().enabled = true;
++			ExtendBag2.GetComponent<Collider>().enabled = true;
+ 		}
+ 	}
+ 

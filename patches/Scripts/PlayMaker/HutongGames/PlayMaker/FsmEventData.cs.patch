@@ -1,0 +1,33 @@
+diff --git a/Scripts/PlayMaker/HutongGames/PlayMaker/FsmEventData.cs b/Scripts/PlayMaker/HutongGames/PlayMaker/FsmEventData.cs
+index 491cc40..e3c041e 100644
+--- a/Scripts/PlayMaker/HutongGames/PlayMaker/FsmEventData.cs
++++ b/Scripts/PlayMaker/HutongGames/PlayMaker/FsmEventData.cs
+@@ -36,16 +36,6 @@ namespace HutongGames.PlayMaker
+ 
+ 		public Texture TextureData;
+ 
+-		public NetworkPlayer Player;
+-
+-		public NetworkDisconnection DisconnectionInfo;
+-
+-		public NetworkConnectionError ConnectionError;
+-
+-		public NetworkMessageInfo NetworkMessageInfo;
+-
+-		public MasterServerEvent MasterServerEvent;
+-
+ 		public FsmEventData()
+ 		{
+ 		}
+@@ -68,11 +58,6 @@ namespace HutongGames.PlayMaker
+ 			GameObjectData = source.GameObjectData;
+ 			MaterialData = source.MaterialData;
+ 			TextureData = source.TextureData;
+-			Player = source.Player;
+-			DisconnectionInfo = source.DisconnectionInfo;
+-			ConnectionError = source.ConnectionError;
+-			NetworkMessageInfo = source.NetworkMessageInfo;
+-			MasterServerEvent = source.MasterServerEvent;
+ 		}
+ 	}
+ }

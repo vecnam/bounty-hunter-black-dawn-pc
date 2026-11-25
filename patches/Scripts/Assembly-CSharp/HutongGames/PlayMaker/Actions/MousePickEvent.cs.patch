@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/MousePickEvent.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/MousePickEvent.cs
+index 4eaf1f6..6d5845c 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/MousePickEvent.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/MousePickEvent.cs
+@@ -67,7 +67,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			base.Fsm.RaycastHitInfo = ActionHelpers.mousePickInfo;
+ 			if (flag)
+ 			{
+-				if (mouseDown != null && Input.GetMouseButtonDown(0))
++				if (mouseDown != null && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E)))  // PC: E interacts with what is under the crosshair
+ 				{
+ 					base.Fsm.Event(mouseDown);
+ 				}
+@@ -75,7 +75,7 @@ namespace HutongGames.PlayMaker.Actions
+ 				{
+ 					base.Fsm.Event(mouseOver);
+ 				}
+-				if (mouseUp != null && Input.GetMouseButtonUp(0))
++				if (mouseUp != null && (Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.E)))
+ 				{
+ 					base.Fsm.Event(mouseUp);
+ 				}

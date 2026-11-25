@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetHandsPosition.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetHandsPosition.cs
+index 00cfd0c..8b0f7ca 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetHandsPosition.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetHandsPosition.cs
+@@ -80,7 +80,7 @@ namespace HutongGames.PlayMaker.Actions
+ 				Vector3 origin = direction + position;
+ 				direction *= -1f;
+ 				Ray ray = new Ray(origin, direction);
+-				Collider collider = ownerDefaultTarget.transform.collider;
++				Collider collider = ownerDefaultTarget.transform.GetComponent<Collider>();
+ 				RaycastHit hitInfo;
+ 				if (collider.Raycast(ray, out hitInfo, 100f))
+ 				{
+@@ -103,7 +103,7 @@ namespace HutongGames.PlayMaker.Actions
+ 				Vector3 origin2 = direction2 + position;
+ 				direction2 *= -1f;
+ 				Ray ray2 = new Ray(origin2, direction2);
+-				Collider collider2 = ownerDefaultTarget.transform.collider;
++				Collider collider2 = ownerDefaultTarget.transform.GetComponent<Collider>();
+ 				RaycastHit hitInfo2;
+ 				if (collider2.Raycast(ray2, out hitInfo2, 100f))
+ 				{

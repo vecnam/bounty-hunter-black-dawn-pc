@@ -1,0 +1,15 @@
+diff --git a/Scripts/Assembly-CSharp/BackgroundScript.cs b/Scripts/Assembly-CSharp/BackgroundScript.cs
+index e7769cb..719c4d2 100644
+--- a/Scripts/Assembly-CSharp/BackgroundScript.cs
++++ b/Scripts/Assembly-CSharp/BackgroundScript.cs
+@@ -8,8 +8,8 @@ public class BackgroundScript : IgnoreTimeScale
+ 
+ 	private void Awake()
+ 	{
+-		GameObject gameObject = m_Effect.transform.FindChild("Plane01").gameObject;
+-		state = gameObject.animation["RPG_anim_037"];
++		GameObject gameObject = m_Effect.transform.Find("Plane01").gameObject;
++		state = gameObject.GetComponent<Animation>()["RPG_anim_037"];
+ 	}
+ 
+ 	private void Update()

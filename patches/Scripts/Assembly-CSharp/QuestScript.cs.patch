@@ -1,0 +1,59 @@
+diff --git a/Scripts/Assembly-CSharp/QuestScript.cs b/Scripts/Assembly-CSharp/QuestScript.cs
+index 57bfb19..2d56869 100644
+--- a/Scripts/Assembly-CSharp/QuestScript.cs
++++ b/Scripts/Assembly-CSharp/QuestScript.cs
+@@ -112,8 +112,8 @@ public class QuestScript : MonoBehaviour
+ 		{
+ 			m_topicData.Add(TopicType.Arena);
+ 		}
+-		Transform transform = base.transform.FindChild("Name");
+-		if (transform != null && transform.GetChildCount() == 0)
++		Transform transform = base.transform.Find("Name");
++		if (transform != null && transform.childCount == 0)
+ 		{
+ 			GameObject original = ResourceLoad.GetInstance().LoadUI("NpcName", "Name");
+ 			GameObject gameObject = Object.Instantiate(original) as GameObject;
+@@ -170,7 +170,7 @@ public class QuestScript : MonoBehaviour
+ 		m_promtType = type;
+ 		if (m_prompt.transform.childCount > 0)
+ 		{
+-			GameObject gameObject = m_prompt.transform.FindChild("flag").gameObject;
++			GameObject gameObject = m_prompt.transform.Find("flag").gameObject;
+ 			if (gameObject != null)
+ 			{
+ 				Object.Destroy(gameObject);
+@@ -244,7 +244,7 @@ public class QuestScript : MonoBehaviour
+ 		}
+ 		GameObject gameObject = base.gameObject;
+ 		Vector3 position = gameObject.transform.position;
+-		if (m_prompt.transform.GetChildCount() <= 0)
++		if (m_prompt.transform.childCount <= 0)
+ 		{
+ 			return;
+ 		}
+@@ -254,10 +254,10 @@ public class QuestScript : MonoBehaviour
+ 			{
+ 				m_promptInit = false;
+ 				TweenScale.Begin(m_prompt, 0.2f, m_promptScaleTo);
+-				GameObject gameObject2 = m_prompt.transform.FindChild("flag").gameObject;
++				GameObject gameObject2 = m_prompt.transform.Find("flag").gameObject;
+ 				GameObject gameObject3 = gameObject2.transform.GetChild(0).gameObject;
+-				gameObject3.animation[m_promptAnimName].wrapMode = WrapMode.Loop;
+-				gameObject3.animation.Play(m_promptAnimName);
++				gameObject3.GetComponent<Animation>()[m_promptAnimName].wrapMode = WrapMode.Loop;
++				gameObject3.GetComponent<Animation>().Play(m_promptAnimName);
+ 			}
+ 			m_promptState = 0;
+ 		}
+@@ -267,9 +267,9 @@ public class QuestScript : MonoBehaviour
+ 			{
+ 				m_promptInit = false;
+ 				TweenScale.Begin(m_prompt, 0.2f, m_promptScaleFrom);
+-				GameObject gameObject4 = m_prompt.transform.FindChild("flag").gameObject;
++				GameObject gameObject4 = m_prompt.transform.Find("flag").gameObject;
+ 				GameObject gameObject5 = gameObject4.transform.GetChild(0).gameObject;
+-				gameObject5.animation.Stop();
++				gameObject5.GetComponent<Animation>().Stop();
+ 			}
+ 			m_promptState = 1;
+ 		}

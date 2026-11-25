@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/QuestStateRec100.cs b/Scripts/Assembly-CSharp/QuestStateRec100.cs
+index bb6f90b..3eac39c 100644
+--- a/Scripts/Assembly-CSharp/QuestStateRec100.cs
++++ b/Scripts/Assembly-CSharp/QuestStateRec100.cs
+@@ -77,7 +77,7 @@ public class QuestStateRec100 : ISubRecordset
+ 			questCompleted.m_groupId = br.ReadInt32();
+ 			string s = br.ReadString();
+ 			questCompleted.m_quest = QuestManager.GetInstance().m_questLst[questCompleted.m_id];
+-			questCompleted.m_dateTime = DateTime.Parse(s);
++			questCompleted.m_dateTime = PcPortCulture.ParseDate(s);
+ 			m_questState.m_completedQuestLst.Add(questCompleted);
+ 		}
+ 	}

@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/RemoveMixingTransform.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/RemoveMixingTransform.cs
+index cbe5c74..5279a48 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/RemoveMixingTransform.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/RemoveMixingTransform.cs
+@@ -34,9 +34,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoRemoveMixingTransform()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.animation == null))
++			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.GetComponent<Animation>() == null))
+ 			{
+-				AnimationState animationState = ownerDefaultTarget.animation[animationName.Value];
++				AnimationState animationState = ownerDefaultTarget.GetComponent<Animation>()[animationName.Value];
+ 				if (!(animationState == null))
+ 				{
+ 					Transform mix = ownerDefaultTarget.transform.Find(transfrom.Value);

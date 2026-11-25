@@ -1,0 +1,35 @@
+diff --git a/Scripts/Assembly-CSharp/CloseButton.cs b/Scripts/Assembly-CSharp/CloseButton.cs
+index f83c467..a983ace 100644
+--- a/Scripts/Assembly-CSharp/CloseButton.cs
++++ b/Scripts/Assembly-CSharp/CloseButton.cs
+@@ -6,9 +6,12 @@ public class CloseButton : UIDelegateMenu
+ 
+ 	public GameObject m_CloseButton;
+ 
++	private int spawnFrame;
++
+ 	private void Awake()
+ 	{
+ 		instance = this;
++		spawnFrame = Time.frameCount;
+ 		AddDelegate(m_CloseButton);
+ 	}
+ 
+@@ -17,9 +20,15 @@ public class CloseButton : UIDelegateMenu
+ 		instance = null;
+ 	}
+ 
+-	private void Update()
++	private void LateUpdate()
+ 	{
+-		if (Input.GetKeyDown(KeyCode.Escape) && !InGameMenuManager.GetInstance().Lock)
++		if (InGameMenuManager.GetInstance().Lock || Time.frameCount == spawnFrame || UICamera.inputHasFocus)
++		{
++			return;
++		}
++		bool closeQuest = Input.GetKeyDown(KeyCode.Q) && UIQuest.m_instance != null && (UIQuest.m_instance.m_logs.activeSelf || UIQuest.m_instance.m_teamQuest.activeSelf);
++		bool closeMap = Input.GetKeyDown(KeyCode.M) && InGameMenu.CurrentIndex == InGameMenuManager.INDEX_MAP && FindFirstObjectByType<UIMap>() != null;
++		if (Input.GetKeyDown(KeyCode.Escape) || closeQuest || closeMap)
+ 		{
+ 			InGameMenuManager.GetInstance().Close();
+ 		}

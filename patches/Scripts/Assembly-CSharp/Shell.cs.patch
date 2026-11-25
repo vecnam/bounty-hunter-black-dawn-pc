@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/Shell.cs b/Scripts/Assembly-CSharp/Shell.cs
+index 6c5bb59..07cbc39 100644
+--- a/Scripts/Assembly-CSharp/Shell.cs
++++ b/Scripts/Assembly-CSharp/Shell.cs
+@@ -1,5 +1,6 @@
+ using System.Collections.Generic;
+ using UnityEngine;
++using UnityEngine.AI;
+ 
+ public class Shell : EnemyBoss
+ {
+@@ -183,8 +184,8 @@ public class Shell : EnemyBoss
+ 	{
+ 		base.Activate();
+ 		mFinishJumpOut = false;
+-		mLeftArmCollider = entityObject.transform.FindChild(BoneName.ShellLeftArm).gameObject.collider;
+-		mRightArmCollider = entityObject.transform.FindChild(BoneName.ShellRightArm).gameObject.collider;
++		mLeftArmCollider = entityObject.transform.Find(BoneName.ShellLeftArm).gameObject.GetComponent<Collider>();
++		mRightArmCollider = entityObject.transform.Find(BoneName.ShellRightArm).gameObject.GetComponent<Collider>();
+ 		GameObject original = Resources.Load("RPG_effect/RPG_shell_attack_002") as GameObject;
+ 		mDoubleAttackTrail = Object.Instantiate(original, Vector3.zero, Quaternion.identity) as GameObject;
+ 		mDoubleAttackTrail.transform.parent = entityTransform;

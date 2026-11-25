@@ -1,0 +1,12 @@
+diff --git a/Scripts/Assembly-CSharp/AnimationTestScript.cs b/Scripts/Assembly-CSharp/AnimationTestScript.cs
+index 7336b85..eb75724 100644
+--- a/Scripts/Assembly-CSharp/AnimationTestScript.cs
++++ b/Scripts/Assembly-CSharp/AnimationTestScript.cs
+@@ -10,6 +10,6 @@ public class AnimationTestScript : MonoBehaviour
+ 
+ 	private void Update()
+ 	{
+-		playerObject.animation.CrossFade(AnimationString.Attack + "_rifle");
++		playerObject.GetComponent<Animation>().CrossFade(AnimationString.Attack + "_rifle");
+ 	}
+ }

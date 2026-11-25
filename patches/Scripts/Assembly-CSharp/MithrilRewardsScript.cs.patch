@@ -1,0 +1,17 @@
+diff --git a/Scripts/Assembly-CSharp/MithrilRewardsScript.cs b/Scripts/Assembly-CSharp/MithrilRewardsScript.cs
+index 08744e9..d3fa44e 100644
+--- a/Scripts/Assembly-CSharp/MithrilRewardsScript.cs
++++ b/Scripts/Assembly-CSharp/MithrilRewardsScript.cs
+@@ -111,10 +111,10 @@ public class MithrilRewardsScript : MonoBehaviour
+ 		switch (AndroidConstant.version)
+ 		{
+ 		case AndroidConstant.Version.GooglePlay:
+-			iapWWW = new WWW("http://174.36.196.91:7671/IapStatServer/VerifyAgPay?receipt=" + base64UrlEncodedText + "&appcode=ag003&udid=" + GameApp.GetInstance().UUID);
++			iapWWW = new WWW("http://127.0.0.1:1/IapStatServer/VerifyAgPay?receipt=" + base64UrlEncodedText + "&appcode=ag003&udid=" + GameApp.GetInstance().UUID);
+ 			break;
+ 		case AndroidConstant.Version.Kindle:
+-			iapWWW = new WWW("http://174.36.196.91:7671/IapStatServer/VerifyAwsPay?receipt=" + base64UrlEncodedText + "&appcode=ag003&udid=" + GameApp.GetInstance().UUID);
++			iapWWW = new WWW("http://127.0.0.1:1/IapStatServer/VerifyAwsPay?receipt=" + base64UrlEncodedText + "&appcode=ag003&udid=" + GameApp.GetInstance().UUID);
+ 			break;
+ 		}
+ 		while (!iapWWW.isDone)

@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/SocialNetworkingGUIManager.cs b/Scripts/Assembly-CSharp/SocialNetworkingGUIManager.cs
+index c1d62fd..4dcee1e 100644
+--- a/Scripts/Assembly-CSharp/SocialNetworkingGUIManager.cs
++++ b/Scripts/Assembly-CSharp/SocialNetworkingGUIManager.cs
+@@ -18,7 +18,7 @@ public class SocialNetworkingGUIManager : MonoBehaviour
+ 		{
+ 			ResultLogger.logObject(result);
+ 		};
+-		Application.CaptureScreenshot(screenshotFilename);
++		ScreenCapture.CaptureScreenshot(screenshotFilename);
+ 	}
+ 
+ 	private void OnGUI()

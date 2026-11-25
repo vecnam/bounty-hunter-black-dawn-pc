@@ -1,0 +1,32 @@
+diff --git a/Scripts/Assembly-CSharp/ObjectPool.cs b/Scripts/Assembly-CSharp/ObjectPool.cs
+index 0f5ac23..f0e0ed5 100644
+--- a/Scripts/Assembly-CSharp/ObjectPool.cs
++++ b/Scripts/Assembly-CSharp/ObjectPool.cs
+@@ -33,11 +33,11 @@ public class ObjectPool
+ 			createdTime.Add(0f);
+ 			gameObject.active = false;
+ 			gameObject.transform.parent = folderObject.transform;
+-			if (gameObject.animation != null)
++			if (gameObject.GetComponent<Animation>() != null)
+ 			{
+ 				hasAnimation = true;
+ 			}
+-			if (gameObject.particleEmitter != null)
++			if (gameObject.GetLegacyEmitter() != null)
+ 			{
+ 				hasParticleEmitter = true;
+ 			}
+@@ -71,11 +71,11 @@ public class ObjectPool
+ 		createdTime.Add(0f);
+ 		gameObject.name = objects[0].name;
+ 		gameObject.transform.parent = folderObject.transform;
+-		if (gameObject.animation != null)
++		if (gameObject.GetComponent<Animation>() != null)
+ 		{
+ 			hasAnimation = true;
+ 		}
+-		if (gameObject.particleEmitter != null)
++		if (gameObject.GetLegacyEmitter() != null)
+ 		{
+ 			hasParticleEmitter = true;
+ 		}

@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioVolume.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioVolume.cs
+index 934ffb7..e594958 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioVolume.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioVolume.cs
+@@ -41,7 +41,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (ownerDefaultTarget != null)
+ 			{
+-				AudioSource audio = ownerDefaultTarget.audio;
++				AudioSource audio = ownerDefaultTarget.GetComponent<AudioSource>();
+ 				if (audio != null && !volume.IsNone)
+ 				{
+ 					audio.volume = volume.Value;

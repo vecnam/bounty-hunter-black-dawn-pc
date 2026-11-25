@@ -1,0 +1,27 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddAnimationClip.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddAnimationClip.cs
+index 7c24b57..aa931e8 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddAnimationClip.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddAnimationClip.cs
+@@ -47,7 +47,7 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoAddAnimationClip()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (ownerDefaultTarget == null || ownerDefaultTarget.animation == null)
++			if (ownerDefaultTarget == null || ownerDefaultTarget.GetComponent<Animation>() == null)
+ 			{
+ 				return;
+ 			}
+@@ -56,11 +56,11 @@ namespace HutongGames.PlayMaker.Actions
+ 			{
+ 				if (firstFrame.Value == 0 && lastFrame.Value == 0)
+ 				{
+-					ownerDefaultTarget.animation.AddClip(animationClip, animationName.Value);
++					ownerDefaultTarget.GetComponent<Animation>().AddClip(animationClip, animationName.Value);
+ 				}
+ 				else
+ 				{
+-					ownerDefaultTarget.animation.AddClip(animationClip, animationName.Value, firstFrame.Value, lastFrame.Value, addLoopFrame.Value);
++					ownerDefaultTarget.GetComponent<Animation>().AddClip(animationClip, animationName.Value, firstFrame.Value, lastFrame.Value, addLoopFrame.Value);
+ 				}
+ 			}
+ 		}

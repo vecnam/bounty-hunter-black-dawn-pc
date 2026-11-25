@@ -1,0 +1,34 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetTextureOffset.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetTextureOffset.cs
+index e70adb2..4f3e168 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetTextureOffset.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetTextureOffset.cs
+@@ -53,23 +53,23 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (!(ownerDefaultTarget == null))
+ 			{
+-				if (ownerDefaultTarget.renderer == null)
++				if (ownerDefaultTarget.GetComponent<Renderer>() == null)
+ 				{
+ 					LogError("Missing Renderer!");
+ 				}
+-				else if (ownerDefaultTarget.renderer.material == null)
++				else if (ownerDefaultTarget.GetComponent<Renderer>().material == null)
+ 				{
+ 					LogError("Missing Material!");
+ 				}
+ 				else if (materialIndex.Value == 0)
+ 				{
+-					ownerDefaultTarget.renderer.material.SetTextureOffset(namedTexture.Value, new Vector2(offsetX.Value, offsetY.Value));
++					ownerDefaultTarget.GetComponent<Renderer>().material.SetTextureOffset(namedTexture.Value, new Vector2(offsetX.Value, offsetY.Value));
+ 				}
+-				else if (ownerDefaultTarget.renderer.materials.Length > materialIndex.Value)
++				else if (ownerDefaultTarget.GetComponent<Renderer>().materials.Length > materialIndex.Value)
+ 				{
+-					Material[] materials = ownerDefaultTarget.renderer.materials;
++					Material[] materials = ownerDefaultTarget.GetComponent<Renderer>().materials;
+ 					materials[materialIndex.Value].SetTextureOffset(namedTexture.Value, new Vector2(offsetX.Value, offsetY.Value));
+-					ownerDefaultTarget.renderer.materials = materials;
++					ownerDefaultTarget.GetComponent<Renderer>().materials = materials;
+ 				}
+ 			}
+ 		}

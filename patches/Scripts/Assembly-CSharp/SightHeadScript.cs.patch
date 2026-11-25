@@ -1,0 +1,30 @@
+diff --git a/Scripts/Assembly-CSharp/SightHeadScript.cs b/Scripts/Assembly-CSharp/SightHeadScript.cs
+index 2b6d7cb..20fa3c2 100644
+--- a/Scripts/Assembly-CSharp/SightHeadScript.cs
++++ b/Scripts/Assembly-CSharp/SightHeadScript.cs
+@@ -28,17 +28,17 @@ public class SightHeadScript : MonoBehaviour
+ 	{
+ 		if (CrossSightHead != null && CrossSightHead.activeSelf)
+ 		{
+-			CrossSightHead.transform.FindChild("Up").GetComponent<UISprite>().color = _color;
+-			CrossSightHead.transform.FindChild("Down").GetComponent<UISprite>().color = _color;
+-			CrossSightHead.transform.FindChild("Left").GetComponent<UISprite>().color = _color;
+-			CrossSightHead.transform.FindChild("Right").GetComponent<UISprite>().color = _color;
++			CrossSightHead.transform.Find("Up").GetComponent<UISprite>().color = _color;
++			CrossSightHead.transform.Find("Down").GetComponent<UISprite>().color = _color;
++			CrossSightHead.transform.Find("Left").GetComponent<UISprite>().color = _color;
++			CrossSightHead.transform.Find("Right").GetComponent<UISprite>().color = _color;
+ 		}
+ 		else if (TiltedSightHead != null && TiltedSightHead.activeSelf)
+ 		{
+-			CrossSightHead.transform.FindChild("LU").GetComponent<UISprite>().color = _color;
+-			CrossSightHead.transform.FindChild("LD").GetComponent<UISprite>().color = _color;
+-			CrossSightHead.transform.FindChild("RU").GetComponent<UISprite>().color = _color;
+-			CrossSightHead.transform.FindChild("RD").GetComponent<UISprite>().color = _color;
++			CrossSightHead.transform.Find("LU").GetComponent<UISprite>().color = _color;
++			CrossSightHead.transform.Find("LD").GetComponent<UISprite>().color = _color;
++			CrossSightHead.transform.Find("RU").GetComponent<UISprite>().color = _color;
++			CrossSightHead.transform.Find("RD").GetComponent<UISprite>().color = _color;
+ 		}
+ 		if (CenterPoint != null)
+ 		{

@@ -1,0 +1,32 @@
+diff --git a/Scripts/Assembly-CSharp/ItemDescriptionScript.cs b/Scripts/Assembly-CSharp/ItemDescriptionScript.cs
+index 00984f0..2cf2c3f 100644
+--- a/Scripts/Assembly-CSharp/ItemDescriptionScript.cs
++++ b/Scripts/Assembly-CSharp/ItemDescriptionScript.cs
+@@ -321,11 +321,11 @@ public class ItemDescriptionScript : UIDelegateMenu
+ 				base.gameObject.SetActive(false);
+ 				if (NGUIBackPackUIScript.mInstance != null)
+ 				{
+-					int childCount = NGUIBackPackUIScript.mInstance.mBackPack.transform.GetChildCount();
++					int childCount = NGUIBackPackUIScript.mInstance.mBackPack.transform.childCount;
+ 					for (int i = 0; i < childCount; i++)
+ 					{
+ 						Transform child = NGUIBackPackUIScript.mInstance.mBackPack.transform.GetChild(i);
+-						for (int j = 0; j < child.GetChildCount(); j++)
++						for (int j = 0; j < child.childCount; j++)
+ 						{
+ 							if (child.GetChild(j).tag == TagName.QUALITY_EFFECT)
+ 							{
+@@ -338,11 +338,11 @@ public class ItemDescriptionScript : UIDelegateMenu
+ 				{
+ 					return;
+ 				}
+-				int childCount2 = ShopSellPageScript.mInstance.m_BackPack.transform.GetChildCount();
++				int childCount2 = ShopSellPageScript.mInstance.m_BackPack.transform.childCount;
+ 				for (int k = 0; k < childCount2; k++)
+ 				{
+ 					Transform child2 = ShopSellPageScript.mInstance.m_BackPack.transform.GetChild(k);
+-					for (int l = 0; l < child2.GetChildCount(); l++)
++					for (int l = 0; l < child2.childCount; l++)
+ 					{
+ 						if (child2.GetChild(l).tag == TagName.QUALITY_EFFECT)
+ 						{

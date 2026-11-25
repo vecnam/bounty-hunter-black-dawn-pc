@@ -1,0 +1,40 @@
+diff --git a/Scripts/Assembly-CSharp/EnemyAnimationTestScript.cs b/Scripts/Assembly-CSharp/EnemyAnimationTestScript.cs
+index 718d8bc..1e2034d 100644
+--- a/Scripts/Assembly-CSharp/EnemyAnimationTestScript.cs
++++ b/Scripts/Assembly-CSharp/EnemyAnimationTestScript.cs
+@@ -16,7 +16,7 @@ public class EnemyAnimationTestScript : MonoBehaviour
+ 	private void Start()
+ 	{
+ 		mClipNames = new List<string>();
+-		foreach (AnimationState item in base.animation)
++		foreach (AnimationState item in base.GetComponent<Animation>())
+ 		{
+ 			if (item.clip.name != "Take 001")
+ 			{
+@@ -26,22 +26,22 @@ public class EnemyAnimationTestScript : MonoBehaviour
+ 		}
+ 		mCurrentId = 0;
+ 		mMaxCount = mClipNames.Count;
+-		base.animation.Play(mClipNames[mCurrentId]);
++		base.GetComponent<Animation>().Play(mClipNames[mCurrentId]);
+ 	}
+ 
+ 	private void Update()
+ 	{
+-		if (mCurrentId < mMaxCount && base.animation.IsPlaying(mClipNames[mCurrentId]) && base.animation[mClipNames[mCurrentId]].time >= base.animation[mClipNames[mCurrentId]].clip.length * (float)LoopTimes)
++		if (mCurrentId < mMaxCount && base.GetComponent<Animation>().IsPlaying(mClipNames[mCurrentId]) && base.GetComponent<Animation>()[mClipNames[mCurrentId]].time >= base.GetComponent<Animation>()[mClipNames[mCurrentId]].clip.length * (float)LoopTimes)
+ 		{
+ 			mCurrentId++;
+ 			if (mCurrentId < mMaxCount)
+ 			{
+-				base.animation.Play(mClipNames[mCurrentId]);
++				base.GetComponent<Animation>().Play(mClipNames[mCurrentId]);
+ 				AnimationName = mClipNames[mCurrentId];
+ 			}
+ 			else
+ 			{
+-				base.animation.Stop();
++				base.GetComponent<Animation>().Stop();
+ 			}
+ 		}
+ 	}

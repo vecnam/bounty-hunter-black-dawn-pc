@@ -1,0 +1,26 @@
+diff --git a/Scripts/Assembly-CSharp/TutorialOpenMenuToEquipWeapon.cs b/Scripts/Assembly-CSharp/TutorialOpenMenuToEquipWeapon.cs
+index 93cdbf2..845533e 100644
+--- a/Scripts/Assembly-CSharp/TutorialOpenMenuToEquipWeapon.cs
++++ b/Scripts/Assembly-CSharp/TutorialOpenMenuToEquipWeapon.cs
+@@ -14,8 +14,8 @@ public class TutorialOpenMenuToEquipWeapon : TutorialScript
+ 			GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 				.InputController.Block = true;
+ 			HUDManager.instance.m_HotKeyManager.ForbidAllWithout(6);
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = true;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = true;
+ 			button = HUDManager.instance.m_HotKeyManager.m_Menu;
+ 			if (button != null)
+ 			{
+@@ -36,8 +36,8 @@ public class TutorialOpenMenuToEquipWeapon : TutorialScript
+ 			GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 				.InputController.Block = false;
+ 			HUDManager.instance.m_HotKeyManager.CancelFobid();
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = false;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = false;
+ 		}
+ 	}
+ 

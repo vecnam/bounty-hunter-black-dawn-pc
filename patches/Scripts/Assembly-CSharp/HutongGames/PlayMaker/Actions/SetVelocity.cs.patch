@@ -1,0 +1,25 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetVelocity.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetVelocity.cs
+index 66497d2..b2e8043 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetVelocity.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetVelocity.cs
+@@ -64,9 +64,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoSetVelocity()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.rigidbody == null))
++			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.GetComponent<Rigidbody>() == null))
+ 			{
+-				Vector3 vector = ((!this.vector.IsNone) ? this.vector.Value : ((space != Space.World) ? ownerDefaultTarget.transform.InverseTransformDirection(ownerDefaultTarget.rigidbody.velocity) : ownerDefaultTarget.rigidbody.velocity));
++				Vector3 vector = ((!this.vector.IsNone) ? this.vector.Value : ((space != Space.World) ? ownerDefaultTarget.transform.InverseTransformDirection(ownerDefaultTarget.GetComponent<Rigidbody>().linearVelocity) : ownerDefaultTarget.GetComponent<Rigidbody>().linearVelocity));
+ 				if (!x.IsNone)
+ 				{
+ 					vector.x = x.Value;
+@@ -79,7 +79,7 @@ namespace HutongGames.PlayMaker.Actions
+ 				{
+ 					vector.z = z.Value;
+ 				}
+-				ownerDefaultTarget.rigidbody.velocity = ((space != Space.World) ? ownerDefaultTarget.transform.TransformDirection(vector) : vector);
++				ownerDefaultTarget.GetComponent<Rigidbody>().linearVelocity = ((space != Space.World) ? ownerDefaultTarget.transform.TransformDirection(vector) : vector);
+ 			}
+ 		}
+ 	}

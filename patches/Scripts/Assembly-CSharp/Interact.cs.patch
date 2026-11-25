@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/Interact.cs b/Scripts/Assembly-CSharp/Interact.cs
+index 1d70896..4164f71 100644
+--- a/Scripts/Assembly-CSharp/Interact.cs
++++ b/Scripts/Assembly-CSharp/Interact.cs
+@@ -34,6 +34,17 @@ public class Interact : MonoBehaviour
+ 
+ 	private void Update()
+ 	{
++		if (Input.GetKeyDown(KeyCode.E)) // PC: E presses the visible interaction button (chest/item)
++		{
++			foreach (GameObject button in new GameObject[] { OpenBoxButton, SearchBoxButton, SearchItemButton })
++			{
++				if (button.activeInHierarchy)
++				{
++					OnClickThumb(button);
++					break;
++				}
++			}
++		}
+ 		ItemBase nearestItem = UserStateHUD.GetInstance().NearestItem;
+ 		ChestScript nearestChest = UserStateHUD.GetInstance().NearestChest;
+ 		if (nearestItem != null)

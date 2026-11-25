@@ -1,0 +1,40 @@
+diff --git a/Scripts/Assembly-CSharp/AutoLinkManager.cs b/Scripts/Assembly-CSharp/AutoLinkManager.cs
+index a1213bb..7f1b5e8 100644
+--- a/Scripts/Assembly-CSharp/AutoLinkManager.cs
++++ b/Scripts/Assembly-CSharp/AutoLinkManager.cs
+@@ -22,7 +22,7 @@ public class AutoLinkManager
+ 			{
+ 				continue;
+ 			}
+-			int childCount = gameObject.transform.GetChildCount();
++			int childCount = gameObject.transform.childCount;
+ 			for (int j = 0; j < childCount; j++)
+ 			{
+ 				Transform child = gameObject.transform.GetChild(j);
+@@ -49,7 +49,7 @@ public class AutoLinkManager
+ 			{
+ 				continue;
+ 			}
+-			int childCount = gameObject.transform.GetChildCount();
++			int childCount = gameObject.transform.childCount;
+ 			PatrolPointScript patrolPointScript = null;
+ 			PatrolPointScript patrolPointScript2 = null;
+ 			for (int j = 0; j < childCount; j++)
+@@ -81,7 +81,7 @@ public class AutoLinkManager
+ 		{
+ 			List<GameObject> list = new List<GameObject>();
+ 			List<GameObject> list2 = new List<GameObject>();
+-			int childCount = gameObject.transform.GetChildCount();
++			int childCount = gameObject.transform.childCount;
+ 			for (int j = 0; j < childCount; j++)
+ 			{
+ 				Transform child = gameObject.transform.GetChild(j);
+@@ -123,7 +123,7 @@ public class AutoLinkManager
+ 			List<GameObject> list3 = new List<GameObject>();
+ 			GameObject gameObject2 = null;
+ 			GameObject gameObject3 = null;
+-			int childCount = gameObject.transform.GetChildCount();
++			int childCount = gameObject.transform.childCount;
+ 			for (int j = 0; j < childCount; j++)
+ 			{
+ 				Transform child = gameObject.transform.GetChild(j);

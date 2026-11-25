@@ -1,0 +1,27 @@
+diff --git a/Scripts/Assembly-CSharp/UIIAP.cs b/Scripts/Assembly-CSharp/UIIAP.cs
+index 113453d..dba4173 100644
+--- a/Scripts/Assembly-CSharp/UIIAP.cs
++++ b/Scripts/Assembly-CSharp/UIIAP.cs
+@@ -74,7 +74,8 @@ public class UIIAP : UIDelegateMenu, UIMsgListener
+ 		switch (AndroidConstant.version)
+ 		{
+ 		case AndroidConstant.Version.GooglePlay:
+-			m_ButtonRestore.SetActive(true);
++			// PC: there are no Google Play purchases to restore (the button froze the waiting screen for 300 s).
++			m_ButtonRestore.SetActive(!AndroidPluginScript.IsPC());
+ 			break;
+ 		case AndroidConstant.Version.Kindle:
+ 		case AndroidConstant.Version.MM:
+@@ -240,6 +241,12 @@ public class UIIAP : UIDelegateMenu, UIMsgListener
+ 
+ 	private void PurchaseProduct(IAPName name)
+ 	{
++		if (AndroidPluginScript.IsPC())
++		{
++			// PC: there is no real store (GetPurchaseStatus stays 0 forever), so the packs are free.
++			GameApp.GetInstance().GetGlobalState().DeliverIAPItem(name);
++			return;
++		}
+ 		if (GameApp.GetInstance().IsConnectedToInternet())
+ 		{
+ 			Debug.Log("PurchaseMithril : " + name);

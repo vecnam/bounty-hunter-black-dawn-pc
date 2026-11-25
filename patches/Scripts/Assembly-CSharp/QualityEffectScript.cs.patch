@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/QualityEffectScript.cs b/Scripts/Assembly-CSharp/QualityEffectScript.cs
+index 63b1173..0af3021 100644
+--- a/Scripts/Assembly-CSharp/QualityEffectScript.cs
++++ b/Scripts/Assembly-CSharp/QualityEffectScript.cs
+@@ -12,7 +12,7 @@ public class QualityEffectScript : IgnoreTimeScale
+ 
+ 	private void Awake()
+ 	{
+-		state = Effect.animation[AnimationName];
++		state = Effect.GetComponent<Animation>()[AnimationName];
+ 	}
+ 
+ 	private void Update()
+@@ -37,7 +37,7 @@ public class QualityEffectScript : IgnoreTimeScale
+ 		}
+ 		if (ParticleObject != null)
+ 		{
+-			ParticleObject.particleSystem.Simulate(num, true, false);
++			ParticleObject.GetComponent<ParticleSystem>().Simulate(num, true, false);
+ 		}
+ 	}
+ }

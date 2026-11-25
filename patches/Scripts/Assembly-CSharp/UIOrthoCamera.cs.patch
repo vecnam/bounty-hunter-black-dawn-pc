@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/UIOrthoCamera.cs b/Scripts/Assembly-CSharp/UIOrthoCamera.cs
+index ff17285..87f5c20 100644
+--- a/Scripts/Assembly-CSharp/UIOrthoCamera.cs
++++ b/Scripts/Assembly-CSharp/UIOrthoCamera.cs
+@@ -11,7 +11,7 @@ public class UIOrthoCamera : MonoBehaviour
+ 
+ 	private void Start()
+ 	{
+-		mCam = base.camera;
++		mCam = base.GetComponent<Camera>();
+ 		mTrans = base.transform;
+ 		mCam.orthographic = true;
+ 	}

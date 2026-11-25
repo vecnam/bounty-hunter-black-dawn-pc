@@ -1,0 +1,46 @@
+diff --git a/Scripts/Assembly-CSharp/ItemInfo.cs b/Scripts/Assembly-CSharp/ItemInfo.cs
+index 6b8aac6..54cca22 100644
+--- a/Scripts/Assembly-CSharp/ItemInfo.cs
++++ b/Scripts/Assembly-CSharp/ItemInfo.cs
+@@ -538,10 +538,10 @@ public class ItemInfo
+ 			{
+ 				itemQuality = ItemQuality.Common;
+ 			}
+-			if (gameObject.rigidbody != null)
++			if (gameObject.GetComponent<Rigidbody>() != null)
+ 			{
+-				gameObject.rigidbody.useGravity = false;
+-				gameObject.rigidbody.Sleep();
++				gameObject.GetComponent<Rigidbody>().useGravity = false;
++				gameObject.GetComponent<Rigidbody>().Sleep();
+ 			}
+ 			GameApp.GetInstance().GetLootManager().CreateItemBaseFromGameObject(gameObject, level, itemClass, (byte)number, itemQuality, 0);
+ 			int price = gameObject.GetComponent<ItemBase>().mNGUIBaseItem.GetPrice();
+@@ -652,10 +652,10 @@ public class ItemInfo
+ 		{
+ 			quality = ItemQuality.Common;
+ 		}
+-		if (gameObject.rigidbody != null)
++		if (gameObject.GetComponent<Rigidbody>() != null)
+ 		{
+-			gameObject.rigidbody.useGravity = false;
+-			gameObject.rigidbody.Sleep();
++			gameObject.GetComponent<Rigidbody>().useGravity = false;
++			gameObject.GetComponent<Rigidbody>().Sleep();
+ 		}
+ 		GameApp.GetInstance().GetLootManager().CreateItemBaseFromGameObject(gameObject, level, itemClass, (byte)number, quality, 0);
+ 		int price = gameObject.GetComponent<ItemBase>().mNGUIBaseItem.GetPrice();
+@@ -725,10 +725,10 @@ public class ItemInfo
+ 		{
+ 			quality = ItemQuality.Common;
+ 		}
+-		if (gameObject.rigidbody != null)
++		if (gameObject.GetComponent<Rigidbody>() != null)
+ 		{
+-			gameObject.rigidbody.useGravity = false;
+-			gameObject.rigidbody.Sleep();
++			gameObject.GetComponent<Rigidbody>().useGravity = false;
++			gameObject.GetComponent<Rigidbody>().Sleep();
+ 		}
+ 		GameApp.GetInstance().GetLootManager().CreateItemBaseFromGameObject(gameObject, level, itemClass, (byte)number, quality, 0);
+ 		int price = gameObject.GetComponent<ItemBase>().mNGUIBaseItem.GetPrice();

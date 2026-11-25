@@ -1,0 +1,26 @@
+diff --git a/Scripts/Assembly-CSharp/TutorialRadar.cs b/Scripts/Assembly-CSharp/TutorialRadar.cs
+index 4d5a8c3..7167c05 100644
+--- a/Scripts/Assembly-CSharp/TutorialRadar.cs
++++ b/Scripts/Assembly-CSharp/TutorialRadar.cs
+@@ -21,8 +21,8 @@ public class TutorialRadar : TutorialScript, UIMsgListener
+ 			GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 				.InputController.Block = true;
+ 			HUDManager.instance.m_HotKeyManager.ForbidAll();
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = true;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = true;
+ 			label.text = LocalizationManager.GetInstance().GetString("TUTOR_HINT_ENEMY_MARK");
+ 			bTouch = false;
+ 			questTween.gameObject.SetActive(false);
+@@ -57,8 +57,8 @@ public class TutorialRadar : TutorialScript, UIMsgListener
+ 			GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 				.InputController.Block = false;
+ 			HUDManager.instance.m_HotKeyManager.CancelFobid();
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = false;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = false;
+ 		}
+ 	}
+ 

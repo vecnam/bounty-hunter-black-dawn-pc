@@ -1,0 +1,49 @@
+diff --git a/Scripts/Assembly-CSharp/AlphaAnimationScript.cs b/Scripts/Assembly-CSharp/AlphaAnimationScript.cs
+index 3bbe91f..68bb488 100644
+--- a/Scripts/Assembly-CSharp/AlphaAnimationScript.cs
++++ b/Scripts/Assembly-CSharp/AlphaAnimationScript.cs
+@@ -51,7 +51,7 @@ public class AlphaAnimationScript : MonoBehaviour
+ 			Color color = Color.white;
+ 			if (enableAlphaAnimation || enableBrightAnimation)
+ 			{
+-				color = base.renderer.material.GetColor(colorPropertyName);
++				color = base.GetComponent<Renderer>().material.GetColor(colorPropertyName);
+ 			}
+ 			if (enableAlphaAnimation)
+ 			{
+@@ -108,7 +108,7 @@ public class AlphaAnimationScript : MonoBehaviour
+ 					}
+ 				}
+ 			}
+-			Material[] materials = base.renderer.materials;
++			Material[] materials = base.GetComponent<Renderer>().materials;
+ 			Material[] array = materials;
+ 			foreach (Material material in array)
+ 			{
+@@ -122,7 +122,7 @@ public class AlphaAnimationScript : MonoBehaviour
+ 	{
+ 		animating = true;
+ 		increasing = true;
+-		Material[] materials = base.renderer.materials;
++		Material[] materials = base.GetComponent<Renderer>().materials;
+ 		Material[] array = materials;
+ 		foreach (Material material in array)
+ 		{
+@@ -136,7 +136,7 @@ public class AlphaAnimationScript : MonoBehaviour
+ 		startColor = Color.black;
+ 		if (enableAlphaAnimation || enableBrightAnimation)
+ 		{
+-			startColor = base.renderer.material.GetColor(colorPropertyName);
++			startColor = base.GetComponent<Renderer>().material.GetColor(colorPropertyName);
+ 		}
+ 		if (enableAlphaAnimation)
+ 		{
+@@ -146,7 +146,7 @@ public class AlphaAnimationScript : MonoBehaviour
+ 		startColor.r -= num;
+ 		startColor.g -= num;
+ 		startColor.b -= num;
+-		Material[] materials = base.renderer.materials;
++		Material[] materials = base.GetComponent<Renderer>().materials;
+ 		Material[] array = materials;
+ 		foreach (Material material in array)
+ 		{

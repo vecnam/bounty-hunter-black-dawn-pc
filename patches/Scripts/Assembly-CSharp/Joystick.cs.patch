@@ -1,0 +1,17 @@
+diff --git a/Scripts/Assembly-CSharp/Joystick.cs b/Scripts/Assembly-CSharp/Joystick.cs
+index d61a6ed..fbb2b57 100644
+--- a/Scripts/Assembly-CSharp/Joystick.cs
++++ b/Scripts/Assembly-CSharp/Joystick.cs
+@@ -14,6 +14,12 @@ public class Joystick : MonoBehaviour
+ 	{
+ 		Debug.Log("Joystick Start..........." + base.gameObject.name);
+ 		initInnerPos = new Vector2(inner.transform.localPosition.x, inner.transform.localPosition.y);
++		// PC: the touch movement joystick and fire button are not needed (WASD and mouse). Only their sprites are hidden:
++		// the object and its collider stay, because the tutorial's fire step (TutorialFire) waits for a click on it.
++		foreach (UIWidget widget in GetComponentsInChildren<UIWidget>(true))
++		{
++			widget.enabled = false;
++		}
+ 	}
+ 
+ 	private void OnDrag(Vector2 delta)

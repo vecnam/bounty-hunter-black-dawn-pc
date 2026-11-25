@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/FruitMachineWorking.cs b/Scripts/Assembly-CSharp/FruitMachineWorking.cs
+index 7827be5..ba31b42 100644
+--- a/Scripts/Assembly-CSharp/FruitMachineWorking.cs
++++ b/Scripts/Assembly-CSharp/FruitMachineWorking.cs
+@@ -36,7 +36,7 @@ public class FruitMachineWorking : FruitMachineState
+ 		if (lastIndex != num)
+ 		{
+ 			lastIndex = num;
+-			if (Camera.mainCamera != null)
++			if (Camera.main != null)
+ 			{
+ 				AudioManager.GetInstance().PlaySound("RPG_Audio/Menu/fruit_machine_rolling");
+ 			}

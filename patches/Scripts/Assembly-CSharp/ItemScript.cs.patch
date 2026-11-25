@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/ItemScript.cs b/Scripts/Assembly-CSharp/ItemScript.cs
+index ced297d..cbe52f5 100644
+--- a/Scripts/Assembly-CSharp/ItemScript.cs
++++ b/Scripts/Assembly-CSharp/ItemScript.cs
+@@ -36,7 +36,7 @@ public class ItemScript : MonoBehaviour
+ 
+ 	protected virtual void OnTriggerEnter(Collider c)
+ 	{
+-		if (lastPickUpRequestTimer.Ready() && c.collider.gameObject.layer == PhysicsLayer.PLAYER_COLLIDER)
++		if (lastPickUpRequestTimer.Ready() && c.GetComponent<Collider>().gameObject.layer == PhysicsLayer.PLAYER_COLLIDER)
+ 		{
+ 			if (GameApp.GetInstance().GetGameMode().IsSingle())
+ 			{

@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/ShotGun.cs b/Scripts/Assembly-CSharp/ShotGun.cs
+index c2f0c42..28836e3 100644
+--- a/Scripts/Assembly-CSharp/ShotGun.cs
++++ b/Scripts/Assembly-CSharp/ShotGun.cs
+@@ -102,7 +102,7 @@ public class ShotGun : Weapon
+ 		UseBullet(1);
+ 		PlaySound();
+ 		CheckEnemySoundDetection();
+-		cameraComponent = Camera.mainCamera;
++		cameraComponent = Camera.main;
+ 		cameraTransform = cameraComponent.transform;
+ 		aimTarget = cameraTransform.TransformPoint(0f, 0f, 100f);
+ 		Vector3 normalized = (aimTarget - gunfire.position).normalized;

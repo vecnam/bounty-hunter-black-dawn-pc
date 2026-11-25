@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/GameUnit.cs b/Scripts/Assembly-CSharp/GameUnit.cs
+index affaa95..5113ee9 100644
+--- a/Scripts/Assembly-CSharp/GameUnit.cs
++++ b/Scripts/Assembly-CSharp/GameUnit.cs
+@@ -161,7 +161,7 @@ public class GameUnit : GameEntity
+ 	public override void SetObject(GameObject obj)
+ 	{
+ 		base.SetObject(obj);
+-		collider = entityObject.collider;
++		collider = entityObject.GetComponent<Collider>();
+ 		if (entityObject.GetComponent<CharacterController>() != null)
+ 		{
+ 			cc = entityObject.GetComponent<CharacterController>();

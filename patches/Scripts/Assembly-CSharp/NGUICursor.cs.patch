@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/NGUICursor.cs b/Scripts/Assembly-CSharp/NGUICursor.cs
+index cb9c686..55b7305 100644
+--- a/Scripts/Assembly-CSharp/NGUICursor.cs
++++ b/Scripts/Assembly-CSharp/NGUICursor.cs
+@@ -58,7 +58,7 @@ public class NGUICursor : MonoBehaviour
+ 			mousePosition.y = Mathf.Clamp01(mousePosition.y / (float)Screen.height);
+ 			mousePosition.y += 0.1f;
+ 			mTrans.position = uiCamera.ViewportToWorldPoint(mousePosition);
+-			if (uiCamera.isOrthoGraphic)
++			if (uiCamera.orthographic)
+ 			{
+ 				mTrans.localPosition = NGUIMath.ApplyHalfPixelOffset(mTrans.localPosition, mTrans.localScale);
+ 			}

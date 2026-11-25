@@ -1,0 +1,30 @@
+diff --git a/Scripts/Assembly-CSharp/FisheyeAnimationScript.cs b/Scripts/Assembly-CSharp/FisheyeAnimationScript.cs
+index eb5bfc6..921cd92 100644
+--- a/Scripts/Assembly-CSharp/FisheyeAnimationScript.cs
++++ b/Scripts/Assembly-CSharp/FisheyeAnimationScript.cs
+@@ -54,14 +54,14 @@ public class FisheyeAnimationScript : MonoBehaviour
+ 		{
+ 			float num2 = fovRange * num / duration;
+ 			float f = 0f * num / duration;
+-			Camera.main.camera.fov = initFOV + num2 * Mathf.Cos(f);
++			Camera.main.GetComponent<Camera>().fieldOfView = initFOV + num2 * Mathf.Cos(f);
+ 			break;
+ 		}
+ 		case 4:
+ 		{
+ 			float num2 = fovRange - fovRange * num / duration;
+ 			float f = 0f * num / duration;
+-			Camera.main.camera.fov = initFOV + num2 * Mathf.Cos(f);
++			Camera.main.GetComponent<Camera>().fieldOfView = initFOV + num2 * Mathf.Cos(f);
+ 			break;
+ 		}
+ 		}
+@@ -73,7 +73,7 @@ public class FisheyeAnimationScript : MonoBehaviour
+ 		{
+ 			this.state = state;
+ 			startTime = Time.time;
+-			initFOV = Camera.main.camera.fov;
++			initFOV = Camera.main.GetComponent<Camera>().fieldOfView;
+ 		}
+ 	}
+ 

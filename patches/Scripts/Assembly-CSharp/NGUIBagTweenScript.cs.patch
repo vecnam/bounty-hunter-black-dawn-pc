@@ -1,0 +1,59 @@
+diff --git a/Scripts/Assembly-CSharp/NGUIBagTweenScript.cs b/Scripts/Assembly-CSharp/NGUIBagTweenScript.cs
+index cd4b077..2f024df 100644
+--- a/Scripts/Assembly-CSharp/NGUIBagTweenScript.cs
++++ b/Scripts/Assembly-CSharp/NGUIBagTweenScript.cs
+@@ -94,16 +94,16 @@ public class NGUIBagTweenScript : UIDelegateMenu
+ 
+ 	public void DisableUnvisibleItem()
+ 	{
+-		int childCount = Target.transform.GetChild(0).GetChildCount();
++		int childCount = Target.transform.GetChild(0).childCount;
+ 		mMaxIndex = Mathf.CeilToInt((float)childCount / 5f) - 2;
+ 		for (int i = 0; i < childCount; i++)
+ 		{
+ 			if (i < mIndex * 5 || i > mIndex * 5 + 9)
+ 			{
+ 				Transform child = Target.transform.GetChild(0).GetChild(i);
+-				if (child != null && child.collider != null)
++				if (child != null && child.GetComponent<Collider>() != null)
+ 				{
+-					child.collider.enabled = false;
++					child.GetComponent<Collider>().enabled = false;
+ 					QualityEffectScript componentInChildren = child.GetComponentInChildren<QualityEffectScript>();
+ 					if (componentInChildren != null)
+ 					{
+@@ -114,9 +114,9 @@ public class NGUIBagTweenScript : UIDelegateMenu
+ 			else
+ 			{
+ 				Transform child2 = Target.transform.GetChild(0).GetChild(i);
+-				if (child2 != null && child2.collider != null)
++				if (child2 != null && child2.GetComponent<Collider>() != null)
+ 				{
+-					child2.collider.enabled = true;
++					child2.GetComponent<Collider>().enabled = true;
+ 				}
+ 			}
+ 		}
+@@ -125,7 +125,7 @@ public class NGUIBagTweenScript : UIDelegateMenu
+ 	public void UnlockButton()
+ 	{
+ 		mButtonEnable = true;
+-		int childCount = Target.transform.GetChild(0).GetChildCount();
++		int childCount = Target.transform.GetChild(0).childCount;
+ 		for (int i = 0; i < childCount; i++)
+ 		{
+ 			if (i < mIndex * 5 || i > mIndex * 5 + 9)
+@@ -133,11 +133,11 @@ public class NGUIBagTweenScript : UIDelegateMenu
+ 				continue;
+ 			}
+ 			Transform child = Target.transform.GetChild(0).GetChild(i);
+-			if (!(child != null) || !(child.collider != null))
++			if (!(child != null) || !(child.GetComponent<Collider>() != null))
+ 			{
+ 				continue;
+ 			}
+-			for (int j = 0; j < child.GetChildCount(); j++)
++			for (int j = 0; j < child.childCount; j++)
+ 			{
+ 				if (child.GetChild(j).tag == TagName.QUALITY_EFFECT)
+ 				{

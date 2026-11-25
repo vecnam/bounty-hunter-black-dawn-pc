@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/TweenOrthoSize.cs b/Scripts/Assembly-CSharp/TweenOrthoSize.cs
+index 5e8171e..5b13965 100644
+--- a/Scripts/Assembly-CSharp/TweenOrthoSize.cs
++++ b/Scripts/Assembly-CSharp/TweenOrthoSize.cs
+@@ -16,7 +16,7 @@ public class TweenOrthoSize : UITweener
+ 		{
+ 			if (mCam == null)
+ 			{
+-				mCam = base.camera;
++				mCam = base.GetComponent<Camera>();
+ 			}
+ 			return mCam;
+ 		}

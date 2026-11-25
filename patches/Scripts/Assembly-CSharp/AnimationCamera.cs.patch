@@ -1,0 +1,41 @@
+diff --git a/Scripts/Assembly-CSharp/AnimationCamera.cs b/Scripts/Assembly-CSharp/AnimationCamera.cs
+index 15f62d4..361ee47 100644
+--- a/Scripts/Assembly-CSharp/AnimationCamera.cs
++++ b/Scripts/Assembly-CSharp/AnimationCamera.cs
+@@ -74,19 +74,19 @@ public class AnimationCamera : MonoBehaviour
+ 
+ 	public bool AnimationPlayed(string name, float percent)
+ 	{
+-		if (m_endAnim.animation[name] == null)
++		if (m_endAnim.GetComponent<Animation>()[name] == null)
+ 		{
+ 			return false;
+ 		}
+-		if (m_endAnim.animation[name].speed >= 0f)
++		if (m_endAnim.GetComponent<Animation>()[name].speed >= 0f)
+ 		{
+-			if (m_endAnim.animation[name].time >= m_endAnim.animation[name].clip.length * percent)
++			if (m_endAnim.GetComponent<Animation>()[name].time >= m_endAnim.GetComponent<Animation>()[name].clip.length * percent)
+ 			{
+ 				return true;
+ 			}
+ 			return false;
+ 		}
+-		if (m_endAnim.animation[name].time <= m_endAnim.animation[name].clip.length * (1f - percent))
++		if (m_endAnim.GetComponent<Animation>()[name].time <= m_endAnim.GetComponent<Animation>()[name].clip.length * (1f - percent))
+ 		{
+ 			return true;
+ 		}
+@@ -106,9 +106,9 @@ public class AnimationCamera : MonoBehaviour
+ 			endTime = DateTime.Now;
+ 			m_Anim1.SetActive(false);
+ 			m_Anim2.SetActive(true);
+-			m_endAnim.animation[ENDING_ANIM_NAME].wrapMode = WrapMode.ClampForever;
+-			m_endAnim.animation[ENDING_ANIM_NAME].speed = 1f;
+-			m_endAnim.animation.CrossFade(ENDING_ANIM_NAME);
++			m_endAnim.GetComponent<Animation>()[ENDING_ANIM_NAME].wrapMode = WrapMode.ClampForever;
++			m_endAnim.GetComponent<Animation>()[ENDING_ANIM_NAME].speed = 1f;
++			m_endAnim.GetComponent<Animation>().CrossFade(ENDING_ANIM_NAME);
+ 			break;
+ 		}
+ 	}

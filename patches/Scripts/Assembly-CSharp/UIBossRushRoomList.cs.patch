@@ -1,0 +1,65 @@
+diff --git a/Scripts/Assembly-CSharp/UIBossRushRoomList.cs b/Scripts/Assembly-CSharp/UIBossRushRoomList.cs
+index 7c5ebee..4437e43 100644
+--- a/Scripts/Assembly-CSharp/UIBossRushRoomList.cs
++++ b/Scripts/Assembly-CSharp/UIBossRushRoomList.cs
+@@ -141,7 +141,7 @@ public class UIBossRushRoomList : MonoBehaviour, InGameMenuListener, UIMsgListen
+ 			float num = 50f;
+ 			if (m_container.transform.parent.localPosition.y < m_initContainer.y - num)
+ 			{
+-				UISprite component = m_refresh.transform.FindChild("Sprite").GetComponent<UISprite>();
++				UISprite component = m_refresh.transform.Find("Sprite").GetComponent<UISprite>();
+ 				if (!component.spriteName.Equals("update"))
+ 				{
+ 					component.spriteName = "update";
+@@ -151,7 +151,7 @@ public class UIBossRushRoomList : MonoBehaviour, InGameMenuListener, UIMsgListen
+ 			}
+ 			else if (Mathf.Abs(m_container.transform.parent.localPosition.y - m_initContainer.y) <= 10f)
+ 			{
+-				UISprite component2 = m_refresh.transform.FindChild("Sprite").GetComponent<UISprite>();
++				UISprite component2 = m_refresh.transform.Find("Sprite").GetComponent<UISprite>();
+ 				if (!component2.spriteName.Equals("pulldown"))
+ 				{
+ 					component2.spriteName = "pulldown";
+@@ -314,7 +314,7 @@ public class UIBossRushRoomList : MonoBehaviour, InGameMenuListener, UIMsgListen
+ 			bool bRecommend = ((i < m_recommendRoomNumber) ? true : false);
+ 			component.SetRoom(room, bRecommend);
+ 			component.m_id = room.getRoomID();
+-			BoxCollider boxCollider = gameObject.collider as BoxCollider;
++			BoxCollider boxCollider = gameObject.GetComponent<Collider>() as BoxCollider;
+ 			Bounds bounds = NGUIMath.CalculateRelativeWidgetBounds(trans);
+ 			boxCollider.center = new Vector3(bounds.center.x, bounds.center.y, 0f);
+ 			boxCollider.size = new Vector3(bounds.size.x, bounds.size.y, 0f);
+@@ -396,7 +396,7 @@ public class UIBossRushRoomList : MonoBehaviour, InGameMenuListener, UIMsgListen
+ 		gameObject.transform.localPosition = offset;
+ 		gameObject.transform.localRotation = Quaternion.identity;
+ 		gameObject.transform.localScale = Vector3.one;
+-		GameObject gameObject2 = gameObject.transform.FindChild("Sprite").gameObject;
++		GameObject gameObject2 = gameObject.transform.Find("Sprite").gameObject;
+ 		return gameObject2.transform.localScale.y;
+ 	}
+ 
+@@ -405,13 +405,13 @@ public class UIBossRushRoomList : MonoBehaviour, InGameMenuListener, UIMsgListen
+ 		GameObject gameObject = UnityEngine.Object.Instantiate(m_commentTemplate) as GameObject;
+ 		gameObject.transform.parent = parent;
+ 		gameObject.name = "4";
+-		GameObject gameObject2 = gameObject.transform.FindChild("Label").gameObject;
++		GameObject gameObject2 = gameObject.transform.Find("Label").gameObject;
+ 		UILabel component = gameObject2.GetComponent<UILabel>();
+ 		component.text = comment;
+ 		gameObject.transform.localPosition = offset;
+ 		gameObject.transform.localRotation = Quaternion.identity;
+ 		gameObject.transform.localScale = Vector3.one;
+-		GameObject gameObject3 = gameObject.transform.FindChild("Background").gameObject;
++		GameObject gameObject3 = gameObject.transform.Find("Background").gameObject;
+ 		return gameObject3.transform.localScale.y;
+ 	}
+ 
+@@ -441,7 +441,7 @@ public class UIBossRushRoomList : MonoBehaviour, InGameMenuListener, UIMsgListen
+ 				Debug.Log("players : " + j + " " + roomPlayer);
+ 				GameObject gameObject2 = UnityEngine.Object.Instantiate(m_playerInfoTemplate) as GameObject;
+ 				Transform transform = null;
+-				transform = ((num3 % 2 != 0) ? list[num3 / 2].transform.FindChild("Right") : list[num3 / 2].transform.FindChild("Left"));
++				transform = ((num3 % 2 != 0) ? list[num3 / 2].transform.Find("Right") : list[num3 / 2].transform.Find("Left"));
+ 				gameObject2.transform.parent = transform;
+ 				gameObject2.name = roomPlayer.getPlayerName();
+ 				UIPlayerInfo component = gameObject2.GetComponent<UIPlayerInfo>();

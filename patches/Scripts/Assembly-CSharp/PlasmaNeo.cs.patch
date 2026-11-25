@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/PlasmaNeo.cs b/Scripts/Assembly-CSharp/PlasmaNeo.cs
+index ad6bfeb..32f70cd 100644
+--- a/Scripts/Assembly-CSharp/PlasmaNeo.cs
++++ b/Scripts/Assembly-CSharp/PlasmaNeo.cs
+@@ -194,9 +194,9 @@ public class PlasmaNeo : Weapon
+ 		{
+ 			gunfireObj.SetActive(true);
+ 		}
+-		Camera mainCamera = Camera.mainCamera;
++		Camera mainCamera = Camera.main;
+ 		Transform transform = mainCamera.transform;
+-		FirstPersonCameraScript component = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++		FirstPersonCameraScript component = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 		Ray ray = default(Ray);
+ 		Vector3 vector = mainCamera.ScreenToWorldPoint(new Vector3(component.ReticlePosition.x, (float)Screen.height - component.ReticlePosition.y, 0.1f));
+ 		Vector3 normalized = (vector - transform.position).normalized;

@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/UIUtil.cs b/Scripts/Assembly-CSharp/UIUtil.cs
+index c72a797..a0340be 100644
+--- a/Scripts/Assembly-CSharp/UIUtil.cs
++++ b/Scripts/Assembly-CSharp/UIUtil.cs
+@@ -20,7 +20,7 @@ public class UIUtil
+ 
+ 	public void SetShader(GameObject obj, Shader shader)
+ 	{
+-		Material[] materials = obj.renderer.materials;
++		Material[] materials = obj.GetComponent<Renderer>().materials;
+ 		foreach (Material material in materials)
+ 		{
+ 			Texture texture = material.mainTexture;

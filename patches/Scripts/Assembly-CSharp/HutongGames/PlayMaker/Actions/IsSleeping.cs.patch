@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/IsSleeping.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/IsSleeping.cs
+index 3aa5eaa..0c8613e 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/IsSleeping.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/IsSleeping.cs
+@@ -45,9 +45,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoIsSleeping()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.rigidbody == null))
++			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.GetComponent<Rigidbody>() == null))
+ 			{
+-				bool flag = ownerDefaultTarget.rigidbody.IsSleeping();
++				bool flag = ownerDefaultTarget.GetComponent<Rigidbody>().IsSleeping();
+ 				store.Value = flag;
+ 				base.Fsm.Event((!flag) ? falseEvent : trueEvent);
+ 			}

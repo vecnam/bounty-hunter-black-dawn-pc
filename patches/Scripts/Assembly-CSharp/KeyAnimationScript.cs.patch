@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/KeyAnimationScript.cs b/Scripts/Assembly-CSharp/KeyAnimationScript.cs
+index 7390ab9..f73c8f7 100644
+--- a/Scripts/Assembly-CSharp/KeyAnimationScript.cs
++++ b/Scripts/Assembly-CSharp/KeyAnimationScript.cs
+@@ -28,7 +28,7 @@ public class KeyAnimationScript : MonoBehaviour
+ 			{
+ 				currentIndex = 0;
+ 			}
+-			base.renderer.material.SetTexture(texturePropertyName, textures[currentIndex]);
++			base.GetComponent<Renderer>().material.SetTexture(texturePropertyName, textures[currentIndex]);
+ 		}
+ 	}
+ }

@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/LimitSpecialSellScript.cs b/Scripts/Assembly-CSharp/LimitSpecialSellScript.cs
+index c9be96d..146db6f 100644
+--- a/Scripts/Assembly-CSharp/LimitSpecialSellScript.cs
++++ b/Scripts/Assembly-CSharp/LimitSpecialSellScript.cs
+@@ -53,7 +53,7 @@ public class LimitSpecialSellScript : MonoBehaviour
+ 			if (OffPriceObject != null && !OffPriceObject.activeSelf)
+ 			{
+ 				OffPriceObject.SetActive(true);
+-				UILabel component = OffPriceObject.transform.FindChild("sell").GetComponent<UILabel>();
++				UILabel component = OffPriceObject.transform.Find("sell").GetComponent<UILabel>();
+ 				if (component != null)
+ 				{
+ 					component.text = GameApp.GetInstance().GetUserState().ItemInfoData.SpecialOff + "%";

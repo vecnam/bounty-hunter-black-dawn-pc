@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/UIEquipmentUpgrade.cs b/Scripts/Assembly-CSharp/UIEquipmentUpgrade.cs
+index e64253a..0019aba 100644
+--- a/Scripts/Assembly-CSharp/UIEquipmentUpgrade.cs
++++ b/Scripts/Assembly-CSharp/UIEquipmentUpgrade.cs
+@@ -52,7 +52,7 @@ public class UIEquipmentUpgrade : UIGameMenu
+ 	protected override void Awake()
+ 	{
+ 		base.Awake();
+-		selfBlock = base.gameObject.collider as BoxCollider;
++		selfBlock = base.gameObject.GetComponent<Collider>() as BoxCollider;
+ 		selfBlock.size = new Vector3(Screen.width, Screen.height, 0f);
+ 		buttonUpgrade.SetActive(false);
+ 		spriteUpgradeDisable.SetActive(false);

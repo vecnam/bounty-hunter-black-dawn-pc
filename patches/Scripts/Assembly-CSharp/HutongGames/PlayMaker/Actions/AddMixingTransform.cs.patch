@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddMixingTransform.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddMixingTransform.cs
+index 445f01b..7c1fe8a 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddMixingTransform.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddMixingTransform.cs
+@@ -39,9 +39,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoAddMixingTransform()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.animation == null))
++			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.GetComponent<Animation>() == null))
+ 			{
+-				AnimationState animationState = ownerDefaultTarget.animation[animationName.Value];
++				AnimationState animationState = ownerDefaultTarget.GetComponent<Animation>()[animationName.Value];
+ 				if (!(animationState == null))
+ 				{
+ 					Transform mix = ownerDefaultTarget.transform.Find(transform.Value);

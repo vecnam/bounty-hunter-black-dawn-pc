@@ -1,0 +1,29 @@
+diff --git a/Scripts/Assembly-CSharp/InGameMenuManager.cs b/Scripts/Assembly-CSharp/InGameMenuManager.cs
+index 5df987f..b882f8c 100644
+--- a/Scripts/Assembly-CSharp/InGameMenuManager.cs
++++ b/Scripts/Assembly-CSharp/InGameMenuManager.cs
+@@ -108,8 +108,8 @@ public class InGameMenuManager
+ 	{
+ 		if (!(HUDManager.instance == null) && HUDManager.instance.GetRunningHUDType() != HUDManager.Type.None)
+ 		{
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = true;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = true;
+ 			HUDManager.instance.gameObject.SetActive(false);
+ 			GameApp.GetInstance().GetGameScene().UIPause(pause);
+ 			LocalPlayer localPlayer = GameApp.GetInstance().GetGameWorld().GetLocalPlayer();
+@@ -124,10 +124,10 @@ public class InGameMenuManager
+ 	{
+ 		if (!(HUDManager.instance == null) && HUDManager.instance.GetRunningHUDType() != HUDManager.Type.None)
+ 		{
+-			if (Camera.mainCamera != null)
++			if (Camera.main != null)
+ 			{
+-				Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-				transform.collider.enabled = false;
++				Transform transform = Camera.main.transform.Find("Npc_Collision");
++				transform.GetComponent<Collider>().enabled = false;
+ 			}
+ 			HUDManager.instance.gameObject.SetActive(true);
+ 			if (GameApp.GetInstance().GetGameScene() != null)

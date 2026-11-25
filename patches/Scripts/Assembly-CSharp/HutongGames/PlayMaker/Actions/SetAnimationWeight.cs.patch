@@ -1,0 +1,19 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAnimationWeight.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAnimationWeight.cs
+index 13ae5da..1319cd9 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAnimationWeight.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAnimationWeight.cs
+@@ -46,12 +46,12 @@ namespace HutongGames.PlayMaker.Actions
+ 			{
+ 				return;
+ 			}
+-			if (go.animation == null)
++			if (go.GetComponent<Animation>() == null)
+ 			{
+ 				LogWarning("Missing animation component: " + go.name);
+ 				return;
+ 			}
+-			AnimationState animationState = go.animation[animName.Value];
++			AnimationState animationState = go.GetComponent<Animation>()[animName.Value];
+ 			if (animationState == null)
+ 			{
+ 				LogWarning("Missing animation: " + animName.Value);

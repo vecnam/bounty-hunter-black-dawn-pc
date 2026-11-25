@@ -1,0 +1,17 @@
+diff --git a/Scripts/Assembly-CSharp/EffectPlayer.cs b/Scripts/Assembly-CSharp/EffectPlayer.cs
+index 361e0a1..ccf1c89 100644
+--- a/Scripts/Assembly-CSharp/EffectPlayer.cs
++++ b/Scripts/Assembly-CSharp/EffectPlayer.cs
+@@ -183,9 +183,9 @@ public class EffectPlayer
+ 		GameObject gameObject = Play(Type.MeleeWave);
+ 		if (gameObject != null)
+ 		{
+-			gameObject.transform.position = Camera.mainCamera.transform.position;
+-			gameObject.transform.rotation = Camera.mainCamera.transform.rotation;
+-			gameObject.transform.parent = Camera.mainCamera.transform;
++			gameObject.transform.position = Camera.main.transform.position;
++			gameObject.transform.rotation = Camera.main.transform.rotation;
++			gameObject.transform.parent = Camera.main.transform;
+ 		}
+ 		return gameObject;
+ 	}

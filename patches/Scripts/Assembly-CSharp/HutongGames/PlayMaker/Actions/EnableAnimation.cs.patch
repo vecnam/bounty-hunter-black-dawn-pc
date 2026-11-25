@@ -1,0 +1,19 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/EnableAnimation.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/EnableAnimation.cs
+index 4449583..952eba7 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/EnableAnimation.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/EnableAnimation.cs
+@@ -41,12 +41,12 @@ namespace HutongGames.PlayMaker.Actions
+ 			{
+ 				return;
+ 			}
+-			if (go.animation == null)
++			if (go.GetComponent<Animation>() == null)
+ 			{
+ 				LogError("Missing animation component!");
+ 				return;
+ 			}
+-			anim = go.animation[animName.Value];
++			anim = go.GetComponent<Animation>()[animName.Value];
+ 			if (anim != null)
+ 			{
+ 				anim.enabled = enable.Value;

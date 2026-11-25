@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/InGameUIScript.cs b/Scripts/Assembly-CSharp/InGameUIScript.cs
+index fb367a1..b51006b 100644
+--- a/Scripts/Assembly-CSharp/InGameUIScript.cs
++++ b/Scripts/Assembly-CSharp/InGameUIScript.cs
+@@ -866,7 +866,7 @@ public class InGameUIScript : UIStateManager, EffectsCameraListener, UIMsgListen
+ 
+ 	private IEnumerator UploadAnalysis()
+ 	{
+-		string url = "http://174.36.196.91:19001/blackdawnAnalysis/UserBehaServlet";
++		string url = "http://127.0.0.1:1/blackdawnAnalysis/UserBehaServlet";
+ 		WWW www = new WWW(url, GameApp.GetInstance().GetUserState().OperInfo.WriteToBuffer());
+ 		DateTime startTime = DateTime.Now;
+ 		bool timeout = false;
+@@ -913,7 +913,7 @@ public class InGameUIScript : UIStateManager, EffectsCameraListener, UIMsgListen
+ 
+ 	private IEnumerator UploadAnalysisForQuest()
+ 	{
+-		string url = "http://174.36.196.91:19001/blackdawnAnalysis/QuestLogServlet";
++		string url = "http://127.0.0.1:1/blackdawnAnalysis/QuestLogServlet";
+ 		WWW www = new WWW(url, GameApp.GetInstance().GetUserState().QuestInfo.WriteToBuffer());
+ 		DateTime startTime = DateTime.Now;
+ 		bool timeout = false;

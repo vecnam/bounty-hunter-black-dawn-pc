@@ -1,0 +1,30 @@
+diff --git a/Scripts/Assembly-CSharp/EnemyHuman.cs b/Scripts/Assembly-CSharp/EnemyHuman.cs
+index 705f7d2..8d1b690 100644
+--- a/Scripts/Assembly-CSharp/EnemyHuman.cs
++++ b/Scripts/Assembly-CSharp/EnemyHuman.cs
+@@ -142,14 +142,14 @@ public abstract class EnemyHuman : Enemy
+ 		animation[AnimationString.HUMAN_LEAN_CROUCH_FIRE].speed = GetFireSpeedCoefficent() * mFireAnimationLength / 30f / mRangedOneShotTime1;
+ 		animation[AnimationString.HUMAN_LEAN_LEFT_FIRE].speed = GetFireSpeedCoefficent() * mFireAnimationLength / 30f / mRangedOneShotTime1;
+ 		animation[AnimationString.HUMAN_LEAN_RIGHT_FIRE].speed = GetFireSpeedCoefficent() * mFireAnimationLength / 30f / mRangedOneShotTime1;
+-		Transform parent = entityObject.transform.FindChild(BoneName.EnemyHumanHandPoint);
++		Transform parent = entityObject.transform.Find(BoneName.EnemyHumanHandPoint);
+ 		GameObject original = Resources.Load(mWeaponPrefabPath) as GameObject;
+ 		GameObject gameObject = Object.Instantiate(original) as GameObject;
+ 		gameObject.name = "Gun";
+ 		gameObject.transform.parent = parent;
+ 		gameObject.transform.localPosition = Vector3.zero;
+ 		gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
+-		mWeaponFireTransform = entityObject.transform.FindChild(BoneName.EnemyHumanWeaponFire);
++		mWeaponFireTransform = entityObject.transform.Find(BoneName.EnemyHumanWeaponFire);
+ 		mNeedCircuitousMove = false;
+ 		if (SpawnType == ESpawnType.STREAMING)
+ 		{
+@@ -1879,7 +1879,7 @@ public abstract class EnemyHuman : Enemy
+ 	protected override void ChangeShader()
+ 	{
+ 		base.ChangeShader();
+-		GameObject gameObject = entityObject.transform.FindChild(BoneName.EnemyHumanWeapon).gameObject;
++		GameObject gameObject = entityObject.transform.Find(BoneName.EnemyHumanWeapon).gameObject;
+ 		gameObject.SetActive(false);
+ 	}
+ }

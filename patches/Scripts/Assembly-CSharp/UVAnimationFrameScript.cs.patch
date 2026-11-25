@@ -1,0 +1,12 @@
+diff --git a/Scripts/Assembly-CSharp/UVAnimationFrameScript.cs b/Scripts/Assembly-CSharp/UVAnimationFrameScript.cs
+index e9e0ca0..ead6450 100644
+--- a/Scripts/Assembly-CSharp/UVAnimationFrameScript.cs
++++ b/Scripts/Assembly-CSharp/UVAnimationFrameScript.cs
+@@ -31,6 +31,6 @@ public class UVAnimationFrameScript : MonoBehaviour
+ 		int num2 = frameIdx % num;
+ 		int num3 = frameIdx / maxRow;
+ 		Vector2 offset = new Vector2((float)num2 * frameWH.x, (float)num3 * frameWH.y);
+-		base.renderer.material.SetTextureOffset(texturePropertyName, offset);
++		base.GetComponent<Renderer>().material.SetTextureOffset(texturePropertyName, offset);
+ 	}
+ }

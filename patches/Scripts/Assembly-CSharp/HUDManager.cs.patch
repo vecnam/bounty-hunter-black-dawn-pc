@@ -1,0 +1,31 @@
+diff --git a/Scripts/Assembly-CSharp/HUDManager.cs b/Scripts/Assembly-CSharp/HUDManager.cs
+index c69638f..2fed713 100644
+--- a/Scripts/Assembly-CSharp/HUDManager.cs
++++ b/Scripts/Assembly-CSharp/HUDManager.cs
+@@ -165,7 +165,7 @@ public class HUDManager : MonoBehaviour
+ 		{
+ 		case Type.Battle:
+ 		{
+-			HUDBattle hUDBattle = base.gameObject.AddComponent("HUDBattle") as HUDBattle;
++			HUDBattle hUDBattle = base.gameObject.AddComponent<HUDBattle>() as HUDBattle;
+ 			m_HotKeyManager.setListener(hUDBattle);
+ 			m_HUDTemplate = hUDBattle;
+ 			if (m_VSHUDManager != null)
+@@ -176,7 +176,7 @@ public class HUDManager : MonoBehaviour
+ 		}
+ 		case Type.CoopBattle:
+ 		{
+-			HUDCoopBattle hUDCoopBattle = base.gameObject.AddComponent("HUDCoopBattle") as HUDCoopBattle;
++			HUDCoopBattle hUDCoopBattle = base.gameObject.AddComponent<HUDCoopBattle>() as HUDCoopBattle;
+ 			m_HotKeyManager.setListener(hUDCoopBattle);
+ 			m_HUDTemplate = hUDCoopBattle;
+ 			if (m_VSHUDManager != null)
+@@ -187,7 +187,7 @@ public class HUDManager : MonoBehaviour
+ 		}
+ 		case Type.VSTDMBattle:
+ 		{
+-			HUDVSTDMBattle hUDVSTDMBattle = base.gameObject.AddComponent("HUDVSTDMBattle") as HUDVSTDMBattle;
++			HUDVSTDMBattle hUDVSTDMBattle = base.gameObject.AddComponent<HUDVSTDMBattle>() as HUDVSTDMBattle;
+ 			m_HotKeyManager.setListener(hUDVSTDMBattle);
+ 			m_HUDTemplate = hUDVSTDMBattle;
+ 			GameObject original = ResourceLoad.GetInstance().LoadUI("HUD", "HUDVSPlugin");

@@ -1,0 +1,363 @@
+diff --git a/Scripts/Assembly-CSharp/Player.cs b/Scripts/Assembly-CSharp/Player.cs
+index 1c496e9..56b8f7b 100644
+--- a/Scripts/Assembly-CSharp/Player.cs
++++ b/Scripts/Assembly-CSharp/Player.cs
+@@ -709,7 +709,7 @@ public class Player : GameUnit
+ 		}
+ 		entityObject.name = "Player";
+ 		animationObject = entityObject;
+-		Transform transform2 = entityObject.transform.FindChild("Entity");
++		Transform transform2 = entityObject.transform.Find("Entity");
+ 		if (transform2 != null)
+ 		{
+ 			animationObject = transform2.gameObject;
+@@ -762,7 +762,7 @@ public class Player : GameUnit
+ 		Transform transform4 = entityTransform.Find("collider");
+ 		if (null != transform4)
+ 		{
+-			mPlayerCollider = transform4.collider;
++			mPlayerCollider = transform4.GetComponent<Collider>();
+ 		}
+ 		else
+ 		{
+@@ -1010,7 +1010,7 @@ public class Player : GameUnit
+ 		GameObject gameObject = UnityEngine.Object.Instantiate(original, entityTransform.position + Vector3.up * 2.6f, Quaternion.identity) as GameObject;
+ 		gameObject.name = "teamsign";
+ 		gameObject.transform.parent = entityTransform;
+-		Renderer renderer = gameObject.renderer;
++		Renderer renderer = gameObject.GetComponent<Renderer>();
+ 		Color color = Color.white;
+ 		if (GameApp.GetInstance().GetGameMode().IsMultiPlayer())
+ 		{
+@@ -1027,24 +1027,24 @@ public class Player : GameUnit
+ 		if (!bEnable)
+ 		{
+ 			weapon.EnableGunObject(false);
+-			Transform transform = entityTransform.FindChild("Entity");
+-			int childCount = transform.GetChildCount();
++			Transform transform = entityTransform.Find("Entity");
++			int childCount = transform.childCount;
+ 			for (int i = 0; i < childCount; i++)
+ 			{
+ 				if (transform.GetChild(i).name == "default")
+ 				{
+-					transform.GetChild(i).renderer.enabled = false;
++					transform.GetChild(i).GetComponent<Renderer>().enabled = false;
+ 				}
+ 			}
+ 			return;
+ 		}
+-		Transform transform2 = entityTransform.FindChild("Entity");
+-		int childCount2 = transform2.GetChildCount();
++		Transform transform2 = entityTransform.Find("Entity");
++		int childCount2 = transform2.childCount;
+ 		for (int j = 0; j < childCount2; j++)
+ 		{
+ 			if (transform2.GetChild(j).name == "default")
+ 			{
+-				transform2.GetChild(j).renderer.enabled = true;
++				transform2.GetChild(j).GetComponent<Renderer>().enabled = true;
+ 			}
+ 		}
+ 		weapon.EnableGunObject(true);
+@@ -1119,65 +1119,65 @@ public class Player : GameUnit
+ 
+ 	public void AddMixingTransformAnimation(string weaponSuffix)
+ 	{
+-		if (animationObject.animation[AnimationString.RunAttack + weaponSuffix] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.RunAttack + weaponSuffix] != null)
+ 		{
+-			animationObject.animation[AnimationString.RunAttack + weaponSuffix].AddMixingTransform(entityTransform.Find(BoneName.UpperBody));
++			animationObject.GetComponent<Animation>()[AnimationString.RunAttack + weaponSuffix].AddMixingTransform(entityTransform.Find(BoneName.UpperBody));
+ 		}
+-		if (animationObject.animation[AnimationString.FlyAttack + weaponSuffix] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.FlyAttack + weaponSuffix] != null)
+ 		{
+-			animationObject.animation[AnimationString.FlyAttack + weaponSuffix].AddMixingTransform(entityTransform.Find(BoneName.UpperBody));
++			animationObject.GetComponent<Animation>()[AnimationString.FlyAttack + weaponSuffix].AddMixingTransform(entityTransform.Find(BoneName.UpperBody));
+ 		}
+-		if (animationObject.animation[AnimationString.FlyIdle + weaponSuffix] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.FlyIdle + weaponSuffix] != null)
+ 		{
+-			animationObject.animation[AnimationString.FlyIdle + weaponSuffix].AddMixingTransform(entityTransform.Find(BoneName.UpperBody));
++			animationObject.GetComponent<Animation>()[AnimationString.FlyIdle + weaponSuffix].AddMixingTransform(entityTransform.Find(BoneName.UpperBody));
+ 		}
+-		if (animationObject.animation[AnimationString.Fly + weaponSuffix] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.Fly + weaponSuffix] != null)
+ 		{
+-			animationObject.animation[AnimationString.Fly + weaponSuffix].AddMixingTransform(entityTransform.Find(BoneName.UpperBody));
++			animationObject.GetComponent<Animation>()[AnimationString.Fly + weaponSuffix].AddMixingTransform(entityTransform.Find(BoneName.UpperBody));
+ 		}
+ 	}
+ 
+ 	public void SetLowerBodyAnimation(string weaponSuffix, int layer)
+ 	{
+-		if (animationObject.animation[AnimationString.Run + weaponSuffix] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.Run + weaponSuffix] != null)
+ 		{
+-			animationObject.animation[AnimationString.Run + weaponSuffix].layer = layer;
++			animationObject.GetComponent<Animation>()[AnimationString.Run + weaponSuffix].layer = layer;
+ 		}
+-		if (animationObject.animation[AnimationString.Idle + weaponSuffix] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.Idle + weaponSuffix] != null)
+ 		{
+-			animationObject.animation[AnimationString.Idle + weaponSuffix].layer = layer;
++			animationObject.GetComponent<Animation>()[AnimationString.Idle + weaponSuffix].layer = layer;
+ 		}
+-		if (animationObject.animation[AnimationString.Attack + weaponSuffix] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.Attack + weaponSuffix] != null)
+ 		{
+-			animationObject.animation[AnimationString.Attack + weaponSuffix].layer = layer;
++			animationObject.GetComponent<Animation>()[AnimationString.Attack + weaponSuffix].layer = layer;
+ 		}
+ 	}
+ 
+ 	public void SetAnimationBlending()
+ 	{
+-		if (animationObject.animation[AnimationString.FlyIdle] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.FlyIdle] != null)
+ 		{
+-			animationObject.animation[AnimationString.FlyIdle].layer = -1;
++			animationObject.GetComponent<Animation>()[AnimationString.FlyIdle].layer = -1;
+ 		}
+-		if (animationObject.animation["fly_stand_shoot_jian_lower"] != null)
++		if (animationObject.GetComponent<Animation>()["fly_stand_shoot_jian_lower"] != null)
+ 		{
+-			animationObject.animation["fly_stand_shoot_jian_lower"].layer = -1;
++			animationObject.GetComponent<Animation>()["fly_stand_shoot_jian_lower"].layer = -1;
+ 		}
+-		if (animationObject.animation[AnimationString.FlyForward] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.FlyForward] != null)
+ 		{
+-			animationObject.animation[AnimationString.FlyForward].layer = -1;
++			animationObject.GetComponent<Animation>()[AnimationString.FlyForward].layer = -1;
+ 		}
+-		if (animationObject.animation[AnimationString.FlyBack] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.FlyBack] != null)
+ 		{
+-			animationObject.animation[AnimationString.FlyBack].layer = -1;
++			animationObject.GetComponent<Animation>()[AnimationString.FlyBack].layer = -1;
+ 		}
+-		if (animationObject.animation[AnimationString.FlyLeft] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.FlyLeft] != null)
+ 		{
+-			animationObject.animation[AnimationString.FlyLeft].layer = -1;
++			animationObject.GetComponent<Animation>()[AnimationString.FlyLeft].layer = -1;
+ 		}
+-		if (animationObject.animation[AnimationString.FlyRight] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.FlyRight] != null)
+ 		{
+-			animationObject.animation[AnimationString.FlyRight].layer = -1;
++			animationObject.GetComponent<Animation>()[AnimationString.FlyRight].layer = -1;
+ 		}
+ 		SetLowerBodyAnimation("_rifle", -1);
+ 		SetLowerBodyAnimation("_shotgun", -1);
+@@ -1197,13 +1197,13 @@ public class Player : GameUnit
+ 		AddMixingTransformAnimation("_bow");
+ 		AddMixingTransformAnimation("_fist");
+ 		AddMixingTransformAnimation("_Sniper");
+-		if (animationObject.animation[AnimationString.FlyRunAttack + "_machinegun"] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.FlyRunAttack + "_machinegun"] != null)
+ 		{
+-			animationObject.animation[AnimationString.FlyRunAttack + "_machinegun"].AddMixingTransform(entityTransform.Find(BoneName.UpperBody));
++			animationObject.GetComponent<Animation>()[AnimationString.FlyRunAttack + "_machinegun"].AddMixingTransform(entityTransform.Find(BoneName.UpperBody));
+ 		}
+-		if (animationObject.animation[AnimationString.FlyRunAttack + "_jian"] != null)
++		if (animationObject.GetComponent<Animation>()[AnimationString.FlyRunAttack + "_jian"] != null)
+ 		{
+-			animationObject.animation[AnimationString.FlyRunAttack + "_jian"].AddMixingTransform(entityTransform.Find(BoneName.UpperBody));
++			animationObject.GetComponent<Animation>()[AnimationString.FlyRunAttack + "_jian"].AddMixingTransform(entityTransform.Find(BoneName.UpperBody));
+ 		}
+ 	}
+ 
+@@ -1244,7 +1244,7 @@ public class Player : GameUnit
+ 		if (null != playerSpawnPoint)
+ 		{
+ 			List<GameObject> list = new List<GameObject>();
+-			int childCount = playerSpawnPoint.transform.GetChildCount();
++			int childCount = playerSpawnPoint.transform.childCount;
+ 			for (int i = 0; i < childCount; i++)
+ 			{
+ 				list.Add(playerSpawnPoint.transform.GetChild(i).gameObject);
+@@ -1274,7 +1274,7 @@ public class Player : GameUnit
+ 			{
+ 				if (DYING_STATE.InDyingState)
+ 				{
+-					GameObject gameObject = entityTransform.FindChild("Entity").gameObject;
++					GameObject gameObject = entityTransform.Find("Entity").gameObject;
+ 					Debug.Log("into OnRecoverFromDying()");
+ 					DYING_STATE.OnRecoverFromDying();
+ 					if (GameApp.GetInstance().GetGameMode().IsMultiPlayer())
+@@ -1283,7 +1283,7 @@ public class Player : GameUnit
+ 						GameApp.GetInstance().GetNetworkManager().SendRequest(request);
+ 					}
+ 				}
+-				FirstPersonCameraScript component = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++				FirstPersonCameraScript component = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 				if (null != component)
+ 				{
+ 					if (seatID < list.Count)
+@@ -1347,7 +1347,7 @@ public class Player : GameUnit
+ 		GetCollider().enabled = true;
+ 		if (IsLocal())
+ 		{
+-			FirstPersonCameraScript component = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++			FirstPersonCameraScript component = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 			if (null != component)
+ 			{
+ 				if (seatID < list.Count)
+@@ -1366,8 +1366,8 @@ public class Player : GameUnit
+ 
+ 	public void CreatePlayerNameSign()
+ 	{
+-		NameSignTrans = entityTransform.FindChild("Sign");
+-		if (NameSignTrans != null && NameSignTrans.GetChildCount() == 0)
++		NameSignTrans = entityTransform.Find("Sign");
++		if (NameSignTrans != null && NameSignTrans.childCount == 0)
+ 		{
+ 			GameObject gameObject = null;
+ 			if (Team == TeamName.Red)
+@@ -1403,7 +1403,7 @@ public class Player : GameUnit
+ 		Debug.Log("DropAtSpawnPositionVS, isLocalPlayer = " + IsLocal());
+ 		Debug.Log("Team = " + Team);
+ 		Debug.Log("seatID = " + seatID);
+-		animationObject.animation.Stop();
++		animationObject.GetComponent<Animation>().Stop();
+ 		Aim(false);
+ 		GameObject[] array = null;
+ 		array = ((Team != TeamName.Blue) ? GameObject.FindGameObjectsWithTag(TagName.TEAM_RED_RESPAWN) : GameObject.FindGameObjectsWithTag(TagName.TEAM_BLUE_RESPAWN));
+@@ -1436,7 +1436,7 @@ public class Player : GameUnit
+ 		GetCollider().enabled = true;
+ 		if (IsLocal())
+ 		{
+-			FirstPersonCameraScript component = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++			FirstPersonCameraScript component = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 			if (null != component)
+ 			{
+ 				component.AngelV = 0f;
+@@ -1466,7 +1466,7 @@ public class Player : GameUnit
+ 
+ 	public void ReSpawnFromArena()
+ 	{
+-		animationObject.animation.Stop();
++		animationObject.GetComponent<Animation>().Stop();
+ 		if (IsLocal())
+ 		{
+ 			if (GameApp.GetInstance().GetGameMode().IsSingle())
+@@ -1487,7 +1487,7 @@ public class Player : GameUnit
+ 
+ 	public void ReSpawnAtPoint(int index)
+ 	{
+-		animationObject.animation.Stop();
++		animationObject.GetComponent<Animation>().Stop();
+ 		if (IsLocal())
+ 		{
+ 			GameApp.GetInstance().GetGameScene().State = GameState.Playing;
+@@ -1510,7 +1510,7 @@ public class Player : GameUnit
+ 					GetTransform().rotation = componentInChildren.transform.rotation;
+ 					if (IsLocal())
+ 					{
+-						FirstPersonCameraScript component2 = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++						FirstPersonCameraScript component2 = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 						if (null != component2)
+ 						{
+ 							component2.AngelV = 0f;
+@@ -1620,7 +1620,13 @@ public class Player : GameUnit
+ 	public override void Move(Vector3 motion)
+ 	{
+ 		Vector3 motion2 = motion * base.Speed * Time.deltaTime;
+-		if (CanUseGravity())
++		if (velocityJumpY != 0f)
++		{
++			// PC: airborne after a jump (StartJump), real gravity instead of the -0.2 per frame "stick to the ground".
++			velocityJumpY += Physics.gravity.y * Time.deltaTime;
++			motion2.y = velocityJumpY * Time.deltaTime;
++		}
++		else if (CanUseGravity())
+ 		{
+ 			motion2.y = -0.2f;
+ 		}
+@@ -1628,7 +1634,11 @@ public class Player : GameUnit
+ 		{
+ 			motion2.y = -0.001f;
+ 		}
+-		cc.Move(motion2);
++		CollisionFlags collisionFlags = cc.Move(motion2);
++		if ((velocityJumpY < 0f && cc.isGrounded) || (velocityJumpY > 0f && (collisionFlags & CollisionFlags.Above) != 0))
++		{
++			velocityJumpY = 0f;
++		}
+ 		hasGravity = !cc.isGrounded;
+ 	}
+ 
+@@ -1738,7 +1748,11 @@ public class Player : GameUnit
+ 
+ 	public void StartJump()
+ 	{
+-		velocityJumpY = 4f;
++		// PC: the original left jumping half done (never called); 4 m/s gives ~0.8 m, too little to get past level bounds.
++		if (cc.isGrounded && velocityJumpY == 0f && State != FALL_DOWN_STATE && !InDyingState())
++		{
++			velocityJumpY = 4f;
++		}
+ 	}
+ 
+ 	public bool Jump()
+@@ -1831,8 +1845,8 @@ public class Player : GameUnit
+ 				{
+ 					HUDManager.instance.m_InfoManager.m_SightHeadState.SetActive(false);
+ 				}
+-				Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-				transform.collider.enabled = true;
++				Transform transform = Camera.main.transform.Find("Npc_Collision");
++				transform.GetComponent<Collider>().enabled = true;
+ 			}
+ 		}
+ 		else if (GetWeapon().HasScope)
+@@ -1845,8 +1859,8 @@ public class Player : GameUnit
+ 				HUDManager.instance.m_InfoManager.m_SightHeadState.SetActive(true);
+ 			}
+ 			ActivatePlayer(true);
+-			Transform transform2 = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform2.collider.enabled = false;
++			Transform transform2 = Camera.main.transform.Find("Npc_Collision");
++			transform2.GetComponent<Collider>().enabled = false;
+ 		}
+ 	}
+ 
+@@ -1858,7 +1872,7 @@ public class Player : GameUnit
+ 			if (IsLocal())
+ 			{
+ 				PlayOnHitSound();
+-				Transform transform = Camera.mainCamera.transform.Find("Screen_Blood");
++				Transform transform = Camera.main.transform.Find("Screen_Blood");
+ 				if (transform != null)
+ 				{
+ 					ScreenBloodScript component = transform.GetComponent<ScreenBloodScript>();
+@@ -1928,7 +1942,7 @@ public class Player : GameUnit
+ 			int num = shield2 - shield;
+ 			if (IsLocal())
+ 			{
+-				Transform transform = Camera.mainCamera.transform.Find("Screen_Blood");
++				Transform transform = Camera.main.transform.Find("Screen_Blood");
+ 				if (transform != null)
+ 				{
+ 					ScreenBloodScript component = transform.GetComponent<ScreenBloodScript>();
+@@ -2358,7 +2372,7 @@ public class Player : GameUnit
+ 		{
+ 			List<string> list = new List<string>();
+ 			List<AnimationClip> list2 = new List<AnimationClip>();
+-			foreach (AnimationState item in animationObject.animation)
++			foreach (AnimationState item in animationObject.GetComponent<Animation>())
+ 			{
+ 				if (!(item == null) && !(item.clip == null) && !(item.clip.name == "Take 001"))
+ 				{
+@@ -2368,7 +2382,7 @@ public class Player : GameUnit
+ 			}
+ 			foreach (string item2 in list)
+ 			{
+-				animationObject.animation.RemoveClip(item2);
++				animationObject.GetComponent<Animation>().RemoveClip(item2);
+ 			}
+ 			list.Clear();
+ 			foreach (AnimationClip item3 in list2)

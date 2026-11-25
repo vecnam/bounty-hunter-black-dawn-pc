@@ -1,0 +1,33 @@
+diff --git a/Scripts/Assembly-CSharp/Ghost.cs b/Scripts/Assembly-CSharp/Ghost.cs
+index cdf3af1..c0ead2c 100644
+--- a/Scripts/Assembly-CSharp/Ghost.cs
++++ b/Scripts/Assembly-CSharp/Ghost.cs
+@@ -75,14 +75,14 @@ public class Ghost : Enemy
+ 	public override void Activate()
+ 	{
+ 		base.Activate();
+-		Transform parent = entityObject.transform.FindChild(BoneName.GhostLeftPoint);
++		Transform parent = entityObject.transform.Find(BoneName.GhostLeftPoint);
+ 		GameObject original = Resources.Load("Enemy/knife01") as GameObject;
+ 		GameObject gameObject = Object.Instantiate(original) as GameObject;
+ 		gameObject.name = "knife01";
+ 		gameObject.transform.parent = parent;
+ 		gameObject.transform.localPosition = Vector3.zero;
+ 		gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
+-		Transform parent2 = entityObject.transform.FindChild(BoneName.GhostRightPoint);
++		Transform parent2 = entityObject.transform.Find(BoneName.GhostRightPoint);
+ 		GameObject original2 = Resources.Load("Enemy/knife02") as GameObject;
+ 		GameObject gameObject2 = Object.Instantiate(original2) as GameObject;
+ 		gameObject2.name = "knife02";
+@@ -149,9 +149,9 @@ public class Ghost : Enemy
+ 	protected override void ChangeShader()
+ 	{
+ 		base.ChangeShader();
+-		GameObject gameObject = entityObject.transform.FindChild(BoneName.GhostLeftKnife).gameObject;
++		GameObject gameObject = entityObject.transform.Find(BoneName.GhostLeftKnife).gameObject;
+ 		gameObject.SetActive(false);
+-		GameObject gameObject2 = entityObject.transform.FindChild(BoneName.GhostRightKnife).gameObject;
++		GameObject gameObject2 = entityObject.transform.Find(BoneName.GhostRightKnife).gameObject;
+ 		gameObject2.SetActive(false);
+ 	}
+ 

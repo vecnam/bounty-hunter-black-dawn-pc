@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/FruitMachineNotWork.cs b/Scripts/Assembly-CSharp/FruitMachineNotWork.cs
+index 7245b62..90c6918 100644
+--- a/Scripts/Assembly-CSharp/FruitMachineNotWork.cs
++++ b/Scripts/Assembly-CSharp/FruitMachineNotWork.cs
+@@ -66,7 +66,7 @@ public class FruitMachineNotWork : FruitMachineState, UIMsgListener
+ 		if (go.Equals(mUIFruitMachine.fruitMachineBar.gameObject) && delta.y < 0f && !mUIFruitMachine.fruitMachineBar.IsMax())
+ 		{
+ 			mUIFruitMachine.fruitMachineBar.PressOffsetY(delta.y);
+-			if (mUIFruitMachine.fruitMachineBar.IsMax() && Camera.mainCamera != null)
++			if (mUIFruitMachine.fruitMachineBar.IsMax() && Camera.main != null)
+ 			{
+ 				AudioManager.GetInstance().PlaySound("RPG_Audio/Menu/fruit_machine_pull");
+ 			}
+@@ -83,7 +83,7 @@ public class FruitMachineNotWork : FruitMachineState, UIMsgListener
+ 		GambleConfig.GambleResult gambleResult = mUIFruitMachine.GetGambleConfig().Use();
+ 		if (gambleResult.Success)
+ 		{
+-			if (Camera.mainCamera != null)
++			if (Camera.main != null)
+ 			{
+ 				AudioManager.GetInstance().PlaySound("RPG_Audio/Menu/fruit_machine_release");
+ 			}

@@ -1,0 +1,15 @@
+diff --git a/Scripts/Assembly-CSharp/ThrowGrenadeState.cs b/Scripts/Assembly-CSharp/ThrowGrenadeState.cs
+index 9e858f8..5ede111 100644
+--- a/Scripts/Assembly-CSharp/ThrowGrenadeState.cs
++++ b/Scripts/Assembly-CSharp/ThrowGrenadeState.cs
+@@ -37,8 +37,8 @@ public class ThrowGrenadeState : PlayerState
+ 				achievementTrigger.PutData(1);
+ 				AchievementManager.GetInstance().Trigger(achievementTrigger);
+ 				Ray ray = default(Ray);
+-				FirstPersonCameraScript component = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
+-				Vector3 vector = component.camera.ScreenToWorldPoint(new Vector3(component.ReticlePosition.x, (float)Screen.height - component.ReticlePosition.y, 50f));
++				FirstPersonCameraScript component = Camera.main.GetComponent<FirstPersonCameraScript>();
++				Vector3 vector = component.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(component.ReticlePosition.x, (float)Screen.height - component.ReticlePosition.y, 50f));
+ 				Vector3 normalized = (vector - component.CameraTransform.position).normalized;
+ 				ray = new Ray(component.CameraTransform.position + normalized * 1.8f, normalized);
+ 				Vector3 vector2 = default(Vector3);

@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/ItemBullet.cs b/Scripts/Assembly-CSharp/ItemBullet.cs
+index 7554e26..be9e7c6 100644
+--- a/Scripts/Assembly-CSharp/ItemBullet.cs
++++ b/Scripts/Assembly-CSharp/ItemBullet.cs
+@@ -25,7 +25,7 @@ public class ItemBullet : ItemBase
+ 
+ 	protected override void OnTriggerEnter(Collider c)
+ 	{
+-		if (c.collider.gameObject.layer == PhysicsLayer.PLAYER_COLLIDER)
++		if (c.GetComponent<Collider>().gameObject.layer == PhysicsLayer.PLAYER_COLLIDER)
+ 		{
+ 			Debug.Log("Player Touched Bullet!");
+ 			UserStateHUD.GetInstance().InfoBox.PushBulletDescription(WeaponType, Bullet);

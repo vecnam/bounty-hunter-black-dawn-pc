@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Raycast.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Raycast.cs
+index 678a9f6..ae47e86 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Raycast.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Raycast.cs
+@@ -117,7 +117,7 @@ namespace HutongGames.PlayMaker.Actions
+ 				storeDidHit.Value = flag;
+ 				if (flag)
+ 				{
+-					storeHitObject.Value = hitInfo.collider.collider.gameObject;
++					storeHitObject.Value = hitInfo.collider.GetComponent<Collider>().gameObject;
+ 					base.Fsm.Event(hitEvent);
+ 				}
+ 				if (debug.Value)

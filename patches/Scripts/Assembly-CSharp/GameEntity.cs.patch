@@ -1,0 +1,156 @@
+diff --git a/Scripts/Assembly-CSharp/GameEntity.cs b/Scripts/Assembly-CSharp/GameEntity.cs
+index 569a016..4615df8 100644
+--- a/Scripts/Assembly-CSharp/GameEntity.cs
++++ b/Scripts/Assembly-CSharp/GameEntity.cs
+@@ -62,54 +62,54 @@ public class GameEntity
+ 
+ 	public virtual void PlayAnimation(string name, WrapMode mode)
+ 	{
+-		if (animationObject.animation[name] == null)
++		if (animationObject.GetComponent<Animation>()[name] == null)
+ 		{
+ 			Debug.Log("missed animation..." + name);
+ 		}
+-		else if (!animationObject.animation.IsPlaying(name) || mode != WrapMode.ClampForever || AnimationPlayed(name, 1f))
++		else if (!animationObject.GetComponent<Animation>().IsPlaying(name) || mode != WrapMode.ClampForever || AnimationPlayed(name, 1f))
+ 		{
+-			animationObject.animation[name].wrapMode = mode;
+-			animationObject.animation.CrossFade(name, 0.2f);
++			animationObject.GetComponent<Animation>()[name].wrapMode = mode;
++			animationObject.GetComponent<Animation>().CrossFade(name, 0.2f);
+ 		}
+ 	}
+ 
+ 	public virtual void PlayAnimation(string name, WrapMode mode, float speed)
+ 	{
+-		if (animationObject.animation[name] == null)
++		if (animationObject.GetComponent<Animation>()[name] == null)
+ 		{
+ 			Debug.Log("missed animation..." + name);
+ 		}
+-		else if (!animationObject.animation.IsPlaying(name) || mode != WrapMode.ClampForever)
++		else if (!animationObject.GetComponent<Animation>().IsPlaying(name) || mode != WrapMode.ClampForever)
+ 		{
+-			animationObject.animation[name].wrapMode = mode;
+-			animationObject.animation[name].speed = speed;
+-			animationObject.animation.CrossFade(name);
++			animationObject.GetComponent<Animation>()[name].wrapMode = mode;
++			animationObject.GetComponent<Animation>()[name].speed = speed;
++			animationObject.GetComponent<Animation>().CrossFade(name);
+ 		}
+ 	}
+ 
+ 	public virtual void PlayAnimationWithoutBlend(string name, WrapMode mode)
+ 	{
+-		if (animationObject.animation[name] == null)
++		if (animationObject.GetComponent<Animation>()[name] == null)
+ 		{
+ 			Debug.Log("missed animation..." + name);
+ 		}
+-		else if (!animationObject.animation.IsPlaying(name) || mode != WrapMode.ClampForever || AnimationPlayed(name, 1f))
++		else if (!animationObject.GetComponent<Animation>().IsPlaying(name) || mode != WrapMode.ClampForever || AnimationPlayed(name, 1f))
+ 		{
+-			animationObject.animation[name].wrapMode = mode;
+-			animationObject.animation.Play(name);
++			animationObject.GetComponent<Animation>()[name].wrapMode = mode;
++			animationObject.GetComponent<Animation>().Play(name);
+ 		}
+ 	}
+ 
+ 	public virtual void PlayAnimationAllLayers(string name, WrapMode mode)
+ 	{
+-		if (animationObject.animation[name] == null)
++		if (animationObject.GetComponent<Animation>()[name] == null)
+ 		{
+ 			Debug.Log("missed animation..." + name);
+ 		}
+-		else if (!animationObject.animation.IsPlaying(name) || mode != WrapMode.ClampForever)
++		else if (!animationObject.GetComponent<Animation>().IsPlaying(name) || mode != WrapMode.ClampForever)
+ 		{
+-			animationObject.animation[name].wrapMode = mode;
+-			animationObject.animation.CrossFade(name, 0.1f, PlayMode.StopAll);
++			animationObject.GetComponent<Animation>()[name].wrapMode = mode;
++			animationObject.GetComponent<Animation>().CrossFade(name, 0.1f, PlayMode.StopAll);
+ 		}
+ 	}
+ 
+@@ -120,24 +120,24 @@ public class GameEntity
+ 
+ 	public virtual bool IsPlayingAnimation(string name)
+ 	{
+-		return animationObject.animation.IsPlaying(name);
++		return animationObject.GetComponent<Animation>().IsPlaying(name);
+ 	}
+ 
+ 	public bool AnimationPlayed(string name, float percent)
+ 	{
+-		if (animationObject.animation[name] == null)
++		if (animationObject.GetComponent<Animation>()[name] == null)
+ 		{
+ 			return false;
+ 		}
+-		if (animationObject.animation[name].speed >= 0f)
++		if (animationObject.GetComponent<Animation>()[name].speed >= 0f)
+ 		{
+-			if (animationObject.animation[name].time >= animationObject.animation[name].clip.length * percent)
++			if (animationObject.GetComponent<Animation>()[name].time >= animationObject.GetComponent<Animation>()[name].clip.length * percent)
+ 			{
+ 				return true;
+ 			}
+ 			return false;
+ 		}
+-		if (animationObject.animation[name].time <= animationObject.animation[name].clip.length * (1f - percent))
++		if (animationObject.GetComponent<Animation>()[name].time <= animationObject.GetComponent<Animation>()[name].clip.length * (1f - percent))
+ 		{
+ 			return true;
+ 		}
+@@ -146,21 +146,21 @@ public class GameEntity
+ 
+ 	public bool AnimationPlayedLoop(string name, float percent)
+ 	{
+-		int num = (int)(animationObject.animation[name].time / animationObject.animation[name].clip.length);
+-		float num2 = animationObject.animation[name].time - animationObject.animation[name].clip.length * (float)num;
+-		if (animationObject.animation[name] == null)
++		int num = (int)(animationObject.GetComponent<Animation>()[name].time / animationObject.GetComponent<Animation>()[name].clip.length);
++		float num2 = animationObject.GetComponent<Animation>()[name].time - animationObject.GetComponent<Animation>()[name].clip.length * (float)num;
++		if (animationObject.GetComponent<Animation>()[name] == null)
+ 		{
+ 			return false;
+ 		}
+-		if (animationObject.animation[name].speed >= 0f)
++		if (animationObject.GetComponent<Animation>()[name].speed >= 0f)
+ 		{
+-			if (num2 >= animationObject.animation[name].clip.length * percent)
++			if (num2 >= animationObject.GetComponent<Animation>()[name].clip.length * percent)
+ 			{
+ 				return true;
+ 			}
+ 			return false;
+ 		}
+-		if (num2 <= animationObject.animation[name].clip.length * (1f - percent))
++		if (num2 <= animationObject.GetComponent<Animation>()[name].clip.length * (1f - percent))
+ 		{
+ 			return true;
+ 		}
+@@ -169,18 +169,18 @@ public class GameEntity
+ 
+ 	public void StopAnimation()
+ 	{
+-		animationObject.animation.Stop();
++		animationObject.GetComponent<Animation>().Stop();
+ 	}
+ 
+ 	public virtual void StopAnimation(string name)
+ 	{
+-		animationObject.animation.Stop(name);
++		animationObject.GetComponent<Animation>().Stop(name);
+ 	}
+ 
+ 	public void SampleAnimation()
+ 	{
+ 		IsSamplingAnimation = true;
+-		if (animationObject.animation.isPlaying)
++		if (animationObject.GetComponent<Animation>().isPlaying)
+ 		{
+ 			Debug.Log("still playing animation...");
+ 		}

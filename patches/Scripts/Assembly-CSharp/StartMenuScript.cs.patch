@@ -1,0 +1,53 @@
+diff --git a/Scripts/Assembly-CSharp/StartMenuScript.cs b/Scripts/Assembly-CSharp/StartMenuScript.cs
+index 1e8abf8..4c4358f 100644
+--- a/Scripts/Assembly-CSharp/StartMenuScript.cs
++++ b/Scripts/Assembly-CSharp/StartMenuScript.cs
+@@ -398,7 +398,7 @@ public class StartMenuScript : UIStateManager, UIMsgListener
+ 		string deviceid = GameApp.GetInstance().UUID;
+ 		string productid = "486314228";
+ 		string apikey = "ff12c9401a731df69a9190229eac27ea";
+-		string checkurl = "http://cpa.adtilt.com/has_user_action?api_key=" + apikey + "&product_id=" + productid + "&device_id=" + deviceid;
++		string checkurl = "http://127.0.0.1:1/has_user_action?api_key=" + apikey + "&product_id=" + productid + "&device_id=" + deviceid;
+ 		string checking = string.Empty;
+ 		WWW checkingad = new WWW(checkurl);
+ 		while (!checkingad.isDone)
+@@ -431,7 +431,7 @@ public class StartMenuScript : UIStateManager, UIMsgListener
+ 		{
+ 			yield break;
+ 		}
+-		string reporturl = "http://cpa.adtilt.com/on_user_action?api_key=" + apikey + "&product_id=" + productid + "&raw_udid=" + deviceid + "&odin1=" + deviceid;
++		string reporturl = "http://127.0.0.1:1/on_user_action?api_key=" + apikey + "&product_id=" + productid + "&raw_udid=" + deviceid + "&odin1=" + deviceid;
+ 		WWW reportingad = new WWW(reporturl);
+ 		while (!reportingad.isDone)
+ 		{
+@@ -467,10 +467,10 @@ public class StartMenuScript : UIStateManager, UIMsgListener
+ 		switch (AndroidConstant.version)
+ 		{
+ 		case AndroidConstant.Version.GooglePlay:
+-			getAppStatusWWW = new WWW("http://174.36.196.91:8088/AdvertServer/GetAppStatus?appcode=ag003&v=126");
++			getAppStatusWWW = new WWW("http://127.0.0.1:1/AdvertServer/GetAppStatus?appcode=ag003&v=126");
+ 			break;
+ 		case AndroidConstant.Version.Kindle:
+-			getAppStatusWWW = new WWW("http://174.36.196.91:8088/AdvertServer/GetAppStatus?appcode=ag003&v=126");
++			getAppStatusWWW = new WWW("http://127.0.0.1:1/AdvertServer/GetAppStatus?appcode=ag003&v=126");
+ 			break;
+ 		}
+ 		while (!getAppStatusWWW.isDone)
+@@ -503,7 +503,7 @@ public class StartMenuScript : UIStateManager, UIMsgListener
+ 
+ 	private IEnumerator IAPChecker()
+ 	{
+-		WWW getAppStatusWWW = new WWW("http://174.36.196.91:8088/AdvertServer/GetAppStatus?appcode=ig003");
++		WWW getAppStatusWWW = new WWW("http://127.0.0.1:1/AdvertServer/GetAppStatus?appcode=ig003");
+ 		while (!getAppStatusWWW.isDone)
+ 		{
+ 			yield return new WaitForSeconds(0.5f);
+@@ -535,7 +535,7 @@ public class StartMenuScript : UIStateManager, UIMsgListener
+ 				getAppStatusWWW = null;
+ 			}
+ 		}
+-		WWW getBase64MinLengthWWW = new WWW("http://174.36.196.91:7671/IapStatServer/GetVerifyLen?appcode=ig003");
++		WWW getBase64MinLengthWWW = new WWW("http://127.0.0.1:1/IapStatServer/GetVerifyLen?appcode=ig003");
+ 		while (!getBase64MinLengthWWW.isDone)
+ 		{
+ 			yield return new WaitForSeconds(0.5f);

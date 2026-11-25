@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GameObjectIsVisible.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GameObjectIsVisible.cs
+index 1a7bc37..754c831 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GameObjectIsVisible.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GameObjectIsVisible.cs
+@@ -45,9 +45,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoIsVisible()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.renderer == null))
++			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.GetComponent<Renderer>() == null))
+ 			{
+-				bool isVisible = ownerDefaultTarget.renderer.isVisible;
++				bool isVisible = ownerDefaultTarget.GetComponent<Renderer>().isVisible;
+ 				storeResult.Value = isVisible;
+ 				base.Fsm.Event((!isVisible) ? falseEvent : trueEvent);
+ 			}

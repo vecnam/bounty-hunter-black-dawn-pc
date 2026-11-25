@@ -1,0 +1,24 @@
+diff --git a/Scripts/Assembly-CSharp/ShopSellPageScript.cs b/Scripts/Assembly-CSharp/ShopSellPageScript.cs
+index 5182cb3..6079811 100644
+--- a/Scripts/Assembly-CSharp/ShopSellPageScript.cs
++++ b/Scripts/Assembly-CSharp/ShopSellPageScript.cs
+@@ -34,7 +34,7 @@ public class ShopSellPageScript : UIGameMenuShop
+ 
+ 	private new void Awake()
+ 	{
+-		BoxCollider boxCollider = base.gameObject.collider as BoxCollider;
++		BoxCollider boxCollider = base.gameObject.GetComponent<Collider>() as BoxCollider;
+ 		boxCollider.size = new Vector3(Screen.width, Screen.height, 0f);
+ 	}
+ 
+@@ -49,8 +49,8 @@ public class ShopSellPageScript : UIGameMenuShop
+ 		float num = UpdateRealTimeDelta();
+ 		if (num != 0f && m_Character != null)
+ 		{
+-			GameObject gameObject = m_Character.transform.FindChild("Entity").gameObject;
+-			AnimationState animationState = gameObject.animation[GameApp.GetInstance().GetUserState().GetRoleState()
++			GameObject gameObject = m_Character.transform.Find("Entity").gameObject;
++			AnimationState animationState = gameObject.GetComponent<Animation>()[GameApp.GetInstance().GetUserState().GetRoleState()
+ 				.GetUIIdleAnimation()];
+ 			float num2 = animationState.speed * num;
+ 			animationState.time += num2;

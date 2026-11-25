@@ -1,0 +1,31 @@
+diff --git a/Scripts/Assembly-CSharp/ItemBase.cs b/Scripts/Assembly-CSharp/ItemBase.cs
+index c2d72e5..afc18b7 100644
+--- a/Scripts/Assembly-CSharp/ItemBase.cs
++++ b/Scripts/Assembly-CSharp/ItemBase.cs
+@@ -202,7 +202,7 @@ public abstract class ItemBase : ItemScript
+ 	protected new void Update()
+ 	{
+ 		CheckIfGoThroughGround();
+-		if (base.rigidbody != null && base.rigidbody.IsSleeping() && !HasAddedLine)
++		if (base.GetComponent<Rigidbody>() != null && base.GetComponent<Rigidbody>().IsSleeping() && !HasAddedLine)
+ 		{
+ 			HasAddedLine = true;
+ 			GameApp.GetInstance().GetLootManager().AddPromptLine(base.transform, Quality, ItemClass);
+@@ -446,7 +446,7 @@ public abstract class ItemBase : ItemScript
+ 
+ 	public void CheckIfGoThroughGround()
+ 	{
+-		if (!(base.rigidbody != null))
++		if (!(base.GetComponent<Rigidbody>() != null))
+ 		{
+ 			return;
+ 		}
+@@ -460,7 +460,7 @@ public abstract class ItemBase : ItemScript
+ 			{
+ 				base.transform.RotateAroundLocal(Vector3.right, 90f);
+ 			}
+-			base.rigidbody.Sleep();
++			base.GetComponent<Rigidbody>().Sleep();
+ 		}
+ 	}
+ 

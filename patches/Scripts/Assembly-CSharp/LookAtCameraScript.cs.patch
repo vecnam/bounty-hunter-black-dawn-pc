@@ -1,0 +1,28 @@
+diff --git a/Scripts/Assembly-CSharp/LookAtCameraScript.cs b/Scripts/Assembly-CSharp/LookAtCameraScript.cs
+index c435d2e..211e9d0 100644
+--- a/Scripts/Assembly-CSharp/LookAtCameraScript.cs
++++ b/Scripts/Assembly-CSharp/LookAtCameraScript.cs
+@@ -8,9 +8,9 @@ public class LookAtCameraScript : MonoBehaviour
+ 
+ 	private void Start()
+ 	{
+-		if (Camera.mainCamera != null)
++		if (Camera.main != null)
+ 		{
+-			cameraTransform = Camera.mainCamera.transform;
++			cameraTransform = Camera.main.transform;
+ 		}
+ 	}
+ 
+@@ -23,9 +23,9 @@ public class LookAtCameraScript : MonoBehaviour
+ 		lastUpdateTime = Time.time;
+ 		if (cameraTransform == null)
+ 		{
+-			if (Camera.mainCamera != null)
++			if (Camera.main != null)
+ 			{
+-				cameraTransform = Camera.mainCamera.transform;
++				cameraTransform = Camera.main.transform;
+ 			}
+ 		}
+ 		else

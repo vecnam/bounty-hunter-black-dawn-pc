@@ -1,0 +1,87 @@
+diff --git a/Scripts/Assembly-CSharp/Weapon.cs b/Scripts/Assembly-CSharp/Weapon.cs
+index 37786d3..0e395d5 100644
+--- a/Scripts/Assembly-CSharp/Weapon.cs
++++ b/Scripts/Assembly-CSharp/Weapon.cs
+@@ -694,10 +694,10 @@ public class Weapon : GameEntity
+ 	public virtual void Init(Player player)
+ 	{
+ 		gameScene = GameApp.GetInstance().GetGameScene();
+-		gameCamera = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++		gameCamera = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 		if (gameCamera != null)
+ 		{
+-			cameraComponent = gameCamera.camera;
++			cameraComponent = gameCamera.GetComponent<Camera>();
+ 			cameraTransform = gameCamera.CameraTransform;
+ 		}
+ 		this.player = player;
+@@ -717,7 +717,7 @@ public class Weapon : GameEntity
+ 		}
+ 		CreateGun();
+ 		AddGunToBone();
+-		shootAudio = entityObject.audio;
++		shootAudio = entityObject.GetComponent<AudioSource>();
+ 		if (shootAudio == null)
+ 		{
+ 		}
+@@ -826,17 +826,17 @@ public class Weapon : GameEntity
+ 
+ 	public virtual void Reload()
+ 	{
+-		if (animationObject != null && animationObject.animation != null && animationObject.animation["reload"] != null)
++		if (animationObject != null && animationObject.GetComponent<Animation>() != null && animationObject.GetComponent<Animation>()["reload"] != null)
+ 		{
+-			animationObject.animation["reload"].time = 0f;
++			animationObject.GetComponent<Animation>()["reload"].time = 0f;
+ 		}
+ 	}
+ 
+ 	public void StopReload()
+ 	{
+-		if (animationObject.animation != null && animationObject.animation["reload"] != null && animationObject.animation["reload"].clip != null && animationObject.animation.IsPlaying("reload"))
++		if (animationObject.GetComponent<Animation>() != null && animationObject.GetComponent<Animation>()["reload"] != null && animationObject.GetComponent<Animation>()["reload"].clip != null && animationObject.GetComponent<Animation>().IsPlaying("reload"))
+ 		{
+-			animationObject.animation["reload"].time = animationObject.animation["reload"].clip.length;
++			animationObject.GetComponent<Animation>()["reload"].time = animationObject.GetComponent<Animation>()["reload"].clip.length;
+ 		}
+ 	}
+ 
+@@ -970,7 +970,7 @@ public class Weapon : GameEntity
+ 
+ 	public void SetWeaponShootSpeed(float speed)
+ 	{
+-		Animation animation = player.GetObject().transform.FindChild("Entity").gameObject.animation;
++		Animation animation = player.GetObject().transform.Find("Entity").gameObject.GetComponent<Animation>();
+ 		if (animation[GetAnimationSuffix() + AnimationString.Attack] != null)
+ 		{
+ 			if (player.IsLocal())
+@@ -1177,7 +1177,7 @@ public class Weapon : GameEntity
+ 	{
+ 		AimOffset += (int)recoil;
+ 		FirstPersonCameraScript camera = GameApp.GetInstance().GetGameScene().GetCamera();
+-		float num = CalculateMaxAccurancyFactor() * camera.camera.pixelHeight * 0.5f;
++		float num = CalculateMaxAccurancyFactor() * camera.GetComponent<Camera>().pixelHeight * 0.5f;
+ 		if (AimOffset > num)
+ 		{
+ 			AimOffset = num;
+@@ -1190,7 +1190,7 @@ public class Weapon : GameEntity
+ 	{
+ 		AimOffset -= deltaTime * (float)GetRecoilRecover();
+ 		FirstPersonCameraScript camera = GameApp.GetInstance().GetGameScene().GetCamera();
+-		float num = CalculateMinAccurancyFactor() * camera.camera.pixelHeight * 0.5f;
++		float num = CalculateMinAccurancyFactor() * camera.GetComponent<Camera>().pixelHeight * 0.5f;
+ 		if (AimOffset < num)
+ 		{
+ 			AimOffset = num;
+@@ -1229,9 +1229,9 @@ public class Weapon : GameEntity
+ 
+ 	public virtual void AttackByRaycast(bool needFireLine, bool needBulletScar)
+ 	{
+-		cameraComponent = Camera.mainCamera;
++		cameraComponent = Camera.main;
+ 		cameraTransform = cameraComponent.transform;
+-		gameCamera = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++		gameCamera = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 		Ray ray = default(Ray);
+ 		float num = 0f;
+ 		float num2 = 0f;

@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AudioMute.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AudioMute.cs
+index 8ad05c8..af05a47 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AudioMute.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AudioMute.cs
+@@ -24,7 +24,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (ownerDefaultTarget != null)
+ 			{
+-				AudioSource audio = ownerDefaultTarget.audio;
++				AudioSource audio = ownerDefaultTarget.GetComponent<AudioSource>();
+ 				if (audio != null)
+ 				{
+ 					audio.mute = mute.Value;

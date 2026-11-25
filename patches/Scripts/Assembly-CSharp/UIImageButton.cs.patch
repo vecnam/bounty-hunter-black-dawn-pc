@@ -1,0 +1,19 @@
+diff --git a/Scripts/Assembly-CSharp/UIImageButton.cs b/Scripts/Assembly-CSharp/UIImageButton.cs
+index 24d4e94..46f1efc 100644
+--- a/Scripts/Assembly-CSharp/UIImageButton.cs
++++ b/Scripts/Assembly-CSharp/UIImageButton.cs
+@@ -18,12 +18,12 @@ public class UIImageButton : MonoBehaviour
+ 	{
+ 		get
+ 		{
+-			Collider collider = base.collider;
++			Collider collider = base.GetComponent<Collider>();
+ 			return (bool)collider && collider.enabled;
+ 		}
+ 		set
+ 		{
+-			Collider collider = base.collider;
++			Collider collider = base.GetComponent<Collider>();
+ 			if ((bool)collider && collider.enabled != value)
+ 			{
+ 				collider.enabled = value;

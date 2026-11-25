@@ -1,0 +1,20 @@
+diff --git a/Scripts/Assembly-CSharp/FloatProtector.cs b/Scripts/Assembly-CSharp/FloatProtector.cs
+index 7b20a93..e9c2643 100644
+--- a/Scripts/Assembly-CSharp/FloatProtector.cs
++++ b/Scripts/Assembly-CSharp/FloatProtector.cs
+@@ -1,5 +1,6 @@
+ using System.Collections.Generic;
+ using UnityEngine;
++using UnityEngine.AI;
+ 
+ public class FloatProtector : EnemyBoss
+ {
+@@ -72,7 +73,7 @@ public class FloatProtector : EnemyBoss
+ 	{
+ 		base.Activate();
+ 		animationObject = entityTransform.Find(BoneName.FloatPrtcAnimationObject).gameObject;
+-		animation = animationObject.animation;
++		animation = animationObject.GetComponent<Animation>();
+ 		m_endChangeState = null;
+ 		m_currentMissileCount = 0;
+ 		m_flying = false;

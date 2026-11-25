@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/UVOffsetScript.cs b/Scripts/Assembly-CSharp/UVOffsetScript.cs
+index 3c4622f..92e20bd 100644
+--- a/Scripts/Assembly-CSharp/UVOffsetScript.cs
++++ b/Scripts/Assembly-CSharp/UVOffsetScript.cs
+@@ -46,7 +46,7 @@ public class UVOffsetScript : MonoBehaviour
+ 			{
+ 				stop = true;
+ 			}
+-			base.renderer.materials[materialIndex].SetTextureOffset(texturePropertyName, new Vector2(x, num2));
++			base.GetComponent<Renderer>().materials[materialIndex].SetTextureOffset(texturePropertyName, new Vector2(x, num2));
+ 		}
+ 	}
+ }

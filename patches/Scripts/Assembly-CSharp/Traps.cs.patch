@@ -1,0 +1,15 @@
+diff --git a/Scripts/Assembly-CSharp/Traps.cs b/Scripts/Assembly-CSharp/Traps.cs
+index f734245..6474c98 100644
+--- a/Scripts/Assembly-CSharp/Traps.cs
++++ b/Scripts/Assembly-CSharp/Traps.cs
+@@ -52,8 +52,8 @@ public class Traps : SummonedItem
+ 		Shield = para2;
+ 		if (!IsSameTeam())
+ 		{
+-			GetObject().renderer.enabled = false;
+-			GetObject().transform.FindChild("RPG_Trap_001").gameObject.SetActive(false);
++			GetObject().GetComponent<Renderer>().enabled = false;
++			GetObject().transform.Find("RPG_Trap_001").gameObject.SetActive(false);
+ 		}
+ 	}
+ 

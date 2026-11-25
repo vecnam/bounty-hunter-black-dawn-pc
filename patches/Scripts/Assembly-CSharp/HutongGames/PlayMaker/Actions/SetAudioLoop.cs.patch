@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioLoop.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioLoop.cs
+index 94b892c..737b3e7 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioLoop.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioLoop.cs
+@@ -23,7 +23,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (ownerDefaultTarget != null)
+ 			{
+-				AudioSource audio = ownerDefaultTarget.audio;
++				AudioSource audio = ownerDefaultTarget.GetComponent<AudioSource>();
+ 				if (audio != null)
+ 				{
+ 					audio.loop = loop.Value;

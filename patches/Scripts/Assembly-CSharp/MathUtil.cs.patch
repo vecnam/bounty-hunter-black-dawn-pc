@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/MathUtil.cs b/Scripts/Assembly-CSharp/MathUtil.cs
+index c39c089..6a5d9e6 100644
+--- a/Scripts/Assembly-CSharp/MathUtil.cs
++++ b/Scripts/Assembly-CSharp/MathUtil.cs
+@@ -63,7 +63,7 @@ public class MathUtil
+ 
+ 	public static float GetAngleBetweenUserVertical(Vector3 targetPos)
+ 	{
+-		Transform transform = Camera.mainCamera.transform;
++		Transform transform = Camera.main.transform;
+ 		Vector3 forward = transform.forward;
+ 		Vector3 normalized = (targetPos - transform.position).normalized;
+ 		return GetAngleBetweenVertical(forward, normalized);

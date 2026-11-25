@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/ItemPopMenuWindowCollision.cs b/Scripts/Assembly-CSharp/ItemPopMenuWindowCollision.cs
+index 28bc883..e51d214 100644
+--- a/Scripts/Assembly-CSharp/ItemPopMenuWindowCollision.cs
++++ b/Scripts/Assembly-CSharp/ItemPopMenuWindowCollision.cs
+@@ -4,7 +4,7 @@ public class ItemPopMenuWindowCollision : MonoBehaviour
+ {
+ 	private void Awake()
+ 	{
+-		BoxCollider boxCollider = base.gameObject.collider as BoxCollider;
++		BoxCollider boxCollider = base.gameObject.GetComponent<Collider>() as BoxCollider;
+ 		boxCollider.size = new Vector3(Screen.width, Screen.height, 0f);
+ 	}
+ 

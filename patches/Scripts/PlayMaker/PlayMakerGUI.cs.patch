@@ -1,0 +1,33 @@
+diff --git a/Scripts/PlayMaker/PlayMakerGUI.cs b/Scripts/PlayMaker/PlayMakerGUI.cs
+index fcf04bf..faa171f 100644
+--- a/Scripts/PlayMaker/PlayMakerGUI.cs
++++ b/Scripts/PlayMaker/PlayMakerGUI.cs
+@@ -245,12 +245,12 @@ public class PlayMakerGUI : MonoBehaviour
+ 		labelContent.text = text;
+ 		Vector2 vector2 = labelStyle.CalcSize(labelContent);
+ 		vector2.x = Mathf.Clamp(vector2.x, 10f, 200f);
+-		if (GUITextureStateLabels && fsm.gameObject.guiTexture != null)
++		if (GUITextureStateLabels && fsm.gameObject.GetComponent<GUITexture>() != null)
+ 		{
+-			vector.x = fsm.gameObject.transform.position.x * (float)Screen.width + fsm.gameObject.guiTexture.pixelInset.x;
+-			vector.y = fsm.gameObject.transform.position.y * (float)Screen.height + fsm.gameObject.guiTexture.pixelInset.y;
++			vector.x = fsm.gameObject.transform.position.x * (float)Screen.width + fsm.gameObject.GetComponent<GUITexture>().pixelInset.x;
++			vector.y = fsm.gameObject.transform.position.y * (float)Screen.height + fsm.gameObject.GetComponent<GUITexture>().pixelInset.y;
+ 		}
+-		else if (GUITextStateLabels && fsm.gameObject.guiText != null)
++		else if (GUITextStateLabels && fsm.gameObject.GetComponent<GUIText>() != null)
+ 		{
+ 			vector.x = fsm.gameObject.transform.position.x * (float)Screen.width;
+ 			vector.y = fsm.gameObject.transform.position.y * (float)Screen.height;
+@@ -369,9 +369,9 @@ public class PlayMakerGUI : MonoBehaviour
+ 			{
+ 				Screen.lockCursor = LockCursor;
+ 			}
+-			if (Screen.showCursor == HideCursor)
++			if (Cursor.visible == HideCursor)
+ 			{
+-				Screen.showCursor = !HideCursor;
++				Cursor.visible = !HideCursor;
+ 			}
+ 		}
+ 	}

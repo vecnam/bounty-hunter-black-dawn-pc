@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/UIWaiting.cs b/Scripts/Assembly-CSharp/UIWaiting.cs
+index 4c72e4f..95532b3 100644
+--- a/Scripts/Assembly-CSharp/UIWaiting.cs
++++ b/Scripts/Assembly-CSharp/UIWaiting.cs
+@@ -18,7 +18,7 @@ public class UIWaiting : MonoBehaviour
+ 	private void Start()
+ 	{
+ 		m_instance = this;
+-		m_block = base.gameObject.collider as BoxCollider;
++		m_block = base.gameObject.GetComponent<Collider>() as BoxCollider;
+ 		m_block.size = new Vector3(Screen.width, Screen.height, 0f);
+ 	}
+ 

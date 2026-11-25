@@ -1,0 +1,53 @@
+diff --git a/Scripts/Assembly-CSharp/NGUIItemSlot.cs b/Scripts/Assembly-CSharp/NGUIItemSlot.cs
+index dcea466..f0b75e8 100644
+--- a/Scripts/Assembly-CSharp/NGUIItemSlot.cs
++++ b/Scripts/Assembly-CSharp/NGUIItemSlot.cs
+@@ -245,7 +245,7 @@ public abstract class NGUIItemSlot : MonoBehaviour
+ 				QualityEffectObject = Object.Instantiate(original) as GameObject;
+ 				QualityEffectObject.transform.parent = base.transform;
+ 				QualityEffectObject.transform.localPosition = Vector3.zero + Vector3.forward * -100f;
+-				QualityEffectObject.transform.localScale = base.transform.FindChild("Background").localScale + new Vector3(7f, 7f, 7f);
++				QualityEffectObject.transform.localScale = base.transform.Find("Background").localScale + new Vector3(7f, 7f, 7f);
+ 			}
+ 			else if (baseItem.Quality == ItemQuality.Epic)
+ 			{
+@@ -253,9 +253,9 @@ public abstract class NGUIItemSlot : MonoBehaviour
+ 				QualityEffectObject = Object.Instantiate(original2) as GameObject;
+ 				QualityEffectObject.transform.parent = base.transform;
+ 				QualityEffectObject.transform.localPosition = Vector3.zero + Vector3.forward * -100f;
+-				QualityEffectObject.transform.localScale = base.transform.FindChild("Background").localScale + new Vector3(5f, 5f, 5f);
++				QualityEffectObject.transform.localScale = base.transform.Find("Background").localScale + new Vector3(5f, 5f, 5f);
+ 			}
+-			if (QualityEffectObject != null && !base.collider.enabled)
++			if (QualityEffectObject != null && !base.GetComponent<Collider>().enabled)
+ 			{
+ 				QualityEffectObject.SetActive(false);
+ 			}
+@@ -379,11 +379,11 @@ public abstract class NGUIItemSlot : MonoBehaviour
+ 		if (base.transform.localPosition.x < 150f)
+ 		{
+ 			Description.transform.localPosition = NGUIBackPackUIScript.mInstance.DescriptionRightPoint.transform.localPosition;
+-			int childCount = NGUIBackPackUIScript.mInstance.mBackPack.transform.GetChildCount();
++			int childCount = NGUIBackPackUIScript.mInstance.mBackPack.transform.childCount;
+ 			for (int i = 0; i < childCount; i++)
+ 			{
+ 				Transform child = NGUIBackPackUIScript.mInstance.mBackPack.transform.GetChild(i);
+-				for (int j = 0; j < child.GetChildCount(); j++)
++				for (int j = 0; j < child.childCount; j++)
+ 				{
+ 					if (child.GetChild(j).tag == TagName.QUALITY_EFFECT)
+ 					{
+@@ -401,11 +401,11 @@ public abstract class NGUIItemSlot : MonoBehaviour
+ 			return;
+ 		}
+ 		Description.transform.localPosition = NGUIBackPackUIScript.mInstance.DescriptionLeftPoint.transform.localPosition;
+-		int childCount2 = NGUIBackPackUIScript.mInstance.mBackPack.transform.GetChildCount();
++		int childCount2 = NGUIBackPackUIScript.mInstance.mBackPack.transform.childCount;
+ 		for (int k = 0; k < childCount2; k++)
+ 		{
+ 			Transform child2 = NGUIBackPackUIScript.mInstance.mBackPack.transform.GetChild(k);
+-			for (int l = 0; l < child2.GetChildCount(); l++)
++			for (int l = 0; l < child2.childCount; l++)
+ 			{
+ 				if (child2.GetChild(l).tag == TagName.QUALITY_EFFECT)
+ 				{

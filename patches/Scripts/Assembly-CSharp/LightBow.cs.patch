@@ -1,0 +1,48 @@
+diff --git a/Scripts/Assembly-CSharp/LightBow.cs b/Scripts/Assembly-CSharp/LightBow.cs
+index 093bf4f..20f0c88 100644
+--- a/Scripts/Assembly-CSharp/LightBow.cs
++++ b/Scripts/Assembly-CSharp/LightBow.cs
+@@ -49,15 +49,15 @@ public class LightBow : Weapon
+ 	public override void Init(Player player)
+ 	{
+ 		gameScene = GameApp.GetInstance().GetGameScene();
+-		gameCamera = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
+-		cameraComponent = gameCamera.camera;
++		gameCamera = Camera.main.GetComponent<FirstPersonCameraScript>();
++		cameraComponent = gameCamera.GetComponent<Camera>();
+ 		cameraTransform = gameCamera.CameraTransform;
+ 		base.player = player;
+ 		hitForce = 0f;
+ 		weaponBoneTrans = player.GetTransform().Find(BoneName.WeaponL);
+ 		CreateGun();
+ 		entityObject.transform.parent = weaponBoneTrans;
+-		shootAudio = entityObject.audio;
++		shootAudio = entityObject.GetComponent<AudioSource>();
+ 		if (shootAudio == null)
+ 		{
+ 		}
+@@ -68,18 +68,18 @@ public class LightBow : Weapon
+ 
+ 	public override void GunOn()
+ 	{
+-		entityObject.transform.GetChild(0).renderer.enabled = true;
+-		entityObject.transform.GetChild(1).renderer.enabled = true;
+-		entityObject.transform.GetChild(2).renderer.enabled = true;
++		entityObject.transform.GetChild(0).GetComponent<Renderer>().enabled = true;
++		entityObject.transform.GetChild(1).GetComponent<Renderer>().enabled = true;
++		entityObject.transform.GetChild(2).GetComponent<Renderer>().enabled = true;
+ 	}
+ 
+ 	public override void GunOff()
+ 	{
+ 		if (entityObject != null)
+ 		{
+-			entityObject.transform.GetChild(0).renderer.enabled = false;
+-			entityObject.transform.GetChild(1).renderer.enabled = false;
+-			entityObject.transform.GetChild(2).renderer.enabled = false;
++			entityObject.transform.GetChild(0).GetComponent<Renderer>().enabled = false;
++			entityObject.transform.GetChild(1).GetComponent<Renderer>().enabled = false;
++			entityObject.transform.GetChild(2).GetComponent<Renderer>().enabled = false;
+ 		}
+ 		StopFire();
+ 	}

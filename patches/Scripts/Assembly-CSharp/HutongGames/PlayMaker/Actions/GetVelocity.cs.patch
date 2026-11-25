@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GetVelocity.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GetVelocity.cs
+index 32d8e61..0e687e3 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GetVelocity.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GetVelocity.cs
+@@ -54,9 +54,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoGetVelocity()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.rigidbody == null))
++			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.GetComponent<Rigidbody>() == null))
+ 			{
+-				Vector3 vector = ownerDefaultTarget.rigidbody.velocity;
++				Vector3 vector = ownerDefaultTarget.GetComponent<Rigidbody>().linearVelocity;
+ 				if (space == Space.Self)
+ 				{
+ 					vector = ownerDefaultTarget.transform.InverseTransformDirection(vector);

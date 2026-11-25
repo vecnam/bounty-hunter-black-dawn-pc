@@ -1,0 +1,40 @@
+diff --git a/Scripts/Assembly-CSharp/EffectTimeDelay.cs b/Scripts/Assembly-CSharp/EffectTimeDelay.cs
+index 0053a88..5851f19 100644
+--- a/Scripts/Assembly-CSharp/EffectTimeDelay.cs
++++ b/Scripts/Assembly-CSharp/EffectTimeDelay.cs
+@@ -38,27 +38,27 @@ public class EffectTimeDelay : MonoBehaviour
+ 			trans.gameObject.SetActiveRecursively(false);
+ 			break;
+ 		case EffectTimeDelayMode.EmitterOn:
+-			if (trans.particleEmitter != null)
++			if (trans.GetLegacyEmitter() != null)
+ 			{
+-				trans.particleEmitter.emit = true;
++				trans.GetLegacyEmitter().emit = true;
+ 			}
+ 			break;
+ 		case EffectTimeDelayMode.EmitterOff:
+-			if (trans.particleEmitter != null)
++			if (trans.GetLegacyEmitter() != null)
+ 			{
+-				trans.particleEmitter.emit = false;
++				trans.GetLegacyEmitter().emit = false;
+ 			}
+ 			break;
+ 		case EffectTimeDelayMode.AnimationStart:
+-			if (trans.animation != null)
++			if (trans.GetComponent<Animation>() != null)
+ 			{
+-				trans.animation.Play();
++				trans.GetComponent<Animation>().Play();
+ 			}
+ 			break;
+ 		case EffectTimeDelayMode.AnimationStop:
+-			if (trans.animation != null)
++			if (trans.GetComponent<Animation>() != null)
+ 			{
+-				trans.animation.Stop();
++				trans.GetComponent<Animation>().Stop();
+ 			}
+ 			break;
+ 		}

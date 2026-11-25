@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GetSpeed.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GetSpeed.cs
+index cbfa454..e60fc18 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GetSpeed.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GetSpeed.cs
+@@ -42,9 +42,9 @@ namespace HutongGames.PlayMaker.Actions
+ 			if (storeResult != null)
+ 			{
+ 				GameObject gameObject = ((this.gameObject.OwnerOption != OwnerDefaultOption.UseOwner) ? this.gameObject.GameObject.Value : base.Owner);
+-				if (!(gameObject == null) && !(gameObject.rigidbody == null))
++				if (!(gameObject == null) && !(gameObject.GetComponent<Rigidbody>() == null))
+ 				{
+-					Vector3 velocity = gameObject.rigidbody.velocity;
++					Vector3 velocity = gameObject.GetComponent<Rigidbody>().linearVelocity;
+ 					storeResult.Value = velocity.magnitude;
+ 				}
+ 			}

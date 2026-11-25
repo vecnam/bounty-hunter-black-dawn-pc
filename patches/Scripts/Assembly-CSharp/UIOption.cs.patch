@@ -1,0 +1,15 @@
+diff --git a/Scripts/Assembly-CSharp/UIOption.cs b/Scripts/Assembly-CSharp/UIOption.cs
+index c3b331c..9108389 100644
+--- a/Scripts/Assembly-CSharp/UIOption.cs
++++ b/Scripts/Assembly-CSharp/UIOption.cs
+@@ -41,8 +41,8 @@ public class UIOption : UIGameMenuNormal
+ 		float num = UpdateRealTimeDelta();
+ 		if (num != 0f && m_Character != null)
+ 		{
+-			GameObject gameObject = m_Character.transform.FindChild("Entity").gameObject;
+-			AnimationState animationState = gameObject.animation[GameApp.GetInstance().GetUserState().GetRoleState()
++			GameObject gameObject = m_Character.transform.Find("Entity").gameObject;
++			AnimationState animationState = gameObject.GetComponent<Animation>()[GameApp.GetInstance().GetUserState().GetRoleState()
+ 				.GetUIIdleAnimation()];
+ 			float num2 = animationState.speed * num;
+ 			animationState.time += num2;

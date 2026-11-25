@@ -1,0 +1,11 @@
+diff --git a/Scripts/Assembly-CSharp/Obsidian.cs b/Scripts/Assembly-CSharp/Obsidian.cs
+index ea0b4bb..7023814 100644
+--- a/Scripts/Assembly-CSharp/Obsidian.cs
++++ b/Scripts/Assembly-CSharp/Obsidian.cs
+@@ -1,5 +1,6 @@
+ using System.Collections.Generic;
+ using UnityEngine;
++using UnityEngine.AI;
+ 
+ public class Obsidian : Enemy
+ {

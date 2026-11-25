@@ -1,0 +1,20 @@
+diff --git a/Scripts/Assembly-CSharp/SceneStreamingScript.cs b/Scripts/Assembly-CSharp/SceneStreamingScript.cs
+index e743dc5..a0ddfee 100644
+--- a/Scripts/Assembly-CSharp/SceneStreamingScript.cs
++++ b/Scripts/Assembly-CSharp/SceneStreamingScript.cs
+@@ -56,13 +56,8 @@ public class SceneStreamingScript : MonoBehaviour
+ 				{
+ 					continue;
+ 				}
+-				string strPath = "jar:file://" + Application.dataPath + "!/assets/assetbundles_android/" + data2.mName + ".assetbundle";
+-				WWW www = new WWW(strPath)
+-				{
+-					threadPriority = Global.Priority
+-				};
+-				yield return www;
+-				data2.mAssetBundle = www.assetBundle;
++				data2.mAssetBundle = PcPortBundle.Load(data2.mName);
++				yield return null;
+ 				if (data2.mType == StreamingDataType.SCENE)
+ 				{
+ 					data2.mGameObject = Object.Instantiate(data2.mAssetBundle.mainAsset) as GameObject;

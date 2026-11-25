@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/Spit.cs b/Scripts/Assembly-CSharp/Spit.cs
+index 1b99bdd..cc2c4cd 100644
+--- a/Scripts/Assembly-CSharp/Spit.cs
++++ b/Scripts/Assembly-CSharp/Spit.cs
+@@ -69,7 +69,7 @@ public class Spit : Enemy
+ 	public void Shot()
+ 	{
+ 		GameObject original = Resources.Load("RPG_effect/RPG_Spit_fire_002") as GameObject;
+-		Vector3 position = entityTransform.FindChild("Bip02/Bip02 Pelvis/Bip02 Spine/Bip02 Neck/Bip02 Cover_M").position;
++		Vector3 position = entityTransform.Find("Bip02/Bip02 Pelvis/Bip02 Spine/Bip02 Neck/Bip02 Cover_M").position;
+ 		GameObject gameObject = Object.Instantiate(original, position, Quaternion.identity) as GameObject;
+ 		Vector3 vector = mTargetPosition - entityTransform.position;
+ 		EnemyShotScript component = gameObject.GetComponent<EnemyShotScript>();

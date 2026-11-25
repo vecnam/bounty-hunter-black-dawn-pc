@@ -1,0 +1,46 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/PlayRandomAnimation.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/PlayRandomAnimation.cs
+index 6fe2811..dae3554 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/PlayRandomAnimation.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/PlayRandomAnimation.cs
+@@ -81,13 +81,13 @@ namespace HutongGames.PlayMaker.Actions
+ 				Finish();
+ 				return;
+ 			}
+-			if (ownerDefaultTarget.animation == null)
++			if (ownerDefaultTarget.GetComponent<Animation>() == null)
+ 			{
+ 				LogWarning("Missing animation component!");
+ 				Finish();
+ 				return;
+ 			}
+-			anim = ownerDefaultTarget.animation[animName];
++			anim = ownerDefaultTarget.GetComponent<Animation>()[animName];
+ 			if (anim == null)
+ 			{
+ 				LogWarning("Missing animation: " + animName);
+@@ -97,11 +97,11 @@ namespace HutongGames.PlayMaker.Actions
+ 			float value = blendTime.Value;
+ 			if (value < 0.001f)
+ 			{
+-				ownerDefaultTarget.animation.Play(animName, playMode);
++				ownerDefaultTarget.GetComponent<Animation>().Play(animName, playMode);
+ 			}
+ 			else
+ 			{
+-				ownerDefaultTarget.animation.CrossFade(animName, value, playMode);
++				ownerDefaultTarget.GetComponent<Animation>().CrossFade(animName, value, playMode);
+ 			}
+ 			prevAnimtTime = anim.time;
+ 		}
+@@ -134,9 +134,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void StopAnimation()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (ownerDefaultTarget != null && ownerDefaultTarget.animation != null)
++			if (ownerDefaultTarget != null && ownerDefaultTarget.GetComponent<Animation>() != null)
+ 			{
+-				ownerDefaultTarget.animation.Stop(anim.name);
++				ownerDefaultTarget.GetComponent<Animation>().Stop(anim.name);
+ 			}
+ 		}
+ 	}

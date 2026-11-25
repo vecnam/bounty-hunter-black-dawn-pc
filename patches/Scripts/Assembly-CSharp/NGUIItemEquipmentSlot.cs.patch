@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/NGUIItemEquipmentSlot.cs b/Scripts/Assembly-CSharp/NGUIItemEquipmentSlot.cs
+index b6bbf33..81d0451 100644
+--- a/Scripts/Assembly-CSharp/NGUIItemEquipmentSlot.cs
++++ b/Scripts/Assembly-CSharp/NGUIItemEquipmentSlot.cs
+@@ -172,7 +172,7 @@ public class NGUIItemEquipmentSlot : NGUIItemSlot, UIMsgListener
+ 				QualityEffectObject = UnityEngine.Object.Instantiate(original) as GameObject;
+ 				QualityEffectObject.transform.parent = base.transform;
+ 				QualityEffectObject.transform.localPosition = Vector3.zero + Vector3.forward * -100f;
+-				QualityEffectObject.transform.localScale = base.transform.FindChild("Background").localScale + new Vector3(7f, 7f, 7f);
++				QualityEffectObject.transform.localScale = base.transform.Find("Background").localScale + new Vector3(7f, 7f, 7f);
+ 			}
+ 			else if (baseItem.Quality == ItemQuality.Epic)
+ 			{
+@@ -180,7 +180,7 @@ public class NGUIItemEquipmentSlot : NGUIItemSlot, UIMsgListener
+ 				QualityEffectObject = UnityEngine.Object.Instantiate(original2) as GameObject;
+ 				QualityEffectObject.transform.parent = base.transform;
+ 				QualityEffectObject.transform.localPosition = Vector3.zero + Vector3.forward * -100f;
+-				QualityEffectObject.transform.localScale = base.transform.FindChild("Background").localScale + new Vector3(5f, 5f, 5f);
++				QualityEffectObject.transform.localScale = base.transform.Find("Background").localScale + new Vector3(5f, 5f, 5f);
+ 			}
+ 		}
+ 	}

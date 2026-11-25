@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/UIMsgBox.cs b/Scripts/Assembly-CSharp/UIMsgBox.cs
+index 9be0f6a..ded5bb9 100644
+--- a/Scripts/Assembly-CSharp/UIMsgBox.cs
++++ b/Scripts/Assembly-CSharp/UIMsgBox.cs
+@@ -239,7 +239,7 @@ public class UIMsgBox : MonoBehaviour
+ 				m_CurrentMsg.IgnoreOthers = ignoreOthers;
+ 				m_CurrentMsg.SetListener(listener);
+ 				m_CurrentMsg.gameObject.SetActive(true);
+-				if (Camera.mainCamera != null)
++				if (Camera.main != null)
+ 				{
+ 					AudioManager.GetInstance().PlaySound("RPG_Audio/Menu/menu_popup");
+ 				}

@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/GameWorld.cs b/Scripts/Assembly-CSharp/GameWorld.cs
+index 6bec39c..e66f068 100644
+--- a/Scripts/Assembly-CSharp/GameWorld.cs
++++ b/Scripts/Assembly-CSharp/GameWorld.cs
+@@ -874,7 +874,7 @@ public class GameWorld
+ 		GameObject[] array4 = array3;
+ 		foreach (GameObject gameObject2 in array4)
+ 		{
+-			int childCount = gameObject2.transform.GetChildCount();
++			int childCount = gameObject2.transform.childCount;
+ 			for (int k = 0; k < childCount; k++)
+ 			{
+ 				gameObject2.transform.GetChild(k).gameObject.SetActive(true);

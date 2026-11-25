@@ -1,0 +1,15 @@
+diff --git a/Scripts/Assembly-CSharp/ProtectedItem.cs b/Scripts/Assembly-CSharp/ProtectedItem.cs
+index d3307a6..152696e 100644
+--- a/Scripts/Assembly-CSharp/ProtectedItem.cs
++++ b/Scripts/Assembly-CSharp/ProtectedItem.cs
+@@ -26,8 +26,8 @@ public abstract class ProtectedItem : ControllableUnit
+ 		GameObject gameObject = Object.Instantiate(original, base.Position, base.Rotation) as GameObject;
+ 		gameObject.name = base.Name;
+ 		SetObject(gameObject);
+-		animation = entityObject.animation;
+-		mHitCheckCollider = entityObject.transform.FindChild("collision").gameObject.collider;
++		animation = entityObject.GetComponent<Animation>();
++		mHitCheckCollider = entityObject.transform.Find("collision").gameObject.GetComponent<Collider>();
+ 		mShieldRecoveryStartTimer.SetTimer(5f, true);
+ 		StartInit();
+ 	}

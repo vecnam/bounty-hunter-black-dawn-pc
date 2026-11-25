@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  tags:
+  - Cover
+  - EnemySpawnPoint
+  - EnemySpawnTrigger
+  - ObjectPool
+  - Level
+  - Respawn
+  - Item
+  - BossSpawnPoint
+  - PlayerSpawnInBoss
+  - BossAssistTarget
+  - BossDefent
+  - PlayerSpawnTeam
+  - FirstStreamingVolume
+  - StreamingVolume
+  - Patrol
+  - EnemySpawnGroup
+  - SceneBlock
+  - CheckPoint
+  - ExplorItem
+  - Npc
+  - Portal
+  - GunFireEffect
+  - TraditionalSpawnPoint
+  - SkySpawnPoint
+  - Board
+  - "BossDoor\r"
+  - Gamble
+  - QuestEnemySpawn
+  - QuestEnemySpawnGroup
+  - Chest
+  - Multiplay
+  - BossPortal
+  - Tutorial
+  - BossPortalEffect
+  - BossStreamingVolume
+  - NGUI
+  - TeamRedRespawn
+  - TeamBlueRespawn
+  - TDMTargetPoint
+  - TMXElevator
+  - ShellSlime
+  - QualityEffect
+  - EquipmentUpgrade
+  - UpgradeMachine
+  - AmmoSystem
+  - 
+  Builtin Layer 0: Default
+  Builtin Layer 1: TransparentFX
+  Builtin Layer 2: Ignore Raycast
+  Builtin Layer 3:
+  Builtin Layer 4: Water
+  Builtin Layer 5:
+  Builtin Layer 6:
+  Builtin Layer 7:
+  User Layer 8: Player
+  User Layer 9: Wall
+  User Layer 10: Weapon
+  User Layer 11: Enemy
+  User Layer 12: Floor
+  User Layer 13: PlayerCollider
+  User Layer 14: Projectile
+  User Layer 15: DeadBody
+  User Layer 16: EnemyShot
+  User Layer 17: RemotePlayer
+  User Layer 18: Summoned
+  User Layer 19: EnemyHead
+  User Layer 20: Item
+  User Layer 21: GameUnit
+  User Layer 22: Sky
+  User Layer 23: Grenade
+  User Layer 24: Trigger
+  User Layer 25: FlyArea
+  User Layer 26: NPC
+  User Layer 27: UI
+  User Layer 28: HUD
+  User Layer 29: PopupUI
+  User Layer 30: TouchPickItem
+  User Layer 31: Slime

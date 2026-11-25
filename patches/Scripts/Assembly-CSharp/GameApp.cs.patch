@@ -1,0 +1,20 @@
+diff --git a/Scripts/Assembly-CSharp/GameApp.cs b/Scripts/Assembly-CSharp/GameApp.cs
+index ccf2cbb..dfef2ee 100644
+--- a/Scripts/Assembly-CSharp/GameApp.cs
++++ b/Scripts/Assembly-CSharp/GameApp.cs
+@@ -389,9 +389,13 @@ public class GameApp
+ 	private string GetRecPath()
+ 	{
+ 		string result = Application.dataPath + "/../../Documents/";
+-		if (Application.platform == RuntimePlatform.Android)
+-		{
++		if (Application.platform != RuntimePlatform.IPhonePlayer)
++		{ // PC: the iOS path "../../Documents" would land outside the game folder
+ 			result = Application.persistentDataPath + "/";
++			if (System.Array.IndexOf(System.Environment.GetCommandLineArgs(), "-pcport-shot") >= 0)
++			{
++				result += "pcport-test/"; // automated tests use a copy of the save (tools/unity.py), never the player's
++			}
+ 		}
+ 		return result;
+ 	}

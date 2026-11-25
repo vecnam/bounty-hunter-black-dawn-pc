@@ -1,0 +1,95 @@
+diff --git a/Scripts/Assembly-CSharp/SkillTreeButtonScript.cs b/Scripts/Assembly-CSharp/SkillTreeButtonScript.cs
+index a112af0..97ca754 100644
+--- a/Scripts/Assembly-CSharp/SkillTreeButtonScript.cs
++++ b/Scripts/Assembly-CSharp/SkillTreeButtonScript.cs
+@@ -38,10 +38,10 @@ public class SkillTreeButtonScript : UIGameMenuNormal, UIMsgListener
+ 	{
+ 		SelfImageButton = base.gameObject.GetComponent<UIImageButton>();
+ 		SelfImageButton.target.atlas = SkillTreeMgr.CharacterSkillIconAtlas;
+-		Transform transform = base.transform.FindChild("info");
++		Transform transform = base.transform.Find("info");
+ 		if (transform != null)
+ 		{
+-			Transform transform2 = transform.FindChild("LevelBackground");
++			Transform transform2 = transform.Find("LevelBackground");
+ 			if (transform2 != null && transform2.GetComponent<UISprite>() != null)
+ 			{
+ 				transform2.GetComponent<UISprite>().spriteName = "skillLV1";
+@@ -50,7 +50,7 @@ public class SkillTreeButtonScript : UIGameMenuNormal, UIMsgListener
+ 		}
+ 		if (!IsForSlot)
+ 		{
+-			Transform transform3 = base.transform.FindChild("Unlight");
++			Transform transform3 = base.transform.Find("Unlight");
+ 			if (transform3 != null && transform3.GetComponent<UISprite>() != null)
+ 			{
+ 				transform3.GetComponent<UISprite>().atlas = SkillTreeMgr.CharacterSkillIconAtlas;
+@@ -58,7 +58,7 @@ public class SkillTreeButtonScript : UIGameMenuNormal, UIMsgListener
+ 		}
+ 		if (Layer != -1)
+ 		{
+-			Transform transform4 = base.transform.FindChild("info");
++			Transform transform4 = base.transform.Find("info");
+ 			if (transform4 != null)
+ 			{
+ 				NGUITools.SetActive(transform4.gameObject, false);
+@@ -256,12 +256,12 @@ public class SkillTreeButtonScript : UIGameMenuNormal, UIMsgListener
+ 			{
+ 				if (!skillTreeManager.CanAddPoint(Layer))
+ 				{
+-					Transform transform = base.transform.FindChild("info");
++					Transform transform = base.transform.Find("info");
+ 					if (transform != null)
+ 					{
+ 						NGUITools.SetActive(transform.gameObject, false);
+ 					}
+-					Transform transform2 = base.transform.FindChild("Unlight");
++					Transform transform2 = base.transform.Find("Unlight");
+ 					if (transform2 != null)
+ 					{
+ 						NGUITools.SetActive(transform2.gameObject, true);
+@@ -297,7 +297,7 @@ public class SkillTreeButtonScript : UIGameMenuNormal, UIMsgListener
+ 				}
+ 				if (flag2 && flag3 && !flag4)
+ 				{
+-					Transform transform3 = base.transform.FindChild("Unlight");
++					Transform transform3 = base.transform.Find("Unlight");
+ 					if (transform3 != null)
+ 					{
+ 						transform3.gameObject.SetActive(false);
+@@ -306,7 +306,7 @@ public class SkillTreeButtonScript : UIGameMenuNormal, UIMsgListener
+ 				}
+ 				else
+ 				{
+-					Transform transform4 = base.transform.FindChild("Unlight");
++					Transform transform4 = base.transform.Find("Unlight");
+ 					if (transform4 != null)
+ 					{
+ 						NGUITools.SetActive(transform4.gameObject, true);
+@@ -347,7 +347,7 @@ public class SkillTreeButtonScript : UIGameMenuNormal, UIMsgListener
+ 			SelfImageButton.hoverSprite = empty;
+ 			SelfImageButton.pressedSprite = empty;
+ 			SelfImageButton.target.spriteName = empty;
+-			Transform transform = base.transform.FindChild("info");
++			Transform transform = base.transform.Find("info");
+ 			if (transform != null)
+ 			{
+ 				transform.gameObject.SetActive(true);
+@@ -356,7 +356,7 @@ public class SkillTreeButtonScript : UIGameMenuNormal, UIMsgListener
+ 		else
+ 		{
+ 			SelfImageButton.target.gameObject.SetActive(false);
+-			Transform transform2 = base.transform.FindChild("info");
++			Transform transform2 = base.transform.Find("info");
+ 			if (transform2 != null)
+ 			{
+ 				transform2.gameObject.SetActive(false);
+@@ -651,7 +651,7 @@ public class SkillTreeButtonScript : UIGameMenuNormal, UIMsgListener
+ 		}
+ 		if (flag || skillTreeManager.CanAddPoint(Layer))
+ 		{
+-			Transform transform = base.transform.FindChild("Unlight");
++			Transform transform = base.transform.Find("Unlight");
+ 			if (transform != null)
+ 			{
+ 				NGUITools.SetActive(transform.gameObject, false);

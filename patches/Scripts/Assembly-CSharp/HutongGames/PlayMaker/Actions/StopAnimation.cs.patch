@@ -1,0 +1,20 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/StopAnimation.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/StopAnimation.cs
+index 911b581..bdb11d5 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/StopAnimation.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/StopAnimation.cs
+@@ -31,13 +31,13 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (!(ownerDefaultTarget == null))
+ 			{
+-				if (ownerDefaultTarget.animation == null)
++				if (ownerDefaultTarget.GetComponent<Animation>() == null)
+ 				{
+ 					LogWarning("Missing animation component: " + ownerDefaultTarget.name);
+ 				}
+ 				else
+ 				{
+-					ownerDefaultTarget.animation.Stop(animName.Value);
++					ownerDefaultTarget.GetComponent<Animation>().Stop(animName.Value);
+ 				}
+ 			}
+ 		}

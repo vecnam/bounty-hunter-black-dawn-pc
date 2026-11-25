@@ -1,0 +1,53 @@
+diff --git a/Scripts/Assembly-CSharp/UILoading.cs b/Scripts/Assembly-CSharp/UILoading.cs
+index eb54839..5cbd89a 100644
+--- a/Scripts/Assembly-CSharp/UILoading.cs
++++ b/Scripts/Assembly-CSharp/UILoading.cs
+@@ -69,39 +69,39 @@ internal class UILoading : MonoBehaviour
+ 
+ 	private void PauseAnim(string name)
+ 	{
+-		m_loadAnim.animation[name].speed = 0f;
++		m_loadAnim.GetComponent<Animation>()[name].speed = 0f;
+ 	}
+ 
+ 	private void ResumeAnim(string name)
+ 	{
+-		m_loadAnim.animation[name].speed = 1f;
++		m_loadAnim.GetComponent<Animation>()[name].speed = 1f;
+ 	}
+ 
+ 	public void PlayAnimation(string name, WrapMode mode, float percent)
+ 	{
+-		if (!m_loadAnim.animation.IsPlaying(name) || mode != WrapMode.ClampForever)
++		if (!m_loadAnim.GetComponent<Animation>().IsPlaying(name) || mode != WrapMode.ClampForever)
+ 		{
+-			m_loadAnim.animation[name].wrapMode = mode;
+-			m_loadAnim.animation.CrossFade(name, 0.2f);
++			m_loadAnim.GetComponent<Animation>()[name].wrapMode = mode;
++			m_loadAnim.GetComponent<Animation>().CrossFade(name, 0.2f);
+ 			m_animPercent = percent;
+ 		}
+ 	}
+ 
+ 	public bool AnimationPlayed(string name, float percent)
+ 	{
+-		if (m_instance == null || m_loadAnim.animation[name] == null)
++		if (m_instance == null || m_loadAnim.GetComponent<Animation>()[name] == null)
+ 		{
+ 			return false;
+ 		}
+-		if (m_loadAnim.animation[name].speed >= 0f)
++		if (m_loadAnim.GetComponent<Animation>()[name].speed >= 0f)
+ 		{
+-			if (m_loadAnim.animation[name].time >= m_loadAnim.animation[name].clip.length * percent)
++			if (m_loadAnim.GetComponent<Animation>()[name].time >= m_loadAnim.GetComponent<Animation>()[name].clip.length * percent)
+ 			{
+ 				return true;
+ 			}
+ 			return false;
+ 		}
+-		if (m_loadAnim.animation[name].time <= m_loadAnim.animation[name].clip.length * (1f - percent))
++		if (m_loadAnim.GetComponent<Animation>()[name].time <= m_loadAnim.GetComponent<Animation>()[name].clip.length * (1f - percent))
+ 		{
+ 			return true;
+ 		}

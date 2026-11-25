@@ -1,0 +1,26 @@
+diff --git a/Scripts/Assembly-CSharp/FadeOutControl.cs b/Scripts/Assembly-CSharp/FadeOutControl.cs
+index 428a953..95f2ad8 100644
+--- a/Scripts/Assembly-CSharp/FadeOutControl.cs
++++ b/Scripts/Assembly-CSharp/FadeOutControl.cs
+@@ -28,8 +28,8 @@ public class FadeOutControl : MonoBehaviour
+ 		if (uIStateManager != null && !m_bInputController && ((InGameUIScript)uIStateManager).bInitCompleted() && TutorialManager.GetInstance().IsEffectsCameraNeedUse())
+ 		{
+ 			m_bInputController = true;
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = true;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = true;
+ 			HUDManager.instance.m_HotKeyManager.ForbidAll();
+ 			GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 				.InputController.Block = true;
+@@ -56,8 +56,8 @@ public class FadeOutControl : MonoBehaviour
+ 			base.gameObject.SetActive(false);
+ 			if (TutorialManager.GetInstance().IsEffectsCameraNeedUse())
+ 			{
+-				Transform transform2 = Camera.mainCamera.transform.Find("Npc_Collision");
+-				transform2.collider.enabled = false;
++				Transform transform2 = Camera.main.transform.Find("Npc_Collision");
++				transform2.GetComponent<Collider>().enabled = false;
+ 				HUDManager.instance.m_HotKeyManager.CancelFobid();
+ 				if (GameApp.GetInstance().GetGameWorld() != null)
+ 				{

@@ -1,0 +1,20 @@
+diff --git a/Scripts/Assembly-CSharp/UIRoom.cs b/Scripts/Assembly-CSharp/UIRoom.cs
+index b8e64db..cc2932b 100644
+--- a/Scripts/Assembly-CSharp/UIRoom.cs
++++ b/Scripts/Assembly-CSharp/UIRoom.cs
+@@ -52,13 +52,13 @@ public class UIRoom : MonoBehaviour
+ 
+ 	private void Awake()
+ 	{
+-		Transform transform = m_under.transform.FindChild("Background");
++		Transform transform = m_under.transform.Find("Background");
+ 		if (transform != null)
+ 		{
+ 			m_upperWidth = transform.localScale.x;
+ 			m_upperHeight = transform.localScale.y;
+ 		}
+-		m_boxCollider = base.gameObject.collider as BoxCollider;
++		m_boxCollider = base.gameObject.GetComponent<Collider>() as BoxCollider;
+ 	}
+ 
+ 	public void SetRoom(Room room, bool bRecommend)

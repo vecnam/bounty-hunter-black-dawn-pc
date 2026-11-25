@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/AudioManager.cs b/Scripts/Assembly-CSharp/AudioManager.cs
+index af52a95..31b1de3 100644
+--- a/Scripts/Assembly-CSharp/AudioManager.cs
++++ b/Scripts/Assembly-CSharp/AudioManager.cs
+@@ -34,7 +34,7 @@ public class AudioManager : MonoBehaviour
+ 
+ 	public static AudioManager GetInstance()
+ 	{
+-		return Camera.mainCamera.GetComponent<AudioManager>();
++		return Camera.main.GetComponent<AudioManager>();
+ 	}
+ 
+ 	public AudioClip LoadMusic(string name)

@@ -1,0 +1,20 @@
+diff --git a/Scripts/Assembly-CSharp/NGUIItemInformationScript.cs b/Scripts/Assembly-CSharp/NGUIItemInformationScript.cs
+index ecdd268..b254f37 100644
+--- a/Scripts/Assembly-CSharp/NGUIItemInformationScript.cs
++++ b/Scripts/Assembly-CSharp/NGUIItemInformationScript.cs
+@@ -1,3 +1,4 @@
++using UnityEngine;
+ using System;
+ 
+ public class NGUIItemInformationScript : NGUIBackPackObject, ItemPopMenuEventListener
+@@ -26,6 +27,10 @@ public class NGUIItemInformationScript : NGUIBackPackObject, ItemPopMenuEventLis
+ 
+ 	private void Update()
+ 	{
++		if (Input.GetKeyDown(KeyCode.E)) // PC: E picks up the item, like tapping the item window
++		{
++			OnClickWindow();
++		}
+ 		ItemBase nearestItem = UserStateHUD.GetInstance().NearestItem;
+ 		if (nearestItem != null && nearestItem.mNGUIBaseItem != lastNGUIBaseItem)
+ 		{

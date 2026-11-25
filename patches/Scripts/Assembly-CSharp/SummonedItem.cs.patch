@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/SummonedItem.cs b/Scripts/Assembly-CSharp/SummonedItem.cs
+index 69ab60d..24c953f 100644
+--- a/Scripts/Assembly-CSharp/SummonedItem.cs
++++ b/Scripts/Assembly-CSharp/SummonedItem.cs
+@@ -1,5 +1,6 @@
+ using System.Collections.Generic;
+ using UnityEngine;
++using UnityEngine.AI;
+ 
+ public abstract class SummonedItem : ControllableUnit
+ {
+@@ -60,8 +61,8 @@ public abstract class SummonedItem : ControllableUnit
+ 		GameObject gameObject = Object.Instantiate(original, base.Position, base.Rotation) as GameObject;
+ 		gameObject.name = base.Name;
+ 		SetObject(gameObject);
+-		animation = entityObject.animation;
+-		mHitCheckCollider = entityObject.transform.FindChild("collision").gameObject.collider;
++		animation = entityObject.GetComponent<Animation>();
++		mHitCheckCollider = entityObject.transform.Find("collision").gameObject.GetComponent<Collider>();
+ 		gameScene.AddSummoned(base.Name, this);
+ 		mShieldRecoveryStartTimer.SetTimer(5f, true);
+ 		StartInit();

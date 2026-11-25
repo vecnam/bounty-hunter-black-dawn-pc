@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/UIViewport.cs b/Scripts/Assembly-CSharp/UIViewport.cs
+index a57adec..28e23a2 100644
+--- a/Scripts/Assembly-CSharp/UIViewport.cs
++++ b/Scripts/Assembly-CSharp/UIViewport.cs
+@@ -17,7 +17,7 @@ public class UIViewport : MonoBehaviour
+ 
+ 	private void Start()
+ 	{
+-		mCam = base.camera;
++		mCam = base.GetComponent<Camera>();
+ 		if (sourceCamera == null)
+ 		{
+ 			sourceCamera = Camera.main;

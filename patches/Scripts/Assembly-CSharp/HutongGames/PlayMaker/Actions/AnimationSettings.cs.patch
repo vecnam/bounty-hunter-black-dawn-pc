@@ -1,0 +1,19 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AnimationSettings.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AnimationSettings.cs
+index 66737d9..5dd4cc3 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AnimationSettings.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AnimationSettings.cs
+@@ -52,12 +52,12 @@ namespace HutongGames.PlayMaker.Actions
+ 			{
+ 				return;
+ 			}
+-			if (ownerDefaultTarget.animation == null)
++			if (ownerDefaultTarget.GetComponent<Animation>() == null)
+ 			{
+ 				LogWarning("Missing animation component: " + ownerDefaultTarget.name);
+ 				return;
+ 			}
+-			AnimationState animationState = ownerDefaultTarget.animation[animName.Value];
++			AnimationState animationState = ownerDefaultTarget.GetComponent<Animation>()[animName.Value];
+ 			if (animationState == null)
+ 			{
+ 				LogWarning("Missing animation: " + animName.Value);

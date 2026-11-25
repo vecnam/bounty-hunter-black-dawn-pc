@@ -1,0 +1,15 @@
+diff --git a/Scripts/Assembly-CSharp/QuestInfoRec120.cs b/Scripts/Assembly-CSharp/QuestInfoRec120.cs
+index cdd049a..b90b57f 100644
+--- a/Scripts/Assembly-CSharp/QuestInfoRec120.cs
++++ b/Scripts/Assembly-CSharp/QuestInfoRec120.cs
+@@ -33,8 +33,8 @@ public class QuestInfoRec120 : ISubRecordset
+ 		{
+ 			QuestInfo.QuestLog questLog = new QuestInfo.QuestLog();
+ 			questLog.m_id = br.ReadInt16();
+-			questLog.m_accQuestDate = Convert.ToDateTime(br.ReadString());
+-			questLog.m_comQuestDate = Convert.ToDateTime(br.ReadString());
++			questLog.m_accQuestDate = PcPortCulture.ParseDate(br.ReadString());
++			questLog.m_comQuestDate = PcPortCulture.ParseDate(br.ReadString());
+ 			questLog.m_realSpendTime = br.ReadInt32();
+ 			questLog.m_deadCount = br.ReadInt16();
+ 			questLog.m_upload = br.ReadBoolean();

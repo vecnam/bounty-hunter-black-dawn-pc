@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddExplosionForce.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddExplosionForce.cs
+index 559863d..19dbce0 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddExplosionForce.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddExplosionForce.cs
+@@ -56,9 +56,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoAddExplosionForce()
+ 		{
+ 			GameObject gameObject = ((this.gameObject.OwnerOption != OwnerDefaultOption.UseOwner) ? this.gameObject.GameObject.Value : base.Owner);
+-			if (!(gameObject == null) && center != null && !(gameObject.rigidbody == null))
++			if (!(gameObject == null) && center != null && !(gameObject.GetComponent<Rigidbody>() == null))
+ 			{
+-				gameObject.rigidbody.AddExplosionForce(force.Value, center.Value, radius.Value, upwardsModifier.Value, forceMode);
++				gameObject.GetComponent<Rigidbody>().AddExplosionForce(force.Value, center.Value, radius.Value, upwardsModifier.Value, forceMode);
+ 			}
+ 		}
+ 	}

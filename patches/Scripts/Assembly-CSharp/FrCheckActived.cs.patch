@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/FrCheckActived.cs b/Scripts/Assembly-CSharp/FrCheckActived.cs
+index f593178..9a690a3 100644
+--- a/Scripts/Assembly-CSharp/FrCheckActived.cs
++++ b/Scripts/Assembly-CSharp/FrCheckActived.cs
+@@ -2,7 +2,7 @@ using HutongGames.PlayMaker;
+ using UnityEngine;
+ 
+ [ActionCategory("GameEvent")]
+-[Tooltip("Custion Action...")]
++[HutongGames.PlayMaker.Tooltip("Custion Action...")]
+ public class FrCheckActived : FsmStateAction
+ {
+ 	[RequiredField]

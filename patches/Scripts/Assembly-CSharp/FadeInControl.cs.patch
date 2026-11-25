@@ -1,0 +1,26 @@
+diff --git a/Scripts/Assembly-CSharp/FadeInControl.cs b/Scripts/Assembly-CSharp/FadeInControl.cs
+index 933e445..4202ad4 100644
+--- a/Scripts/Assembly-CSharp/FadeInControl.cs
++++ b/Scripts/Assembly-CSharp/FadeInControl.cs
+@@ -14,8 +14,8 @@ public class FadeInControl : MonoBehaviour
+ 	{
+ 		if (TutorialManager.GetInstance().IsFirstTutorialOk())
+ 		{
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = true;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = true;
+ 		}
+ 		HUDManager.instance.m_HotKeyManager.ForbidAll();
+ 		fadeIn.Show();
+@@ -30,8 +30,8 @@ public class FadeInControl : MonoBehaviour
+ 			blackScreen.SetActive(true);
+ 			if (TutorialManager.GetInstance().IsFirstTutorialOk())
+ 			{
+-				Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-				transform.collider.enabled = false;
++				Transform transform = Camera.main.transform.Find("Npc_Collision");
++				transform.GetComponent<Collider>().enabled = false;
+ 			}
+ 			HUDManager.instance.m_HotKeyManager.CancelFobid();
+ 			m_bRunning = false;

@@ -1,0 +1,12 @@
+diff --git a/Plugins/Assembly-CSharp-firstpass/SponsorPayPluginMonoBehaviour.cs b/Plugins/Assembly-CSharp-firstpass/SponsorPayPluginMonoBehaviour.cs
+index 5305474..ae6dbc3 100644
+--- a/Plugins/Assembly-CSharp-firstpass/SponsorPayPluginMonoBehaviour.cs
++++ b/Plugins/Assembly-CSharp-firstpass/SponsorPayPluginMonoBehaviour.cs
+@@ -7,6 +7,7 @@ public class SponsorPayPluginMonoBehaviour : MonoBehaviour
+ 
+ 	private void Awake()
+ 	{
++		if (Application.platform != RuntimePlatform.Android) return; // the Java plugin only exists on Android
+ 		MonoBehaviour.print("CallbackGameObjectName set to " + base.gameObject.name);
+ 		PluginInstance = new SponsorPayPlugin(base.gameObject.name);
+ 	}

@@ -1,0 +1,29 @@
+diff --git a/Scripts/Assembly-CSharp/ChestScript.cs b/Scripts/Assembly-CSharp/ChestScript.cs
+index 31eef76..90907dc 100644
+--- a/Scripts/Assembly-CSharp/ChestScript.cs
++++ b/Scripts/Assembly-CSharp/ChestScript.cs
+@@ -157,10 +157,10 @@ public class ChestScript : MonoBehaviour
+ 
+ 	private void PlayOpenAnimation(string name, WrapMode mode)
+ 	{
+-		if (!(base.gameObject.animation == null) && !(base.gameObject.animation[name] == null) && (!base.gameObject.animation.IsPlaying(name) || mode != WrapMode.ClampForever))
++		if (!(base.gameObject.GetComponent<Animation>() == null) && !(base.gameObject.GetComponent<Animation>()[name] == null) && (!base.gameObject.GetComponent<Animation>().IsPlaying(name) || mode != WrapMode.ClampForever))
+ 		{
+-			base.gameObject.animation[name].wrapMode = mode;
+-			base.gameObject.animation.Play(name);
++			base.gameObject.GetComponent<Animation>()[name].wrapMode = mode;
++			base.gameObject.GetComponent<Animation>().Play(name);
+ 		}
+ 	}
+ 
+@@ -471,8 +471,8 @@ public class ChestScript : MonoBehaviour
+ 				gameObject2 = UnityEngine.Object.Instantiate(gameObject) as GameObject;
+ 				gameObject2.transform.position = dropPosition;
+ 			}
+-			gameObject2.rigidbody.detectCollisions = true;
+-			gameObject2.rigidbody.AddForce(vector, ForceMode.Impulse);
++			gameObject2.GetComponent<Rigidbody>().detectCollisions = true;
++			gameObject2.GetComponent<Rigidbody>().AddForce(vector, ForceMode.Impulse);
+ 			byte itemNumber = 1;
+ 			if (itemType != 8 && itemType != 7 && itemType != 9)
+ 			{

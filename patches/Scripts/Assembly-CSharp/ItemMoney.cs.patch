@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/ItemMoney.cs b/Scripts/Assembly-CSharp/ItemMoney.cs
+index c1bff06..245f955 100644
+--- a/Scripts/Assembly-CSharp/ItemMoney.cs
++++ b/Scripts/Assembly-CSharp/ItemMoney.cs
+@@ -24,7 +24,7 @@ public class ItemMoney : ItemBase
+ 
+ 	protected override void OnTriggerEnter(Collider c)
+ 	{
+-		if (c.collider.gameObject.layer != PhysicsLayer.PLAYER_COLLIDER)
++		if (c.GetComponent<Collider>().gameObject.layer != PhysicsLayer.PLAYER_COLLIDER)
+ 		{
+ 			return;
+ 		}

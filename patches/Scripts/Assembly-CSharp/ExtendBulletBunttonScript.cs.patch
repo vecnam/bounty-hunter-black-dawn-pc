@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/ExtendBulletBunttonScript.cs b/Scripts/Assembly-CSharp/ExtendBulletBunttonScript.cs
+index 2194e6c..d7c169d 100644
+--- a/Scripts/Assembly-CSharp/ExtendBulletBunttonScript.cs
++++ b/Scripts/Assembly-CSharp/ExtendBulletBunttonScript.cs
+@@ -21,7 +21,7 @@ public class ExtendBulletBunttonScript : MonoBehaviour, UIMsgListener
+ 
+ 	private void Start()
+ 	{
+-		GameObject gameObject = BulletIcon.transform.parent.FindChild("Label").gameObject;
++		GameObject gameObject = BulletIcon.transform.parent.Find("Label").gameObject;
+ 		BulletLabelOriginScale = gameObject.transform.localScale;
+ 	}
+ 
+@@ -204,7 +204,7 @@ public class ExtendBulletBunttonScript : MonoBehaviour, UIMsgListener
+ 			tweenScale.to = BulletIcon.transform.localScale;
+ 			tweenScale.eventReceiver = base.gameObject;
+ 			tweenScale.callWhenFinished = addMaxBulletFunctionName;
+-			GameObject gameObject2 = gameObject.transform.parent.FindChild("Label").gameObject;
++			GameObject gameObject2 = gameObject.transform.parent.Find("Label").gameObject;
+ 			gameObject2.transform.localScale = BulletLabelOriginScale;
+ 			TweenScale tweenScale2 = TweenScale.Begin(gameObject2, num / 2f, gameObject2.transform.localScale * 1.5f);
+ 			tweenScale2.style = UITweener.Style.Once;

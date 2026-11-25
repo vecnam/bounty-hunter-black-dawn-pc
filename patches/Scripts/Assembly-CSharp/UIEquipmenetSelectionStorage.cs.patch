@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/UIEquipmenetSelectionStorage.cs b/Scripts/Assembly-CSharp/UIEquipmenetSelectionStorage.cs
+index 4214e80..1d71c36 100644
+--- a/Scripts/Assembly-CSharp/UIEquipmenetSelectionStorage.cs
++++ b/Scripts/Assembly-CSharp/UIEquipmenetSelectionStorage.cs
+@@ -76,7 +76,7 @@ public class UIEquipmenetSelectionStorage : NGUIStorage
+ 
+ 	public override void Refresh()
+ 	{
+-		int childCount = base.transform.GetChildCount();
++		int childCount = base.transform.childCount;
+ 		for (int i = 0; i < childCount; i++)
+ 		{
+ 			Object.Destroy(base.transform.GetChild(i).gameObject);

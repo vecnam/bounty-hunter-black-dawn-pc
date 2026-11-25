@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetCameraCullingMask.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetCameraCullingMask.cs
+index b198762..553278e 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetCameraCullingMask.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetCameraCullingMask.cs
+@@ -46,7 +46,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (!(ownerDefaultTarget == null))
+ 			{
+-				Camera camera = ownerDefaultTarget.camera;
++				Camera camera = ownerDefaultTarget.GetComponent<Camera>();
+ 				if (camera == null)
+ 				{
+ 					LogError("Missing Camera Component!");

@@ -1,0 +1,26 @@
+diff --git a/Scripts/Assembly-CSharp/TutorialReload.cs b/Scripts/Assembly-CSharp/TutorialReload.cs
+index 026869f..53502fe 100644
+--- a/Scripts/Assembly-CSharp/TutorialReload.cs
++++ b/Scripts/Assembly-CSharp/TutorialReload.cs
+@@ -12,8 +12,8 @@ public class TutorialReload : TutorialScript
+ 		if (HUDManager.instance != null)
+ 		{
+ 			HUDManager.instance.m_HotKeyManager.ForbidAllWithout(3);
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = true;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = true;
+ 			button = HUDManager.instance.m_HotKeyManager.m_SwapOrReload;
+ 			m_Sprite.spriteName = UserStateHUD.GetInstance().GetUserWeapons()[0];
+ 			m_Sprite.MakePixelPerfect();
+@@ -31,8 +31,8 @@ public class TutorialReload : TutorialScript
+ 		if (HUDManager.instance != null)
+ 		{
+ 			HUDManager.instance.m_HotKeyManager.CancelFobid();
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = false;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = false;
+ 		}
+ 	}
+ 

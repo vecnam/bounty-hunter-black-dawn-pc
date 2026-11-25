@@ -1,0 +1,55 @@
+diff --git a/Scripts/Assembly-CSharp/Enemy.cs b/Scripts/Assembly-CSharp/Enemy.cs
+index 33a5287..2916232 100644
+--- a/Scripts/Assembly-CSharp/Enemy.cs
++++ b/Scripts/Assembly-CSharp/Enemy.cs
+@@ -1,6 +1,7 @@
+ using System;
+ using System.Collections.Generic;
+ using UnityEngine;
++using UnityEngine.AI;
+ 
+ public abstract class Enemy : GameUnit
+ {
+@@ -887,16 +888,16 @@ public abstract class Enemy : GameUnit
+ 
+ 	protected virtual void InitRenders()
+ 	{
+-		GameObject gameObject = entityObject.transform.FindChild(GetBodyMeshName()).gameObject;
++		GameObject gameObject = entityObject.transform.Find(GetBodyMeshName()).gameObject;
+ 		if (null != gameObject)
+ 		{
+-			if ((IsEnemyElite() || NeedEliteImg()) && gameObject.renderer.materials.Length > 0 && gameObject.renderer.materials[0] != null)
++			if ((IsEnemyElite() || NeedEliteImg()) && gameObject.GetComponent<Renderer>().materials.Length > 0 && gameObject.GetComponent<Renderer>().materials[0] != null)
+ 			{
+-				gameObject.renderer.materials[0].mainTexture = GameApp.GetInstance().GetSceneStreaingManager().CloneTexture(AssetBundleName.ENEMY_TEXTURE[(int)EnemyType][0]);
++				gameObject.GetComponent<Renderer>().materials[0].mainTexture = GameApp.GetInstance().GetSceneStreaingManager().CloneTexture(AssetBundleName.ENEMY_TEXTURE[(int)EnemyType][0]);
+ 			}
+ 			if (!entityRenderers.ContainsKey("body"))
+ 			{
+-				entityRenderers.Add("body", gameObject.renderer);
++				entityRenderers.Add("body", gameObject.GetComponent<Renderer>());
+ 			}
+ 		}
+ 	}
+@@ -908,9 +909,9 @@ public abstract class Enemy : GameUnit
+ 		SetObject(GameApp.GetInstance().GetSceneStreaingManager().CloneGameObject(AssetBundleName.ENEMY[(int)EnemyType]));
+ 		entityObject.transform.position = SpawnPosition;
+ 		entityObject.name = base.Name;
+-		animation = entityObject.animation;
+-		rigidbody = entityObject.rigidbody;
+-		collider = entityObject.transform.collider;
++		animation = entityObject.GetComponent<Animation>();
++		rigidbody = entityObject.GetComponent<Rigidbody>();
++		collider = entityObject.transform.GetComponent<Collider>();
+ 		InitRenders();
+ 		if (mShadowPath != string.Empty)
+ 		{
+@@ -3118,7 +3119,7 @@ public abstract class Enemy : GameUnit
+ 		else if (isSpeedDownEffectAdded)
+ 		{
+ 			isSpeedDownEffectAdded = false;
+-			Transform transform = mBodyTransform.FindChild("RPG_SpeedDown(Clone)");
++			Transform transform = mBodyTransform.Find("RPG_SpeedDown(Clone)");
+ 			if (transform != null)
+ 			{
+ 				UnityEngine.Object.Destroy(transform.gameObject);

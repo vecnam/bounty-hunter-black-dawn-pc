@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/UseGravity.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/UseGravity.cs
+index 8e7b4ec..5cdfe1b 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/UseGravity.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/UseGravity.cs
+@@ -28,9 +28,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoUseGravity()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.rigidbody == null))
++			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.GetComponent<Rigidbody>() == null))
+ 			{
+-				ownerDefaultTarget.rigidbody.useGravity = useGravity.Value;
++				ownerDefaultTarget.GetComponent<Rigidbody>().useGravity = useGravity.Value;
+ 			}
+ 		}
+ 	}

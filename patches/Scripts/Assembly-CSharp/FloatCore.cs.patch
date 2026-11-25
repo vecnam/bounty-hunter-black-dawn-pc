@@ -1,0 +1,11 @@
+diff --git a/Scripts/Assembly-CSharp/FloatCore.cs b/Scripts/Assembly-CSharp/FloatCore.cs
+index db1321b..7d1a6bc 100644
+--- a/Scripts/Assembly-CSharp/FloatCore.cs
++++ b/Scripts/Assembly-CSharp/FloatCore.cs
+@@ -1,5 +1,6 @@
+ using System.Collections.Generic;
+ using UnityEngine;
++using UnityEngine.AI;
+ 
+ public class FloatCore : EnemyBoss
+ {

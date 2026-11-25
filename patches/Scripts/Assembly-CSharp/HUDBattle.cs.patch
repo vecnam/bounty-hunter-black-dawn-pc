@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HUDBattle.cs b/Scripts/Assembly-CSharp/HUDBattle.cs
+index 40f7734..cbf2507 100644
+--- a/Scripts/Assembly-CSharp/HUDBattle.cs
++++ b/Scripts/Assembly-CSharp/HUDBattle.cs
+@@ -205,9 +205,9 @@ public class HUDBattle : HUDTemplate, HotKeyListener
+ 
+ 	private Ray CreateRay()
+ 	{
+-		Camera mainCamera = Camera.mainCamera;
++		Camera mainCamera = Camera.main;
+ 		Transform transform = mainCamera.transform;
+-		FirstPersonCameraScript component = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++		FirstPersonCameraScript component = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 		Vector3 vector = mainCamera.ScreenToWorldPoint(new Vector3(component.ReticlePosition.x, (float)Screen.height - component.ReticlePosition.y, 0.1f));
+ 		Vector3 normalized = (vector - transform.position).normalized;
+ 		Ray result = new Ray(transform.position + 1.8f * normalized, normalized);

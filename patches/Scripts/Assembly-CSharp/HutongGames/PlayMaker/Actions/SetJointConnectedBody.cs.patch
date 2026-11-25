@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetJointConnectedBody.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetJointConnectedBody.cs
+index 7f5ef97..16f55e5 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetJointConnectedBody.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetJointConnectedBody.cs
+@@ -29,7 +29,7 @@ namespace HutongGames.PlayMaker.Actions
+ 				Joint component = ownerDefaultTarget.GetComponent<Joint>();
+ 				if (component != null)
+ 				{
+-					component.connectedBody = ((!(rigidBody.Value == null)) ? rigidBody.Value.rigidbody : null);
++					component.connectedBody = ((!(rigidBody.Value == null)) ? rigidBody.Value.GetComponent<Rigidbody>() : null);
+ 				}
+ 			}
+ 			Finish();

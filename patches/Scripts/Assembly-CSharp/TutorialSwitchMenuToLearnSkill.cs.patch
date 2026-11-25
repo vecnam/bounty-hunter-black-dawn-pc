@@ -1,0 +1,24 @@
+diff --git a/Scripts/Assembly-CSharp/TutorialSwitchMenuToLearnSkill.cs b/Scripts/Assembly-CSharp/TutorialSwitchMenuToLearnSkill.cs
+index 9eb3d71..a04bc3f 100644
+--- a/Scripts/Assembly-CSharp/TutorialSwitchMenuToLearnSkill.cs
++++ b/Scripts/Assembly-CSharp/TutorialSwitchMenuToLearnSkill.cs
+@@ -16,7 +16,8 @@ public class TutorialSwitchMenuToLearnSkill : TutorialScript, InGameMenuButtonLi
+ 		InGameMenuManager.GetInstance().Lock = true;
+ 		InGameMenu.instance.Lock(1, 2, 4, 5, 99);
+ 		StateBar.instance.Lock = true;
+-		NGUIBackPackUIScript.mInstance.SetBackPackLockState(true);
++		if (NGUIBackPackUIScript.mInstance != null)
++			NGUIBackPackUIScript.mInstance.SetBackPackLockState(true);
+ 		isMove = false;
+ 	}
+ 
+@@ -26,7 +27,8 @@ public class TutorialSwitchMenuToLearnSkill : TutorialScript, InGameMenuButtonLi
+ 		InGameMenuManager.GetInstance().Lock = false;
+ 		InGameMenu.instance.Unlock();
+ 		StateBar.instance.Lock = false;
+-		NGUIBackPackUIScript.mInstance.SetBackPackLockState(false);
++		if (NGUIBackPackUIScript.mInstance != null)
++			NGUIBackPackUIScript.mInstance.SetBackPackLockState(false);
+ 	}
+ 
+ 	protected override void OnTutorialUpdate()

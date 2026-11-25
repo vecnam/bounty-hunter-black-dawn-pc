@@ -1,0 +1,20 @@
+diff --git a/Scripts/Assembly-CSharp/FloatControler.cs b/Scripts/Assembly-CSharp/FloatControler.cs
+index efc1d71..7ae9103 100644
+--- a/Scripts/Assembly-CSharp/FloatControler.cs
++++ b/Scripts/Assembly-CSharp/FloatControler.cs
+@@ -1,5 +1,6 @@
+ using System.Collections.Generic;
+ using UnityEngine;
++using UnityEngine.AI;
+ 
+ public class FloatControler : EnemyBoss
+ {
+@@ -64,7 +65,7 @@ public class FloatControler : EnemyBoss
+ 	{
+ 		base.Activate();
+ 		animationObject = entityTransform.Find(BoneName.FloatCtrlAnimationObject).gameObject;
+-		animation = animationObject.animation;
++		animation = animationObject.GetComponent<Animation>();
+ 		m_readyChange = false;
+ 		m_finishChange = false;
+ 		mDeadEffect = false;

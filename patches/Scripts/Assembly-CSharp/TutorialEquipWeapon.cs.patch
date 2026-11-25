@@ -1,0 +1,23 @@
+diff --git a/Scripts/Assembly-CSharp/TutorialEquipWeapon.cs b/Scripts/Assembly-CSharp/TutorialEquipWeapon.cs
+index 7807bb7..0e49986 100644
+--- a/Scripts/Assembly-CSharp/TutorialEquipWeapon.cs
++++ b/Scripts/Assembly-CSharp/TutorialEquipWeapon.cs
+@@ -28,14 +28,16 @@ public class TutorialEquipWeapon : TutorialScript
+ 		isTakeShield = false;
+ 		InGameMenuManager.GetInstance().Lock = true;
+ 		StateBar.instance.Lock = true;
+-		NGUIBackPackUIScript.mInstance.SetBackPackLockState(true);
++		if (NGUIBackPackUIScript.mInstance != null) // save resumed mid-tutorial: the backpack has not been opened yet
++			NGUIBackPackUIScript.mInstance.SetBackPackLockState(true);
+ 	}
+ 
+ 	protected override void OnTutorialEnd()
+ 	{
+ 		InGameMenuManager.GetInstance().Lock = false;
+ 		StateBar.instance.Lock = false;
+-		NGUIBackPackUIScript.mInstance.SetBackPackLockState(false);
++		if (NGUIBackPackUIScript.mInstance != null)
++			NGUIBackPackUIScript.mInstance.SetBackPackLockState(false);
+ 	}
+ 
+ 	protected override void OnTutorialUpdate()

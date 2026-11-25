@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/TakeScreenshot.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/TakeScreenshot.cs
+index ae03dcd..b67af3b 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/TakeScreenshot.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/TakeScreenshot.cs
+@@ -37,7 +37,7 @@ namespace HutongGames.PlayMaker.Actions
+ 					path = text + filename.Value + screenshotCount + ".png";
+ 				}
+ 			}
+-			Application.CaptureScreenshot(path);
++			ScreenCapture.CaptureScreenshot(path);
+ 			Finish();
+ 		}
+ 	}

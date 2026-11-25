@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/HttpRequestThread.cs b/Scripts/Assembly-CSharp/HttpRequestThread.cs
+index 67fdb55..04121ae 100644
+--- a/Scripts/Assembly-CSharp/HttpRequestThread.cs
++++ b/Scripts/Assembly-CSharp/HttpRequestThread.cs
+@@ -39,7 +39,7 @@ public class HttpRequestThread
+ 	{
+ 		try
+ 		{
+-			string text = "http://174.36.196.91:8088/AdvertServer/GetAward";
++			string text = "http://127.0.0.1:1/AdvertServer/GetAward";
+ 			string uUID = GameApp.GetInstance().UUID;
+ 			string text2 = CryptMD5String("ag003:ad001:" + uUID + ":32E002C8AF2E870E5D989A3D89B49A0334CD3721");
+ 			string text3 = "appcode=ag003&adcode=ad001&udid=" + uUID + "&fhash=" + text2;
+@@ -74,7 +74,7 @@ public class HttpRequestThread
+ 		}
+ 		try
+ 		{
+-			string text6 = "http://174.36.196.91:8088/AdvertServer/GetAward";
++			string text6 = "http://127.0.0.1:1/AdvertServer/GetAward";
+ 			string uUID2 = GameApp.GetInstance().UUID;
+ 			string text7 = CryptMD5String("ag003:ad002:" + uUID2 + ":32E002C8AF2E870E5D989A3D89B49A0334CD3721");
+ 			string text8 = "appcode=ag003&adcode=ad002&udid=" + uUID2 + "&fhash=" + text7;

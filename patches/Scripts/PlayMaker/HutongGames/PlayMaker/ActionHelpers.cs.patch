@@ -1,0 +1,36 @@
+diff --git a/Scripts/PlayMaker/HutongGames/PlayMaker/ActionHelpers.cs b/Scripts/PlayMaker/HutongGames/PlayMaker/ActionHelpers.cs
+index 56c5dcc..27560b9 100644
+--- a/Scripts/PlayMaker/HutongGames/PlayMaker/ActionHelpers.cs
++++ b/Scripts/PlayMaker/HutongGames/PlayMaker/ActionHelpers.cs
+@@ -31,11 +31,11 @@ namespace HutongGames.PlayMaker
+ 
+ 		public static bool IsVisible(GameObject go)
+ 		{
+-			if (go == null || go.renderer == null)
++			if (go == null || go.GetComponent<Renderer>() == null)
+ 			{
+ 				return false;
+ 			}
+-			return go.renderer.isVisible;
++			return go.GetComponent<Renderer>().isVisible;
+ 		}
+ 
+ 		[Obsolete("Use LogError instead.")]
+@@ -230,7 +230,7 @@ namespace HutongGames.PlayMaker
+ 		public static string CheckOwnerPhysicsSetup(GameObject gameObject)
+ 		{
+ 			string text = string.Empty;
+-			if (gameObject != null && gameObject.collider == null && gameObject.rigidbody == null)
++			if (gameObject != null && gameObject.GetComponent<Collider>() == null && gameObject.GetComponent<Rigidbody>() == null)
+ 			{
+ 				text += "Owner requires a RigidBody or Collider!\n";
+ 			}
+@@ -240,7 +240,7 @@ namespace HutongGames.PlayMaker
+ 		public static string CheckPhysicsSetup(GameObject gameObject)
+ 		{
+ 			string text = string.Empty;
+-			if (gameObject != null && gameObject.collider == null && gameObject.rigidbody == null)
++			if (gameObject != null && gameObject.GetComponent<Collider>() == null && gameObject.GetComponent<Rigidbody>() == null)
+ 			{
+ 				text += "GameObject requires RigidBody/Collider!\n";
+ 			}

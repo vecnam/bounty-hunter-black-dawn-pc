@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/UIStretch.cs b/Scripts/Assembly-CSharp/UIStretch.cs
+index 2cbf910..d2decdd 100644
+--- a/Scripts/Assembly-CSharp/UIStretch.cs
++++ b/Scripts/Assembly-CSharp/UIStretch.cs
+@@ -37,7 +37,7 @@ public class UIStretch : MonoBehaviour
+ 
+ 	private void Awake()
+ 	{
+-		mAnim = base.animation;
++		mAnim = base.GetComponent<Animation>();
+ 		mRect = default(Rect);
+ 		mTrans = base.transform;
+ 	}

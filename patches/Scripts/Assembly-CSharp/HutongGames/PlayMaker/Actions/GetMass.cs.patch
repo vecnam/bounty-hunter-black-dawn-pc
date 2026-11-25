@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GetMass.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GetMass.cs
+index bac6cec..9ff78e4 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GetMass.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/GetMass.cs
+@@ -29,9 +29,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoGetMass()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.rigidbody == null))
++			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.GetComponent<Rigidbody>() == null))
+ 			{
+-				storeResult.Value = ownerDefaultTarget.rigidbody.mass;
++				storeResult.Value = ownerDefaultTarget.GetComponent<Rigidbody>().mass;
+ 			}
+ 		}
+ 	}

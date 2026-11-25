@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/UICamera.cs b/Scripts/Assembly-CSharp/UICamera.cs
+index 6b74489..627caa8 100644
+--- a/Scripts/Assembly-CSharp/UICamera.cs
++++ b/Scripts/Assembly-CSharp/UICamera.cs
+@@ -167,7 +167,7 @@ public class UICamera : MonoBehaviour
+ 		{
+ 			if (mCam == null)
+ 			{
+-				mCam = base.camera;
++				mCam = base.GetComponent<Camera>();
+ 			}
+ 			return mCam;
+ 		}

@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/RemotePlayer.cs b/Scripts/Assembly-CSharp/RemotePlayer.cs
+index 60bee04..f773938 100644
+--- a/Scripts/Assembly-CSharp/RemotePlayer.cs
++++ b/Scripts/Assembly-CSharp/RemotePlayer.cs
+@@ -80,7 +80,7 @@ public class RemotePlayer : Player
+ 	{
+ 		ClearWeaponList();
+ 		List<string> list = new List<string>();
+-		foreach (AnimationState item in animationObject.animation)
++		foreach (AnimationState item in animationObject.GetComponent<Animation>())
+ 		{
+ 			if (!(item.clip.name == "Take 001"))
+ 			{
+@@ -89,7 +89,7 @@ public class RemotePlayer : Player
+ 		}
+ 		foreach (string item2 in list)
+ 		{
+-			animationObject.animation.RemoveClip(item2);
++			animationObject.GetComponent<Animation>().RemoveClip(item2);
+ 		}
+ 		list.Clear();
+ 	}

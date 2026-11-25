@@ -1,0 +1,29 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetRandomMaterial.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetRandomMaterial.cs
+index 1d05e17..c84d992 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetRandomMaterial.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetRandomMaterial.cs
+@@ -36,19 +36,19 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (!(ownerDefaultTarget == null))
+ 			{
+-				if (ownerDefaultTarget.renderer == null)
++				if (ownerDefaultTarget.GetComponent<Renderer>() == null)
+ 				{
+ 					LogError("SetMaterial: Missing Renderer!");
+ 				}
+ 				else if (materialIndex.Value == 0)
+ 				{
+-					ownerDefaultTarget.renderer.material = materials[Random.Range(0, materials.Length)].Value;
++					ownerDefaultTarget.GetComponent<Renderer>().material = materials[Random.Range(0, materials.Length)].Value;
+ 				}
+-				else if (ownerDefaultTarget.renderer.materials.Length > materialIndex.Value)
++				else if (ownerDefaultTarget.GetComponent<Renderer>().materials.Length > materialIndex.Value)
+ 				{
+-					Material[] array = ownerDefaultTarget.renderer.materials;
++					Material[] array = ownerDefaultTarget.GetComponent<Renderer>().materials;
+ 					array[materialIndex.Value] = materials[Random.Range(0, materials.Length)].Value;
+-					ownerDefaultTarget.renderer.materials = array;
++					ownerDefaultTarget.GetComponent<Renderer>().materials = array;
+ 				}
+ 			}
+ 		}

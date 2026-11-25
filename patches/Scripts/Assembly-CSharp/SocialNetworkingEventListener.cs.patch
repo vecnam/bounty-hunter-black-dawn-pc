@@ -1,0 +1,20 @@
+diff --git a/Scripts/Assembly-CSharp/SocialNetworkingEventListener.cs b/Scripts/Assembly-CSharp/SocialNetworkingEventListener.cs
+index 35a87d1..df3dda5 100644
+--- a/Scripts/Assembly-CSharp/SocialNetworkingEventListener.cs
++++ b/Scripts/Assembly-CSharp/SocialNetworkingEventListener.cs
+@@ -18,13 +18,13 @@ public class SocialNetworkingEventListener : MonoBehaviour
+ 		string status = UIConstant.HEY + UIConstant.FULL_VERSION_URL;
+ 		if (!Lobby.GetInstance().IsPostingScoreToSocialNetwork)
+ 		{
+-			Application.CaptureScreenshot("tempscreens.png");
++			ScreenCapture.CaptureScreenshot("tempscreens.png");
+ 			string pathToImage = Application.persistentDataPath + "/tempscreens.png";
+ 			TwitterBinding.postStatusUpdate(status, pathToImage);
+ 		}
+ 		else
+ 		{
+-			Application.CaptureScreenshot("tempscreens.png");
++			ScreenCapture.CaptureScreenshot("tempscreens.png");
+ 			string pathToImage2 = Application.persistentDataPath + "/tempscreens.png";
+ 			TwitterBinding.postStatusUpdate(status, pathToImage2);
+ 		}

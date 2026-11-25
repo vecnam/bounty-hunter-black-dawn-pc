@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/RocketLauncher.cs b/Scripts/Assembly-CSharp/RocketLauncher.cs
+index 0607d48..fd666e0 100644
+--- a/Scripts/Assembly-CSharp/RocketLauncher.cs
++++ b/Scripts/Assembly-CSharp/RocketLauncher.cs
+@@ -77,9 +77,9 @@ public class RocketLauncher : Weapon
+ 		lastAttackTime = Time.time;
+ 		PlaySound();
+ 		CheckEnemySoundDetection();
+-		cameraComponent = Camera.mainCamera;
++		cameraComponent = Camera.main;
+ 		cameraTransform = cameraComponent.transform;
+-		gameCamera = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++		gameCamera = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 		GameApp.GetInstance().GetUserState().UseEnegy(enegyConsume);
+ 		if (aas != null)
+ 		{

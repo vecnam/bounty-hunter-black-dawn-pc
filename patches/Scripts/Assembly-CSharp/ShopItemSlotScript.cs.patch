@@ -1,0 +1,89 @@
+diff --git a/Scripts/Assembly-CSharp/ShopItemSlotScript.cs b/Scripts/Assembly-CSharp/ShopItemSlotScript.cs
+index 75145d2..6baf287 100644
+--- a/Scripts/Assembly-CSharp/ShopItemSlotScript.cs
++++ b/Scripts/Assembly-CSharp/ShopItemSlotScript.cs
+@@ -41,12 +41,12 @@ public class ShopItemSlotScript : MonoBehaviour, UIMsgListener
+ 		{
+ 			icon.gameObject.SetActive(false);
+ 			backgroundIcon.gameObject.SetActive(false);
+-			Transform transform = base.transform.FindChild("MithrilIcon");
++			Transform transform = base.transform.Find("MithrilIcon");
+ 			if (transform != null)
+ 			{
+ 				transform.gameObject.SetActive(false);
+ 			}
+-			Transform transform2 = base.transform.FindChild("MithrilOff");
++			Transform transform2 = base.transform.Find("MithrilOff");
+ 			if (transform2 != null)
+ 			{
+ 				transform2.gameObject.SetActive(false);
+@@ -73,18 +73,18 @@ public class ShopItemSlotScript : MonoBehaviour, UIMsgListener
+ 				GameObject original = Resources.Load("RPG_effect/RPG_UI_Orange001") as GameObject;
+ 				QualityEffectObject = Object.Instantiate(original) as GameObject;
+ 				QualityEffectObject.transform.parent = base.transform;
+-				QualityEffectObject.transform.localPosition = base.transform.FindChild("Background").localPosition + Vector3.forward * -100f;
+-				QualityEffectObject.transform.localScale = base.transform.FindChild("Background").localScale + new Vector3(7f, 7f, 7f);
++				QualityEffectObject.transform.localPosition = base.transform.Find("Background").localPosition + Vector3.forward * -100f;
++				QualityEffectObject.transform.localScale = base.transform.Find("Background").localScale + new Vector3(7f, 7f, 7f);
+ 			}
+ 			else if (ShopItem.baseItem.Quality == ItemQuality.Epic)
+ 			{
+ 				GameObject original2 = Resources.Load("RPG_effect/RPG_UI_Purple001") as GameObject;
+ 				QualityEffectObject = Object.Instantiate(original2) as GameObject;
+ 				QualityEffectObject.transform.parent = base.transform;
+-				QualityEffectObject.transform.localPosition = base.transform.FindChild("Background").localPosition + Vector3.forward * -100f;
+-				QualityEffectObject.transform.localScale = base.transform.FindChild("Background").localScale + new Vector3(5f, 5f, 5f);
++				QualityEffectObject.transform.localPosition = base.transform.Find("Background").localPosition + Vector3.forward * -100f;
++				QualityEffectObject.transform.localScale = base.transform.Find("Background").localScale + new Vector3(5f, 5f, 5f);
+ 			}
+-			if (QualityEffectObject != null && !base.collider.enabled)
++			if (QualityEffectObject != null && !base.GetComponent<Collider>().enabled)
+ 			{
+ 				QualityEffectObject.SetActive(false);
+ 			}
+@@ -153,7 +153,7 @@ public class ShopItemSlotScript : MonoBehaviour, UIMsgListener
+ 					break;
+ 				}
+ 				ShopItem = itemInfoData.Shop_BlackMarketList[ListID];
+-				Transform transform = base.transform.FindChild("MithrilIcon");
++				Transform transform = base.transform.Find("MithrilIcon");
+ 				if (transform != null)
+ 				{
+ 					if (ShopItem.baseItem.MithrilItem)
+@@ -165,7 +165,7 @@ public class ShopItemSlotScript : MonoBehaviour, UIMsgListener
+ 						transform.gameObject.SetActive(false);
+ 					}
+ 				}
+-				Transform transform2 = base.transform.FindChild("MithrilOff");
++				Transform transform2 = base.transform.Find("MithrilOff");
+ 				if (transform2 != null)
+ 				{
+ 					if (ShopItem.baseItem.MithrilItem && ShopItem.baseItem.MithrilOff > 0)
+@@ -521,11 +521,11 @@ public class ShopItemSlotScript : MonoBehaviour, UIMsgListener
+ 		if (base.transform.localPosition.x < 150f)
+ 		{
+ 			ShopUIScript.mInstance.Description.transform.localPosition = ShopUIScript.mInstance.DescriptionRightPoint.transform.localPosition;
+-			int childCount = ShopSellPageScript.mInstance.m_BackPack.transform.GetChildCount();
++			int childCount = ShopSellPageScript.mInstance.m_BackPack.transform.childCount;
+ 			for (int i = 0; i < childCount; i++)
+ 			{
+ 				Transform child = ShopSellPageScript.mInstance.m_BackPack.transform.GetChild(i);
+-				for (int j = 0; j < child.GetChildCount(); j++)
++				for (int j = 0; j < child.childCount; j++)
+ 				{
+ 					if (child.GetChild(j).tag == TagName.QUALITY_EFFECT)
+ 					{
+@@ -543,11 +543,11 @@ public class ShopItemSlotScript : MonoBehaviour, UIMsgListener
+ 			return;
+ 		}
+ 		ShopUIScript.mInstance.Description.transform.localPosition = ShopUIScript.mInstance.DescriptionLeftPoint.transform.localPosition;
+-		int childCount2 = ShopSellPageScript.mInstance.m_BackPack.transform.GetChildCount();
++		int childCount2 = ShopSellPageScript.mInstance.m_BackPack.transform.childCount;
+ 		for (int k = 0; k < childCount2; k++)
+ 		{
+ 			Transform child2 = ShopSellPageScript.mInstance.m_BackPack.transform.GetChild(k);
+-			for (int l = 0; l < child2.GetChildCount(); l++)
++			for (int l = 0; l < child2.childCount; l++)
+ 			{
+ 				if (child2.GetChild(l).tag == TagName.QUALITY_EFFECT)
+ 				{

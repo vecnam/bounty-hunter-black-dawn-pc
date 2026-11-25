@@ -1,0 +1,31 @@
+diff --git a/Scripts/Assembly-CSharp/Giant.cs b/Scripts/Assembly-CSharp/Giant.cs
+index 77484cd..a43835c 100644
+--- a/Scripts/Assembly-CSharp/Giant.cs
++++ b/Scripts/Assembly-CSharp/Giant.cs
+@@ -76,7 +76,7 @@ public class Giant : Enemy
+ 	public override void Activate()
+ 	{
+ 		base.Activate();
+-		Transform parent = entityObject.transform.FindChild(BoneName.GiantRightHandPoint);
++		Transform parent = entityObject.transform.Find(BoneName.GiantRightHandPoint);
+ 		GameObject original = Resources.Load("Enemy/gungun") as GameObject;
+ 		GameObject gameObject = Object.Instantiate(original) as GameObject;
+ 		gameObject.name = "gungun";
+@@ -104,7 +104,7 @@ public class Giant : Enemy
+ 		mFistAttackData.Damage = mMeleeAttackDamage2;
+ 		mFistAttackData.KnockedSpeed = 0f;
+ 		mGroundAttackData.Animation = AnimationString.GIANT_GROUND_ATTACK;
+-		mGroundAttackData.Trans = entityTransform.FindChild(BoneName.GiantRightHandHammer);
++		mGroundAttackData.Trans = entityTransform.Find(BoneName.GiantRightHandHammer);
+ 		mGroundAttackData.StartPercent = 0.26f;
+ 		mGroundAttackData.EndPercent = 0.73f;
+ 		mGroundAttackData.Range = mRangedExplosionRadius1;
+@@ -149,7 +149,7 @@ public class Giant : Enemy
+ 	protected override void ChangeShader()
+ 	{
+ 		base.ChangeShader();
+-		GameObject gameObject = entityObject.transform.FindChild(BoneName.GiantRightHandHammer).gameObject;
++		GameObject gameObject = entityObject.transform.Find(BoneName.GiantRightHandHammer).gameObject;
+ 		gameObject.SetActive(false);
+ 	}
+ 

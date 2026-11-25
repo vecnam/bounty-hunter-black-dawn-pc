@@ -1,0 +1,77 @@
+diff --git a/Scripts/Assembly-CSharp/FlyBagAnimationScript.cs b/Scripts/Assembly-CSharp/FlyBagAnimationScript.cs
+index 8fc6533..47738b9 100644
+--- a/Scripts/Assembly-CSharp/FlyBagAnimationScript.cs
++++ b/Scripts/Assembly-CSharp/FlyBagAnimationScript.cs
+@@ -12,11 +12,11 @@ public class FlyBagAnimationScript : MonoBehaviour
+ 
+ 	private void Start()
+ 	{
+-		base.animation["front"].wrapMode = WrapMode.Loop;
+-		base.animation["back"].wrapMode = WrapMode.Loop;
+-		base.animation["left"].wrapMode = WrapMode.Loop;
+-		base.animation["right"].wrapMode = WrapMode.Loop;
+-		base.animation["idle"].wrapMode = WrapMode.Loop;
++		base.GetComponent<Animation>()["front"].wrapMode = WrapMode.Loop;
++		base.GetComponent<Animation>()["back"].wrapMode = WrapMode.Loop;
++		base.GetComponent<Animation>()["left"].wrapMode = WrapMode.Loop;
++		base.GetComponent<Animation>()["right"].wrapMode = WrapMode.Loop;
++		base.GetComponent<Animation>()["idle"].wrapMode = WrapMode.Loop;
+ 		EnableFire();
+ 		enableFireTimer.SetTimer(1f, false);
+ 		disableFireTimer.SetTimer(30f, false);
+@@ -32,22 +32,22 @@ public class FlyBagAnimationScript : MonoBehaviour
+ 				switch (inputInfo.dir)
+ 				{
+ 				case MoveDirection.forward:
+-					base.animation.CrossFade("front", 1f);
++					base.GetComponent<Animation>().CrossFade("front", 1f);
+ 					break;
+ 				case MoveDirection.back:
+-					base.animation.CrossFade("back", 1f);
++					base.GetComponent<Animation>().CrossFade("back", 1f);
+ 					break;
+ 				case MoveDirection.left:
+-					base.animation.CrossFade("left", 1f);
++					base.GetComponent<Animation>().CrossFade("left", 1f);
+ 					break;
+ 				case MoveDirection.right:
+-					base.animation.CrossFade("right", 1f);
++					base.GetComponent<Animation>().CrossFade("right", 1f);
+ 					break;
+ 				}
+ 			}
+ 			else
+ 			{
+-				base.animation.CrossFade("idle", 1f);
++				base.GetComponent<Animation>().CrossFade("idle", 1f);
+ 			}
+ 		}
+ 		if (!enabledFire)
+@@ -67,19 +67,19 @@ public class FlyBagAnimationScript : MonoBehaviour
+ 
+ 	public void EnableFire()
+ 	{
+-		base.transform.GetChild(0).GetChild(0).particleEmitter.enabled = true;
+-		base.transform.GetChild(1).GetChild(0).particleEmitter.enabled = true;
+-		base.transform.GetChild(0).GetChild(0).renderer.enabled = true;
+-		base.transform.GetChild(1).GetChild(0).renderer.enabled = true;
++		base.transform.GetChild(0).GetChild(0).GetLegacyEmitter().enabled = true;
++		base.transform.GetChild(1).GetChild(0).GetLegacyEmitter().enabled = true;
++		base.transform.GetChild(0).GetChild(0).GetComponent<Renderer>().enabled = true;
++		base.transform.GetChild(1).GetChild(0).GetComponent<Renderer>().enabled = true;
+ 		enabledFire = true;
+ 	}
+ 
+ 	public void DisableFire()
+ 	{
+-		base.transform.GetChild(0).GetChild(0).particleEmitter.enabled = false;
+-		base.transform.GetChild(1).GetChild(0).particleEmitter.enabled = false;
+-		base.transform.GetChild(0).GetChild(0).renderer.enabled = false;
+-		base.transform.GetChild(1).GetChild(0).renderer.enabled = false;
++		base.transform.GetChild(0).GetChild(0).GetLegacyEmitter().enabled = false;
++		base.transform.GetChild(1).GetChild(0).GetLegacyEmitter().enabled = false;
++		base.transform.GetChild(0).GetChild(0).GetComponent<Renderer>().enabled = false;
++		base.transform.GetChild(1).GetChild(0).GetComponent<Renderer>().enabled = false;
+ 		enabledFire = false;
+ 	}
+ }

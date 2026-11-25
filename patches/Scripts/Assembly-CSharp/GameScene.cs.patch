@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/GameScene.cs b/Scripts/Assembly-CSharp/GameScene.cs
+index f3bbf01..e702e9d 100644
+--- a/Scripts/Assembly-CSharp/GameScene.cs
++++ b/Scripts/Assembly-CSharp/GameScene.cs
+@@ -139,7 +139,7 @@ public class GameScene
+ 		AutoLinkManager.LinkAll();
+ 		InitSpawnPoints();
+ 		InitCovers();
+-		fpcs = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++		fpcs = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 		fpcs.Init();
+ 		InitNpc();
+ 		State = GameState.Playing;

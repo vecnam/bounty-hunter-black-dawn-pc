@@ -1,0 +1,23 @@
+diff --git a/Scripts/Assembly-CSharp/Sword.cs b/Scripts/Assembly-CSharp/Sword.cs
+index dfe94a4..b30489d 100644
+--- a/Scripts/Assembly-CSharp/Sword.cs
++++ b/Scripts/Assembly-CSharp/Sword.cs
+@@ -32,15 +32,15 @@ public class Sword : Weapon
+ 	public override void Init(Player player)
+ 	{
+ 		gameScene = GameApp.GetInstance().GetGameScene();
+-		gameCamera = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
+-		cameraComponent = gameCamera.camera;
++		gameCamera = Camera.main.GetComponent<FirstPersonCameraScript>();
++		cameraComponent = gameCamera.GetComponent<Camera>();
+ 		cameraTransform = gameCamera.CameraTransform;
+ 		base.player = player;
+ 		hitForce = 0f;
+ 		weaponBoneTrans = player.GetTransform().Find(BoneName.Weapon);
+ 		CreateGun();
+ 		entityObject.transform.parent = weaponBoneTrans;
+-		shootAudio = entityObject.audio;
++		shootAudio = entityObject.GetComponent<AudioSource>();
+ 		if (shootAudio == null)
+ 		{
+ 		}

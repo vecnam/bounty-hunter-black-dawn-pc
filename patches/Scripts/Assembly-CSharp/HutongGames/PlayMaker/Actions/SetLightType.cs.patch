@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetLightType.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetLightType.cs
+index 3055dc1..3da5a57 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetLightType.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetLightType.cs
+@@ -29,7 +29,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (!(ownerDefaultTarget == null))
+ 			{
+-				Light light = ownerDefaultTarget.light;
++				Light light = ownerDefaultTarget.GetComponent<Light>();
+ 				if (light == null)
+ 				{
+ 					LogError("Missing Light Component!");

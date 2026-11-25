@@ -1,0 +1,15 @@
+diff --git a/Scripts/Assembly-CSharp/ThrowGrenadeSkillState.cs b/Scripts/Assembly-CSharp/ThrowGrenadeSkillState.cs
+index c7056e3..404f4a5 100644
+--- a/Scripts/Assembly-CSharp/ThrowGrenadeSkillState.cs
++++ b/Scripts/Assembly-CSharp/ThrowGrenadeSkillState.cs
+@@ -32,8 +32,8 @@ public class ThrowGrenadeSkillState : PlayerState
+ 			num *= skill.EffectValueX;
+ 			num += skill.EffectValueY;
+ 			Ray ray = default(Ray);
+-			FirstPersonCameraScript component = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
+-			Vector3 vector = component.camera.ScreenToWorldPoint(new Vector3(component.ReticlePosition.x, (float)Screen.height - component.ReticlePosition.y, 50f));
++			FirstPersonCameraScript component = Camera.main.GetComponent<FirstPersonCameraScript>();
++			Vector3 vector = component.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(component.ReticlePosition.x, (float)Screen.height - component.ReticlePosition.y, 50f));
+ 			Vector3 normalized = (vector - component.CameraTransform.position).normalized;
+ 			ray = new Ray(component.CameraTransform.position + normalized * 1.8f, normalized);
+ 			Vector3 vector2 = default(Vector3);

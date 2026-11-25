@@ -1,0 +1,37 @@
+diff --git a/Scripts/Assembly-CSharp/LaserRifle.cs b/Scripts/Assembly-CSharp/LaserRifle.cs
+index 71f02b4..6ee5b23 100644
+--- a/Scripts/Assembly-CSharp/LaserRifle.cs
++++ b/Scripts/Assembly-CSharp/LaserRifle.cs
+@@ -58,7 +58,7 @@ public class LaserRifle : Weapon
+ 	{
+ 		if (gunfireObj != null)
+ 		{
+-			gunfireObj.renderer.enabled = false;
++			gunfireObj.GetComponent<Renderer>().enabled = false;
+ 		}
+ 		if (firelineObjectPool != null)
+ 		{
+@@ -95,7 +95,7 @@ public class LaserRifle : Weapon
+ 			component.beginPos = gunfire.position;
+ 			component.endPos = gunfire.position + normalized * 100f;
+ 		}
+-		gunfireObj.renderer.enabled = true;
++		gunfireObj.GetComponent<Renderer>().enabled = true;
+ 	}
+ 
+ 	public override void Attack(float deltaTime)
+@@ -103,11 +103,11 @@ public class LaserRifle : Weapon
+ 		GameApp.GetInstance().GetUserState().UseEnegy(enegyConsume);
+ 		if (gunfire != null)
+ 		{
+-			gunfireObj.renderer.enabled = true;
++			gunfireObj.GetComponent<Renderer>().enabled = true;
+ 		}
+-		Camera mainCamera = Camera.mainCamera;
++		Camera mainCamera = Camera.main;
+ 		Transform transform = mainCamera.transform;
+-		FirstPersonCameraScript component = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++		FirstPersonCameraScript component = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 		Ray ray = default(Ray);
+ 		Vector3 vector = mainCamera.ScreenToWorldPoint(new Vector3(component.ReticlePosition.x, (float)Screen.height - component.ReticlePosition.y, 50f));
+ 		Vector3 normalized = (vector - transform.position).normalized;

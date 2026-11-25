@@ -1,0 +1,31 @@
+diff --git a/Scripts/Assembly-CSharp/AmmoTriggerScript.cs b/Scripts/Assembly-CSharp/AmmoTriggerScript.cs
+index f6e7fb3..f977097 100644
+--- a/Scripts/Assembly-CSharp/AmmoTriggerScript.cs
++++ b/Scripts/Assembly-CSharp/AmmoTriggerScript.cs
+@@ -14,14 +14,14 @@ public class AmmoTriggerScript : MonoBehaviour
+ 
+ 	private void OnTriggerStay(Collider c)
+ 	{
+-		if (c.collider.gameObject.layer != PhysicsLayer.PLAYER_COLLIDER || !m_timer.Ready())
++		if (c.GetComponent<Collider>().gameObject.layer != PhysicsLayer.PLAYER_COLLIDER || !m_timer.Ready())
+ 		{
+ 			return;
+ 		}
+ 		m_timer.Do();
+-		Camera mainCamera = Camera.mainCamera;
++		Camera mainCamera = Camera.main;
+ 		Transform transform = mainCamera.transform;
+-		FirstPersonCameraScript component = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++		FirstPersonCameraScript component = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 		if (!(component != null))
+ 		{
+ 			return;
+@@ -52,7 +52,7 @@ public class AmmoTriggerScript : MonoBehaviour
+ 
+ 	private void OnTriggerExit(Collider c)
+ 	{
+-		if (c.collider.gameObject.layer == PhysicsLayer.PLAYER_COLLIDER)
++		if (c.GetComponent<Collider>().gameObject.layer == PhysicsLayer.PLAYER_COLLIDER)
+ 		{
+ 			m_enter = false;
+ 			UserStateHUD.GetInstance().SetShowFillAllButton(false);

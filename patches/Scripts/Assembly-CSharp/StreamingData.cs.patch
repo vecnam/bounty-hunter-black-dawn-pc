@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/StreamingData.cs b/Scripts/Assembly-CSharp/StreamingData.cs
+index 2011e10..64fac13 100644
+--- a/Scripts/Assembly-CSharp/StreamingData.cs
++++ b/Scripts/Assembly-CSharp/StreamingData.cs
+@@ -6,7 +6,7 @@ public class StreamingData
+ 
+ 	public StreamingDataType mType;
+ 
+-	public AssetBundle mAssetBundle;
++	public PcPortBundle mAssetBundle;
+ 
+ 	public GameObject mGameObject;
+ 

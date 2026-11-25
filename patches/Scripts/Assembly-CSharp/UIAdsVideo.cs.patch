@@ -1,0 +1,24 @@
+diff --git a/Scripts/Assembly-CSharp/UIAdsVideo.cs b/Scripts/Assembly-CSharp/UIAdsVideo.cs
+index b30bf4b..b77e0cb 100644
+--- a/Scripts/Assembly-CSharp/UIAdsVideo.cs
++++ b/Scripts/Assembly-CSharp/UIAdsVideo.cs
+@@ -82,7 +82,9 @@ public class UIAdsVideo : UIGameMenu
+ 		}
+ 		else if (go.Equals(m_StarWarfare))
+ 		{
++#if UNITY_ANDROID || UNITY_IOS
+ 			Handheld.PlayFullScreenMovie("Trailer_StarWarfare.mp4", Color.black, FullScreenMovieControlMode.Hidden);
++#endif
+ 			AdsManager.GetInstance().WatchVideo(FreyrGame.StarWarfare);
+ 			lastGame = FreyrGame.StarWarfare;
+ 			lastTime = DateTime.Now;
+@@ -91,7 +93,9 @@ public class UIAdsVideo : UIGameMenu
+ 		}
+ 		else if (go.Equals(m_CallOfArena))
+ 		{
++#if UNITY_ANDROID || UNITY_IOS
+ 			Handheld.PlayFullScreenMovie("Trailer_CallOfArena.m4v", Color.black, FullScreenMovieControlMode.Hidden);
++#endif
+ 			AdsManager.GetInstance().WatchVideo(FreyrGame.CallOfArena);
+ 			lastGame = FreyrGame.CallOfArena;
+ 			lastTime = DateTime.Now;

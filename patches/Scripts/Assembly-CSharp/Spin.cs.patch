@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/Spin.cs b/Scripts/Assembly-CSharp/Spin.cs
+index 260a8a6..2346c94 100644
+--- a/Scripts/Assembly-CSharp/Spin.cs
++++ b/Scripts/Assembly-CSharp/Spin.cs
+@@ -12,7 +12,7 @@ public class Spin : MonoBehaviour
+ 	private void Start()
+ 	{
+ 		mTrans = base.transform;
+-		mRb = base.rigidbody;
++		mRb = base.GetComponent<Rigidbody>();
+ 	}
+ 
+ 	private void Update()

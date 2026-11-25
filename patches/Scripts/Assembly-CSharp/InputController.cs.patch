@@ -1,0 +1,77 @@
+diff --git a/Scripts/Assembly-CSharp/InputController.cs b/Scripts/Assembly-CSharp/InputController.cs
+index e40c6bf..804ea83 100644
+--- a/Scripts/Assembly-CSharp/InputController.cs
++++ b/Scripts/Assembly-CSharp/InputController.cs
+@@ -181,8 +181,6 @@ public class InputController
+ 
+ 	public void Process()
+ 	{
+-		Debug.Log("UserStateHUD.GetInstance().Joystick.TouchPos[i] : " + UserStateHUD.GetInstance().Joystick.Radius);
+-		Debug.Log("Response...." + bBlock);
+ 		if (bBlock)
+ 		{
+ 			cameraRotation = Vector2.zero;
+@@ -207,12 +205,13 @@ public class InputController
+ 			if (Input.GetButtonDown("Jump"))
+ 			{
+ 				inputInfo.jumpDown = true;
++				player.StartJump();
+ 			}
+ 			else
+ 			{
+ 				inputInfo.jumpDown = false;
+ 			}
+-			if (Input.GetButtonUp("BackPack") && SkillTreeUIScript.mInstance != null)
++			if (Input.GetButtonUp("BackPack") && !PcPortTutorial.Blocking() && SkillTreeUIScript.mInstance != null)
+ 			{
+ 				if (SkillTreeUIScript.mInstance.IsAlreadyOpen)
+ 				{
+@@ -243,23 +242,23 @@ public class InputController
+ 			{
+ 				InGameMenuManager.GetInstance().Show(0);
+ 			}
+-			if (Input.GetButtonDown("Map"))
++			if (Input.GetButtonDown("Map") && !PcPortTutorial.Blocking())
+ 			{
+ 				InGameMenuManager.GetInstance().Show(1);
+ 			}
+-			if (Input.GetButtonDown("Quest"))
++			if (Input.GetButtonDown("Quest") && !PcPortTutorial.Blocking())
+ 			{
+ 				InGameMenuManager.GetInstance().Show(2);
+ 			}
+-			if (Input.GetButtonDown("Achievement"))
++			if (Input.GetButtonDown("Achievement") && !PcPortTutorial.Blocking())
+ 			{
+ 				InGameMenuManager.GetInstance().Show(4);
+ 			}
+-			if (Input.GetButtonDown("Option"))
++			if (Input.GetButtonDown("Option") && !PcPortTutorial.Blocking())
+ 			{
+ 				InGameMenuManager.GetInstance().Show(5);
+ 			}
+-			if (Input.GetButtonDown("Skill"))
++			if (Input.GetButtonDown("Skill") && !PcPortTutorial.Blocking())
+ 			{
+ 				InGameMenuManager.GetInstance().Show(3);
+ 			}
+@@ -560,7 +559,7 @@ public class InputController
+ 				break;
+ 			}
+ 		}
+-		FirstPersonCameraScript component = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++		FirstPersonCameraScript component = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 		GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+ 			.GetTransform()
+ 			.Rotate(new Vector3(0f, 0f - component.WeaponAngleH, 0f));
+@@ -574,6 +573,10 @@ public class InputController
+ 		{
+ 			moveDirection = Vector3.zero;
+ 		}
++		else if (Input.GetKey(KeyCode.LeftShift) && !player.InAimState)
++		{
++			moveDirection *= 1.5f; // PC: Shift runs (the original has no running), except while aiming.
++		}
+ 		inputInfo.moveDirection = moveDirection;
+ 		if (flag)
+ 		{

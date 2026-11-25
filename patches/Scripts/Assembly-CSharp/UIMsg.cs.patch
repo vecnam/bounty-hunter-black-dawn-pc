@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/UIMsg.cs b/Scripts/Assembly-CSharp/UIMsg.cs
+index 66d98f4..9bd0f51 100644
+--- a/Scripts/Assembly-CSharp/UIMsg.cs
++++ b/Scripts/Assembly-CSharp/UIMsg.cs
+@@ -49,7 +49,7 @@ public class UIMsg : MonoBehaviour
+ 
+ 	private void Start()
+ 	{
+-		m_block = base.gameObject.collider as BoxCollider;
++		m_block = base.gameObject.GetComponent<Collider>() as BoxCollider;
+ 		m_block.size = new Vector3(Screen.width, Screen.height, 0f);
+ 	}
+ 

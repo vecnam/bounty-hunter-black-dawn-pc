@@ -1,0 +1,26 @@
+diff --git a/Scripts/Assembly-CSharp/TutorialChangeWeapon.cs b/Scripts/Assembly-CSharp/TutorialChangeWeapon.cs
+index 948a329..b98a421 100644
+--- a/Scripts/Assembly-CSharp/TutorialChangeWeapon.cs
++++ b/Scripts/Assembly-CSharp/TutorialChangeWeapon.cs
+@@ -13,8 +13,8 @@ public class TutorialChangeWeapon : TutorialScript
+ 		if (HUDManager.instance != null)
+ 		{
+ 			HUDManager.instance.m_HotKeyManager.ForbidAllWithout(3, 9);
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = true;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = true;
+ 		}
+ 		m_ChangeWeapon.SetActive(false);
+ 		startSlot = GameApp.GetInstance().GetGameWorld().GetLocalPlayer()
+@@ -59,8 +59,8 @@ public class TutorialChangeWeapon : TutorialScript
+ 		if (HUDManager.instance != null)
+ 		{
+ 			HUDManager.instance.m_HotKeyManager.CancelFobid();
+-			Transform transform = Camera.mainCamera.transform.Find("Npc_Collision");
+-			transform.collider.enabled = false;
++			Transform transform = Camera.main.transform.Find("Npc_Collision");
++			transform.GetComponent<Collider>().enabled = false;
+ 		}
+ 	}
+ 

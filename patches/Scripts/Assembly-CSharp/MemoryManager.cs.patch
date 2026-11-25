@@ -1,0 +1,38 @@
+diff --git a/Scripts/Assembly-CSharp/MemoryManager.cs b/Scripts/Assembly-CSharp/MemoryManager.cs
+index 509a254..7209e87 100644
+--- a/Scripts/Assembly-CSharp/MemoryManager.cs
++++ b/Scripts/Assembly-CSharp/MemoryManager.cs
+@@ -18,10 +18,14 @@ public class MemoryManager
+ 				continue;
+ 			}
+ 			list.Add(componentsInChildren[i].material);
++			if (IsExitString(componentsInChildren[i].material.name, MaterialNotToFree))
++			{
++				continue;
++			}
+ 			string[] textureNameInShader = TextureNameInShader;
+ 			foreach (string propertyName in textureNameInShader)
+ 			{
+-				if (!IsExitString(componentsInChildren[i].material.name, MaterialNotToFree) && componentsInChildren[i].material.HasProperty(propertyName))
++				if (componentsInChildren[i].material.HasProperty(propertyName))
+ 				{
+ 					Texture texture = componentsInChildren[i].material.GetTexture(propertyName);
+ 					Resources.UnloadAsset(texture);
+@@ -58,13 +62,12 @@ public class MemoryManager
+ 		FreeNGUI(obj, true);
+ 	}
+ 
++	// PC: the game unloaded (Resources.UnloadAsset) the atlases, textures and clips of every screen it closed. In Unity 6
++	// they do not come back when another screen uses them: a reopened menu lost its frame, background and close button
++	// (only the texts survived: their atlas is in MaterialNotToFree). Memory is not an issue on PC, so just destroy;
++	// anything left unused goes away in the Resources.UnloadUnusedAssets of the next scene change.
+ 	public static void FreeNGUI(GameObject obj, bool freeAnimation)
+ 	{
+-		FreeTextureForNGUI(obj);
+-		if (freeAnimation)
+-		{
+-			FreeAnimation(obj);
+-		}
+ 		Object.Destroy(obj);
+ 	}
+ 

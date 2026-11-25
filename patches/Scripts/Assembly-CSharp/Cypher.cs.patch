@@ -1,0 +1,20 @@
+diff --git a/Scripts/Assembly-CSharp/Cypher.cs b/Scripts/Assembly-CSharp/Cypher.cs
+index 5598f85..6f8efbd 100644
+--- a/Scripts/Assembly-CSharp/Cypher.cs
++++ b/Scripts/Assembly-CSharp/Cypher.cs
+@@ -1,5 +1,6 @@
+ using System.Collections.Generic;
+ using UnityEngine;
++using UnityEngine.AI;
+ 
+ public class Cypher : Enemy
+ {
+@@ -154,7 +155,7 @@ public class Cypher : Enemy
+ 	{
+ 		base.Activate();
+ 		animationObject = entityTransform.Find(BoneName.CypherAnimationObject).gameObject;
+-		animation = animationObject.animation;
++		animation = animationObject.GetComponent<Animation>();
+ 		animation[AnimationString.CYPHER_FIRE].speed = GetFireSpeedCoefficent() * mFireAnimationLength / 30f / mRangedOneShotTime1;
+ 		animation[AnimationString.CYPHER_CANNON].speed = GetFireSpeedCoefficent() * mCannonAnimationLength / 30f / mRangedOneShotTime2;
+ 		GameObject original = Resources.Load("RPG_effect/RPG_Cypher_Fire_001") as GameObject;

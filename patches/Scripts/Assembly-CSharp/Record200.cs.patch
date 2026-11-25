@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/Record200.cs b/Scripts/Assembly-CSharp/Record200.cs
+index 921a8a0..16990fe 100644
+--- a/Scripts/Assembly-CSharp/Record200.cs
++++ b/Scripts/Assembly-CSharp/Record200.cs
+@@ -64,7 +64,7 @@ public class Record200 : IRecordset
+ 		string currRole = br.ReadString();
+ 		int lastCharacterIndex = br.ReadInt32();
+ 		string s = br.ReadString();
+-		DateTime lastLocalNotificationTime = DateTime.Parse(s);
++		DateTime lastLocalNotificationTime = PcPortCulture.ParseDate(s);
+ 		byte b = br.ReadByte();
+ 		List<RoleStateInfo> list = new List<RoleStateInfo>();
+ 		for (int i = 0; i < b; i++)

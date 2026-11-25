@@ -1,0 +1,94 @@
+diff --git a/Scripts/Assembly-CSharp/AvatarBuilder.cs b/Scripts/Assembly-CSharp/AvatarBuilder.cs
+index bfbe50d..1c2d928 100644
+--- a/Scripts/Assembly-CSharp/AvatarBuilder.cs
++++ b/Scripts/Assembly-CSharp/AvatarBuilder.cs
+@@ -49,8 +49,8 @@ internal class AvatarBuilder
+ 	{
+ 		GameObject original = Resources.Load(path + name) as GameObject;
+ 		GameObject gameObject = Object.Instantiate(original) as GameObject;
+-		playerObject.animation.AddClip(gameObject.animation[name].clip, name);
+-		playerObject.animation.Play(name);
++		playerObject.GetComponent<Animation>().AddClip(gameObject.GetComponent<Animation>()[name].clip, name);
++		playerObject.GetComponent<Animation>().Play(name);
+ 		Object.Destroy(gameObject);
+ 	}
+ 
+@@ -318,10 +318,10 @@ internal class AvatarBuilder
+ 		for (int i = 0; i < list.Count; i++)
+ 		{
+ 		}
+-		SkinnedMeshRenderer component2 = gameObject2.transform.FindChild("body").GetComponent<SkinnedMeshRenderer>();
+-		SkinnedMeshRenderer component3 = gameObject3.transform.FindChild("head").GetComponent<SkinnedMeshRenderer>();
+-		SkinnedMeshRenderer component4 = gameObject4.transform.FindChild("hand").GetComponent<SkinnedMeshRenderer>();
+-		SkinnedMeshRenderer component5 = gameObject5.transform.FindChild("foot").GetComponent<SkinnedMeshRenderer>();
++		SkinnedMeshRenderer component2 = gameObject2.transform.Find("body").GetComponent<SkinnedMeshRenderer>();
++		SkinnedMeshRenderer component3 = gameObject3.transform.Find("head").GetComponent<SkinnedMeshRenderer>();
++		SkinnedMeshRenderer component4 = gameObject4.transform.Find("hand").GetComponent<SkinnedMeshRenderer>();
++		SkinnedMeshRenderer component5 = gameObject5.transform.Find("foot").GetComponent<SkinnedMeshRenderer>();
+ 		BindBones(component2, list, gameObject);
+ 		BindBones(component3, list, gameObject);
+ 		BindBones(component4, list, gameObject);
+@@ -330,19 +330,19 @@ internal class AvatarBuilder
+ 		component3.enabled = false;
+ 		component4.enabled = false;
+ 		component5.enabled = false;
+-		gameObject6.transform.position = gameObject.transform.FindChild(BoneName.Bag).position;
++		gameObject6.transform.position = gameObject.transform.Find(BoneName.Bag).position;
+ 		if (array[1] == 5)
+ 		{
+-			gameObject6.transform.position = gameObject.transform.FindChild(BoneName.Bag).position + Vector3.forward * -0.05f + Vector3.up * 0.03f;
++			gameObject6.transform.position = gameObject.transform.Find(BoneName.Bag).position + Vector3.forward * -0.05f + Vector3.up * 0.03f;
+ 		}
+-		gameObject6.transform.parent = gameObject.transform.FindChild(BoneName.Bag);
++		gameObject6.transform.parent = gameObject.transform.Find(BoneName.Bag);
+ 		gameObject6.name = "Bag";
+ 		Object.Destroy(gameObject2);
+ 		Object.Destroy(gameObject3);
+ 		Object.Destroy(gameObject4);
+ 		Object.Destroy(gameObject5);
+ 		gameObject.transform.position = new Vector3(4f, 0f, -5f);
+-		gameObject.animation.Play(AnimationString.Idle + "_rifle");
++		gameObject.GetComponent<Animation>().Play(AnimationString.Idle + "_rifle");
+ 		return gameObject;
+ 	}
+ 
+@@ -476,7 +476,7 @@ internal class AvatarBuilder
+ 		gameObject2.transform.localPosition = Vector3.zero;
+ 		gameObject2.transform.localRotation = Quaternion.Euler(Vector3.zero);
+ 		gameObject2.transform.localScale = num * Vector3.one;
+-		GameObject gameObject3 = gameObject.transform.FindChild("Entity").gameObject;
++		GameObject gameObject3 = gameObject.transform.Find("Entity").gameObject;
+ 		AddAnimationsForUI(gameObject3, path, weaponType);
+ 		return gameObject;
+ 	}
+@@ -534,7 +534,7 @@ internal class AvatarBuilder
+ 			gameObject.transform.localScale = Vector3.one;
+ 			break;
+ 		}
+-		GameObject gameObject2 = player.transform.FindChild("Entity").gameObject;
++		GameObject gameObject2 = player.transform.Find("Entity").gameObject;
+ 		AddAnimationsForUI(gameObject2, path, roleState.weaponType);
+ 		return player;
+ 	}
+@@ -552,9 +552,9 @@ internal class AvatarBuilder
+ 		}
+ 		gameObject = RefreshAvatarWeapon(gameObject, roleState, enableLight);
+ 		ChangeDecorations(gameObject, roleState);
+-		GameObject gameObject2 = gameObject.transform.FindChild("Entity").gameObject;
+-		gameObject2.animation.wrapMode = WrapMode.Loop;
+-		gameObject2.animation.Play(roleState.GetUIIdleAnimation());
++		GameObject gameObject2 = gameObject.transform.Find("Entity").gameObject;
++		gameObject2.GetComponent<Animation>().wrapMode = WrapMode.Loop;
++		gameObject2.GetComponent<Animation>().Play(roleState.GetUIIdleAnimation());
+ 		Object.Destroy(gameObject.GetComponent<CharacterController>());
+ 		Object.Destroy(gameObject2.GetComponent<CharacterController>());
+ 		return gameObject;
+@@ -577,7 +577,7 @@ internal class AvatarBuilder
+ 		Transform[] array = componentsInChildren;
+ 		foreach (Transform transform in array)
+ 		{
+-			transform.gameObject.layer = LayerMask.NameToLayer(layer);
++			transform.gameObject.layer = PcPortLayer.NameToLayer(layer);
+ 		}
+ 		return gameObject;
+ 	}

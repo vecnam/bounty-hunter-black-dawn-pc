@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/UIPanel.cs b/Scripts/Assembly-CSharp/UIPanel.cs
+index 4805722..1268d42 100644
+--- a/Scripts/Assembly-CSharp/UIPanel.cs
++++ b/Scripts/Assembly-CSharp/UIPanel.cs
+@@ -709,7 +709,7 @@ public class UIPanel : MonoBehaviour
+ 			vector.w = (float)Screen.height * 0.5f;
+ 		}
+ 		RuntimePlatform platform = Application.platform;
+-		if (platform == RuntimePlatform.WindowsPlayer || platform == RuntimePlatform.WindowsWebPlayer || platform == RuntimePlatform.WindowsEditor)
++		if ((platform == RuntimePlatform.WindowsPlayer || platform == RuntimePlatform.WindowsEditor) && SystemInfo.graphicsShaderLevel < 40)
+ 		{
+ 			vector.x -= 0.5f;
+ 			vector.y += 0.5f;

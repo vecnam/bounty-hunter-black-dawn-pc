@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/CreateObject.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/CreateObject.cs
+index 9e7fa9e..f481029 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/CreateObject.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/CreateObject.cs
+@@ -73,7 +73,7 @@ namespace HutongGames.PlayMaker.Actions
+ 						euler = rotation.Value;
+ 					}
+ 				}
+-				GameObject value2 = (networkInstantiate.Value ? ((GameObject)Network.Instantiate(value, vector, Quaternion.Euler(euler), networkGroup.Value)) : ((GameObject)Object.Instantiate(value, vector, Quaternion.Euler(euler))));
++				GameObject value2 = (GameObject)Object.Instantiate(value, vector, Quaternion.Euler(euler)); // legacy networking removed: networkInstantiate is ignored
+ 				storeObject.Value = value2;
+ 			}
+ 			Finish();

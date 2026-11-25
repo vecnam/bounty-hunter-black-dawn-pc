@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/TerminatorGrenadeScript.cs b/Scripts/Assembly-CSharp/TerminatorGrenadeScript.cs
+index 99cf759..d3ef9ad 100644
+--- a/Scripts/Assembly-CSharp/TerminatorGrenadeScript.cs
++++ b/Scripts/Assembly-CSharp/TerminatorGrenadeScript.cs
+@@ -31,7 +31,7 @@ public class TerminatorGrenadeScript : MonoBehaviour
+ 		createdTime = Time.time;
+ 		collisionEnabled = false;
+ 		flashEnabled = false;
+-		base.rigidbody.AddForce(dir * forceValue, ForceMode.Impulse);
++		base.GetComponent<Rigidbody>().AddForce(dir * forceValue, ForceMode.Impulse);
+ 	}
+ 
+ 	public void Update()
+@@ -40,7 +40,7 @@ public class TerminatorGrenadeScript : MonoBehaviour
+ 		if (!collisionEnabled && num > enableCollisionTime)
+ 		{
+ 			collisionEnabled = true;
+-			base.collider.enabled = true;
++			base.GetComponent<Collider>().enabled = true;
+ 		}
+ 		if (num > explodeTime)
+ 		{

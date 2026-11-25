@@ -1,0 +1,28 @@
+diff --git a/Scripts/Assembly-CSharp/NGUIUseItemButtonScript.cs b/Scripts/Assembly-CSharp/NGUIUseItemButtonScript.cs
+index d272748..0ea0f7c 100644
+--- a/Scripts/Assembly-CSharp/NGUIUseItemButtonScript.cs
++++ b/Scripts/Assembly-CSharp/NGUIUseItemButtonScript.cs
+@@ -4,9 +4,9 @@ public class NGUIUseItemButtonScript : NGUIBackPackObject
+ 	{
+ 		if (NGUIItemSlot.mSelectedSlot != null && NGUIItemSlot.mSelectedSlot.IsUsableItem())
+ 		{
+-			if (!base.collider.enabled)
++			if (!base.GetComponent<UnityEngine.Collider>().enabled)
+ 			{
+-				base.collider.enabled = true;
++				base.GetComponent<UnityEngine.Collider>().enabled = true;
+ 				UIImageButton[] components = base.gameObject.GetComponents<UIImageButton>();
+ 				UIImageButton[] array = components;
+ 				foreach (UIImageButton uIImageButton in array)
+@@ -15,9 +15,9 @@ public class NGUIUseItemButtonScript : NGUIBackPackObject
+ 				}
+ 			}
+ 		}
+-		else if (base.collider.enabled)
++		else if (base.GetComponent<UnityEngine.Collider>().enabled)
+ 		{
+-			base.collider.enabled = false;
++			base.GetComponent<UnityEngine.Collider>().enabled = false;
+ 			UIImageButton[] components2 = base.gameObject.GetComponents<UIImageButton>();
+ 			UIImageButton[] array2 = components2;
+ 			foreach (UIImageButton uIImageButton2 in array2)

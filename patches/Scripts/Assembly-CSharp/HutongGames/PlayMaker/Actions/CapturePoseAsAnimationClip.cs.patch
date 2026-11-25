@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/CapturePoseAsAnimationClip.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/CapturePoseAsAnimationClip.cs
+index f9c3aec..619c1db 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/CapturePoseAsAnimationClip.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/CapturePoseAsAnimationClip.cs
+@@ -44,7 +44,7 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoCaptureAnimationClip()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (ownerDefaultTarget == null || ownerDefaultTarget.animation == null)
++			if (ownerDefaultTarget == null || ownerDefaultTarget.GetComponent<Animation>() == null)
+ 			{
+ 				return;
+ 			}

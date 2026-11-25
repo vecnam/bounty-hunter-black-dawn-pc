@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetLightCookie.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetLightCookie.cs
+index b79d375..80ae9e1 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetLightCookie.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetLightCookie.cs
+@@ -29,7 +29,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (!(ownerDefaultTarget == null))
+ 			{
+-				Light light = ownerDefaultTarget.light;
++				Light light = ownerDefaultTarget.GetComponent<Light>();
+ 				if (light == null)
+ 				{
+ 					LogError("Missing Light Component!");

@@ -1,0 +1,49 @@
+diff --git a/Scripts/Assembly-CSharp/AimAssistController.cs b/Scripts/Assembly-CSharp/AimAssistController.cs
+index 26199bb..c5e881e 100644
+--- a/Scripts/Assembly-CSharp/AimAssistController.cs
++++ b/Scripts/Assembly-CSharp/AimAssistController.cs
+@@ -86,26 +86,26 @@ public class AimAssistController
+ 
+ 		private EnemyState PosProcess(EnemyState target)
+ 		{
+-			if (Camera.mainCamera == null)
++			if (Camera.main == null)
+ 			{
+ 				return target;
+ 			}
+-			Vector3 vector = Camera.mainCamera.transform.eulerAngles;
++			Vector3 vector = Camera.main.transform.eulerAngles;
+ 			Vector3 zero = Vector3.zero;
+ 			Vector3 zero2 = Vector3.zero;
+ 			if (target.isHead)
+ 			{
+-				zero = Camera.mainCamera.WorldToScreenPoint(target.enemy.GetHeadPosition()) - new Vector3(Screen.width / 2, Screen.height / 2);
+-				Camera.mainCamera.transform.LookAt(target.enemy.GetHeadPosition());
+-				zero2 = Camera.mainCamera.transform.eulerAngles;
++				zero = Camera.main.WorldToScreenPoint(target.enemy.GetHeadPosition()) - new Vector3(Screen.width / 2, Screen.height / 2);
++				Camera.main.transform.LookAt(target.enemy.GetHeadPosition());
++				zero2 = Camera.main.transform.eulerAngles;
+ 			}
+ 			else
+ 			{
+-				zero = Camera.mainCamera.WorldToScreenPoint(target.enemy.GetBodyPosition()) - new Vector3(Screen.width / 2, Screen.height / 2);
+-				Camera.mainCamera.transform.LookAt(target.enemy.GetBodyPosition());
+-				zero2 = Camera.mainCamera.transform.eulerAngles;
++				zero = Camera.main.WorldToScreenPoint(target.enemy.GetBodyPosition()) - new Vector3(Screen.width / 2, Screen.height / 2);
++				Camera.main.transform.LookAt(target.enemy.GetBodyPosition());
++				zero2 = Camera.main.transform.eulerAngles;
+ 			}
+-			Camera.mainCamera.transform.eulerAngles = vector;
++			Camera.main.transform.eulerAngles = vector;
+ 			if (Mathf.Abs(zero2.x - vector.x) > 180f)
+ 			{
+ 				if (vector.x > 180f)
+@@ -236,7 +236,7 @@ public class AimAssistController
+ 
+ 		private EnemyState GetTarget(float radius)
+ 		{
+-			Camera mainCamera = Camera.mainCamera;
++			Camera mainCamera = Camera.main;
+ 			Dictionary<string, Enemy> enemies = GameApp.GetInstance().GetGameScene().GetEnemies();
+ 			List<EnemyState> list = new List<EnemyState>();
+ 			foreach (KeyValuePair<string, Enemy> item in enemies)

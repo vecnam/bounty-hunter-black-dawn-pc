@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/IsKinematic.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/IsKinematic.cs
+index 068b633..9a25351 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/IsKinematic.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/IsKinematic.cs
+@@ -45,9 +45,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoIsKinematic()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.rigidbody == null))
++			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.GetComponent<Rigidbody>() == null))
+ 			{
+-				bool isKinematic = ownerDefaultTarget.rigidbody.isKinematic;
++				bool isKinematic = ownerDefaultTarget.GetComponent<Rigidbody>().isKinematic;
+ 				store.Value = isKinematic;
+ 				base.Fsm.Event((!isKinematic) ? falseEvent : trueEvent);
+ 			}

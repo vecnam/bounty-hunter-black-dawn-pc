@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/FrSaveState.cs b/Scripts/Assembly-CSharp/FrSaveState.cs
+index 815dd4b..514f681 100644
+--- a/Scripts/Assembly-CSharp/FrSaveState.cs
++++ b/Scripts/Assembly-CSharp/FrSaveState.cs
+@@ -2,7 +2,7 @@ using HutongGames.PlayMaker;
+ using UnityEngine;
+ 
+ [ActionCategory("GameEvent")]
+-[Tooltip("Custom Action...")]
++[HutongGames.PlayMaker.Tooltip("Custom Action...")]
+ public class FrSaveState : FsmStateAction
+ {
+ 	[UIHint(UIHint.Variable)]

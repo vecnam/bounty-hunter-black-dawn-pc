@@ -1,0 +1,29 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/BlendAnimation.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/BlendAnimation.cs
+index 7c30409..fa94d7f 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/BlendAnimation.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/BlendAnimation.cs
+@@ -59,13 +59,13 @@ namespace HutongGames.PlayMaker.Actions
+ 			{
+ 				return;
+ 			}
+-			if (go.animation == null)
++			if (go.GetComponent<Animation>() == null)
+ 			{
+ 				LogWarning("Missing Animation component on GameObject: " + go.name);
+ 				Finish();
+ 				return;
+ 			}
+-			AnimationState animationState = go.animation[animName.Value];
++			AnimationState animationState = go.GetComponent<Animation>()[animName.Value];
+ 			if (animationState == null)
+ 			{
+ 				LogWarning("Missing animation: " + animName.Value);
+@@ -73,7 +73,7 @@ namespace HutongGames.PlayMaker.Actions
+ 				return;
+ 			}
+ 			float value = time.Value;
+-			go.animation.Blend(animName.Value, targetWeight.Value, value);
++			go.GetComponent<Animation>().Blend(animName.Value, targetWeight.Value, value);
+ 			if (finishEvent != null)
+ 			{
+ 				delayedFinishEvent = base.Fsm.DelayedEvent(finishEvent, animationState.length);

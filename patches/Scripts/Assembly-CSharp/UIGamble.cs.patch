@@ -1,0 +1,23 @@
+diff --git a/Scripts/Assembly-CSharp/UIGamble.cs b/Scripts/Assembly-CSharp/UIGamble.cs
+index 6076846..bfc4524 100644
+--- a/Scripts/Assembly-CSharp/UIGamble.cs
++++ b/Scripts/Assembly-CSharp/UIGamble.cs
+@@ -65,14 +65,14 @@ public class UIGamble : UIGameMenu, ItemPopMenuEventListener, UIMsgListener, UIR
+ 	{
+ 		if (GambleManagerAbandoned.GetInstance().IsUsing())
+ 		{
+-			if (m_ResetButton.collider.enabled)
++			if (m_ResetButton.GetComponent<Collider>().enabled)
+ 			{
+-				m_ResetButton.collider.enabled = false;
++				m_ResetButton.GetComponent<Collider>().enabled = false;
+ 			}
+ 		}
+-		else if (!m_ResetButton.collider.enabled)
++		else if (!m_ResetButton.GetComponent<Collider>().enabled)
+ 		{
+-			m_ResetButton.collider.enabled = true;
++			m_ResetButton.GetComponent<Collider>().enabled = true;
+ 		}
+ 		if ((DateTime.Now - mLastUpdateTime).TotalMilliseconds > 200.0)
+ 		{

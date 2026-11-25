@@ -1,0 +1,78 @@
+diff --git a/Scripts/Assembly-CSharp/UIQuest.cs b/Scripts/Assembly-CSharp/UIQuest.cs
+index 32309b6..64a7958 100644
+--- a/Scripts/Assembly-CSharp/UIQuest.cs
++++ b/Scripts/Assembly-CSharp/UIQuest.cs
+@@ -107,16 +107,16 @@ public class UIQuest : UIGameMenuNormal
+ 		Transform trans = gameObject.transform;
+ 		UIDragPanelContentsAlign component = gameObject.GetComponent<UIDragPanelContentsAlign>();
+ 		component.draggablePanel = parent.parent.GetComponent<UIDraggablePanelAlign>();
+-		GameObject gameObject2 = gameObject.transform.FindChild("Label").gameObject;
++		GameObject gameObject2 = gameObject.transform.Find("Label").gameObject;
+ 		UILabel component2 = gameObject2.GetComponent<UILabel>();
+ 		component2.text = descStr;
+-		GameObject gameObject3 = gameObject.transform.FindChild("Title").gameObject;
++		GameObject gameObject3 = gameObject.transform.Find("Title").gameObject;
+ 		UILabel component3 = gameObject3.GetComponent<UILabel>();
+ 		component3.text = LocalizationManager.GetInstance().GetString("LOC_UI_DETAILS");
+ 		gameObject.transform.localPosition = Vector3.zero;
+ 		gameObject.transform.localRotation = Quaternion.identity;
+ 		gameObject.transform.localScale = Vector3.one;
+-		BoxCollider boxCollider = gameObject.collider as BoxCollider;
++		BoxCollider boxCollider = gameObject.GetComponent<Collider>() as BoxCollider;
+ 		Bounds bounds = NGUIMath.CalculateRelativeWidgetBounds(trans);
+ 		boxCollider.center = new Vector3(bounds.center.x, bounds.center.y, 0f);
+ 		boxCollider.size = new Vector3(bounds.size.x, bounds.size.y, 0f);
+@@ -129,16 +129,16 @@ public class UIQuest : UIGameMenuNormal
+ 		Transform trans = gameObject.transform;
+ 		UIDragPanelContentsAlign component = gameObject.GetComponent<UIDragPanelContentsAlign>();
+ 		component.draggablePanel = parent.parent.GetComponent<UIDraggablePanelAlign>();
+-		GameObject gameObject2 = gameObject.transform.FindChild("Label").gameObject;
++		GameObject gameObject2 = gameObject.transform.Find("Label").gameObject;
+ 		UILabel component2 = gameObject2.GetComponent<UILabel>();
+ 		component2.text = objective;
+-		GameObject gameObject3 = gameObject.transform.FindChild("Title").gameObject;
++		GameObject gameObject3 = gameObject.transform.Find("Title").gameObject;
+ 		UILabel component3 = gameObject3.GetComponent<UILabel>();
+ 		component3.text = LocalizationManager.GetInstance().GetString("LOC_UI_OBJECTIVE");
+ 		gameObject.transform.localPosition = Vector3.zero;
+ 		gameObject.transform.localRotation = Quaternion.identity;
+ 		gameObject.transform.localScale = Vector3.one;
+-		BoxCollider boxCollider = gameObject.collider as BoxCollider;
++		BoxCollider boxCollider = gameObject.GetComponent<Collider>() as BoxCollider;
+ 		Bounds bounds = NGUIMath.CalculateRelativeWidgetBounds(trans);
+ 		boxCollider.center = new Vector3(bounds.center.x, bounds.center.y, 0f);
+ 		boxCollider.size = new Vector3(bounds.size.x, bounds.size.y, 0f);
+@@ -163,19 +163,19 @@ public class UIQuest : UIGameMenuNormal
+ 			num2 += questAward.m_cash;
+ 			num3 += questAward.m_mithril;
+ 		}
+-		GameObject gameObject2 = gameObject.transform.FindChild("Title").gameObject;
++		GameObject gameObject2 = gameObject.transform.Find("Title").gameObject;
+ 		UILabel component2 = gameObject2.GetComponent<UILabel>();
+ 		component2.text = LocalizationManager.GetInstance().GetString("LOC_UI_REWARD");
+-		GameObject gameObject3 = gameObject.transform.FindChild("Exp").gameObject;
++		GameObject gameObject3 = gameObject.transform.Find("Exp").gameObject;
+ 		UILabel component3 = gameObject3.GetComponent<UILabel>();
+ 		component3.text = "[ffba00]" + LocalizationManager.GetInstance().GetString("EXP:") + "[-][ffeea0]" + Convert.ToString(num) + "[-]";
+-		GameObject gameObject4 = gameObject.transform.FindChild("GP").gameObject;
++		GameObject gameObject4 = gameObject.transform.Find("GP").gameObject;
+ 		UILabel component4 = gameObject4.GetComponent<UILabel>();
+ 		component4.text = "[ffba00]" + LocalizationManager.GetInstance().GetString("GP:") + "[-][ffeea0]" + Convert.ToString(num2) + "[-]";
+-		GameObject gameObject5 = gameObject.transform.FindChild("MITHRIL").gameObject;
++		GameObject gameObject5 = gameObject.transform.Find("MITHRIL").gameObject;
+ 		UILabel component5 = gameObject5.GetComponent<UILabel>();
+ 		component5.text = "[ffba00]" + LocalizationManager.GetInstance().GetString("MITHRIL:") + "[-][ffeea0]" + Convert.ToString(num3) + "[-]";
+-		GameObject gameObject6 = gameObject.transform.FindChild("Item").gameObject;
++		GameObject gameObject6 = gameObject.transform.Find("Item").gameObject;
+ 		float num5 = 0f;
+ 		foreach (Quest item2 in list)
+ 		{
+@@ -197,7 +197,7 @@ public class UIQuest : UIGameMenuNormal
+ 		gameObject.transform.localPosition = Vector3.zero;
+ 		gameObject.transform.localRotation = Quaternion.identity;
+ 		gameObject.transform.localScale = Vector3.one;
+-		BoxCollider boxCollider = gameObject.collider as BoxCollider;
++		BoxCollider boxCollider = gameObject.GetComponent<Collider>() as BoxCollider;
+ 		Bounds bounds = NGUIMath.CalculateRelativeWidgetBounds(trans);
+ 		boxCollider.center = new Vector3(bounds.center.x, bounds.center.y, 0f);
+ 		boxCollider.size = new Vector3(bounds.size.x, bounds.size.y, 0f);

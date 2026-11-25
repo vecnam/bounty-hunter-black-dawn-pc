@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioClip.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioClip.cs
+index 051f2a2..2be6e83 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioClip.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioClip.cs
+@@ -26,7 +26,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (ownerDefaultTarget != null)
+ 			{
+-				AudioSource audio = ownerDefaultTarget.audio;
++				AudioSource audio = ownerDefaultTarget.GetComponent<AudioSource>();
+ 				if (audio != null)
+ 				{
+ 					audio.clip = audioClip.Value as AudioClip;

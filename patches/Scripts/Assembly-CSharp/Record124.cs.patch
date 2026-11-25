@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/Record124.cs b/Scripts/Assembly-CSharp/Record124.cs
+index 4bdd4f9..4745384 100644
+--- a/Scripts/Assembly-CSharp/Record124.cs
++++ b/Scripts/Assembly-CSharp/Record124.cs
+@@ -174,7 +174,7 @@ public class Record124 : IRecordset
+ 		bool newbieGift = br.ReadBoolean();
+ 		bool newbieGift2 = br.ReadBoolean();
+ 		string s = br.ReadString();
+-		DateTime lastLocalNotificationTime = DateTime.Parse(s);
++		DateTime lastLocalNotificationTime = PcPortCulture.ParseDate(s);
+ 		byte b = br.ReadByte();
+ 		List<RoleStateInfo> list = new List<RoleStateInfo>();
+ 		for (int i = 0; i < b; i++)

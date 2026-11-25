@@ -1,0 +1,19 @@
+diff --git a/Scripts/Assembly-CSharp/SkillTreeUIScript.cs b/Scripts/Assembly-CSharp/SkillTreeUIScript.cs
+index 1e9a4b4..cab5bc1 100644
+--- a/Scripts/Assembly-CSharp/SkillTreeUIScript.cs
++++ b/Scripts/Assembly-CSharp/SkillTreeUIScript.cs
+@@ -316,12 +316,12 @@ public class SkillTreeUIScript : UIGameMenuNormal, UIMsgListener
+ 
+ 	public void RemoveLock(SkillTreeButtonScript button)
+ 	{
+-		Transform transform = button.transform.FindChild("Lock");
++		Transform transform = button.transform.Find("Lock");
+ 		if (transform != null)
+ 		{
+ 			transform.gameObject.SetActive(false);
+ 		}
+-		Transform transform2 = button.transform.FindChild("Price");
++		Transform transform2 = button.transform.Find("Price");
+ 		if (transform2 != null)
+ 		{
+ 			transform2.gameObject.SetActive(false);

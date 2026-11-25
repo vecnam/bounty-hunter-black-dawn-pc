@@ -1,0 +1,19 @@
+diff --git a/Scripts/Assembly-CSharp/UILogs.cs b/Scripts/Assembly-CSharp/UILogs.cs
+index ba1834f..96153b3 100644
+--- a/Scripts/Assembly-CSharp/UILogs.cs
++++ b/Scripts/Assembly-CSharp/UILogs.cs
+@@ -63,10 +63,10 @@ public class UILogs : MonoBehaviour, UIMsgListener
+ 		m_selId = -1;
+ 		m_curIdCompleted = -1;
+ 		m_curSheet = QuestSheet.Accepted;
+-		m_accSheetActived = m_acceptedSheet.transform.FindChild("Actived").gameObject;
+-		m_accSheetInactivated = m_acceptedSheet.transform.FindChild("Unactivated").gameObject;
+-		m_compSheetActived = m_completedSheet.transform.FindChild("Actived").gameObject;
+-		m_compSheetInactivated = m_completedSheet.transform.FindChild("Unactivated").gameObject;
++		m_accSheetActived = m_acceptedSheet.transform.Find("Actived").gameObject;
++		m_accSheetInactivated = m_acceptedSheet.transform.Find("Unactivated").gameObject;
++		m_compSheetActived = m_completedSheet.transform.Find("Actived").gameObject;
++		m_compSheetInactivated = m_completedSheet.transform.Find("Unactivated").gameObject;
+ 	}
+ 
+ 	private void Start()

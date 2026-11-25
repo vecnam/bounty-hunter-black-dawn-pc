@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/FillAllBulletScript.cs b/Scripts/Assembly-CSharp/FillAllBulletScript.cs
+index 89bb709..1bed0a0 100644
+--- a/Scripts/Assembly-CSharp/FillAllBulletScript.cs
++++ b/Scripts/Assembly-CSharp/FillAllBulletScript.cs
+@@ -70,7 +70,7 @@ public class FillAllBulletScript : MonoBehaviour
+ 		if (mPrice > userState.GetCash())
+ 		{
+ 			PriceLabel.text = "$[FF0000]" + mPrice + "[-]";
+-			base.gameObject.collider.enabled = false;
++			base.gameObject.GetComponent<Collider>().enabled = false;
+ 			if (buttonImageSprite != null && !buttonImageSprite.spriteName.Equals(blockSpriteName))
+ 			{
+ 				buttonImageSprite.spriteName = blockSpriteName;
+@@ -79,7 +79,7 @@ public class FillAllBulletScript : MonoBehaviour
+ 		}
+ 		else
+ 		{
+-			base.gameObject.collider.enabled = true;
++			base.gameObject.GetComponent<Collider>().enabled = true;
+ 			PriceLabel.text = "$" + mPrice;
+ 		}
+ 	}

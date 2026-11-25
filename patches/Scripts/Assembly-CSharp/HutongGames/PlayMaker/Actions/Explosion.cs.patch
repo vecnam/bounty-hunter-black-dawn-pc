@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Explosion.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Explosion.cs
+index 4c953be..909ddfb 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Explosion.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/Explosion.cs
+@@ -58,9 +58,9 @@ namespace HutongGames.PlayMaker.Actions
+ 			Collider[] array2 = array;
+ 			foreach (Collider collider in array2)
+ 			{
+-				if (collider.rigidbody != null && ShouldApplyForce(collider.gameObject))
++				if (collider.GetComponent<Rigidbody>() != null && ShouldApplyForce(collider.gameObject))
+ 				{
+-					collider.rigidbody.AddExplosionForce(force.Value, center.Value, radius.Value, upwardsModifier.Value, forceMode);
++					collider.GetComponent<Rigidbody>().AddExplosionForce(force.Value, center.Value, radius.Value, upwardsModifier.Value, forceMode);
+ 				}
+ 			}
+ 		}

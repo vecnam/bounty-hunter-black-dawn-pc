@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/EnemyTrackScript.cs b/Scripts/Assembly-CSharp/EnemyTrackScript.cs
+index fcfc7f0..d7f73ea 100644
+--- a/Scripts/Assembly-CSharp/EnemyTrackScript.cs
++++ b/Scripts/Assembly-CSharp/EnemyTrackScript.cs
+@@ -16,7 +16,7 @@ public class EnemyTrackScript : MonoBehaviour
+ 	private IEnumerator Start()
+ 	{
+ 		Transform tt = GameObject.Find(trackName).transform;
+-		int count = tt.GetChildCount();
++		int count = tt.childCount;
+ 		trackTrans = new Transform[count];
+ 		for (int i = 0; i < count; i++)
+ 		{

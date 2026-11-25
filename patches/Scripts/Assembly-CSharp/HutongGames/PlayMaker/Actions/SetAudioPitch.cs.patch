@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioPitch.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioPitch.cs
+index 16f98f4..ad63b34 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioPitch.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetAudioPitch.cs
+@@ -40,7 +40,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+ 			if (ownerDefaultTarget != null)
+ 			{
+-				AudioSource audio = ownerDefaultTarget.audio;
++				AudioSource audio = ownerDefaultTarget.GetComponent<AudioSource>();
+ 				if (audio != null && !pitch.IsNone)
+ 				{
+ 					audio.pitch = pitch.Value;

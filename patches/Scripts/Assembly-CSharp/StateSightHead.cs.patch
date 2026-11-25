@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/StateSightHead.cs b/Scripts/Assembly-CSharp/StateSightHead.cs
+index 1b0959e..d0b32bc 100644
+--- a/Scripts/Assembly-CSharp/StateSightHead.cs
++++ b/Scripts/Assembly-CSharp/StateSightHead.cs
+@@ -104,7 +104,7 @@ public class StateSightHead : MonoBehaviour
+ 
+ 	private void UpdateWeaponRecoil()
+ 	{
+-		Camera camera = m_Camera.camera;
++		Camera camera = m_Camera.GetComponent<Camera>();
+ 		Player localPlayer = GameApp.GetInstance().GetGameWorld().GetLocalPlayer();
+ 		int num = (int)(localPlayer.GetWeapon().CalculateMaxAccurancyFactor() * camera.pixelHeight * 0.5f);
+ 		int num2 = (int)(localPlayer.GetWeapon().CalculateMinAccurancyFactor() * camera.pixelHeight * 0.5f);

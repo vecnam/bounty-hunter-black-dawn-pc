@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/ItemStatsScript.cs b/Scripts/Assembly-CSharp/ItemStatsScript.cs
+index ce2b07c..0985660 100644
+--- a/Scripts/Assembly-CSharp/ItemStatsScript.cs
++++ b/Scripts/Assembly-CSharp/ItemStatsScript.cs
+@@ -7,7 +7,7 @@ public class ItemStatsScript : MonoBehaviour
+ 
+ 	public virtual void SetObserveItem(NGUIBaseItem baseItem)
+ 	{
+-		int childCount = base.transform.GetChildCount();
++		int childCount = base.transform.childCount;
+ 		List<GameObject> list = new List<GameObject>();
+ 		for (int i = 0; i < childCount; i++)
+ 		{

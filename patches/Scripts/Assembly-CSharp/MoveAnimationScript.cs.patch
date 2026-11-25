@@ -1,0 +1,12 @@
+diff --git a/Scripts/Assembly-CSharp/MoveAnimationScript.cs b/Scripts/Assembly-CSharp/MoveAnimationScript.cs
+index 8dcc433..9f33541 100644
+--- a/Scripts/Assembly-CSharp/MoveAnimationScript.cs
++++ b/Scripts/Assembly-CSharp/MoveAnimationScript.cs
+@@ -33,6 +33,6 @@ public class MoveAnimationScript : MonoBehaviour
+ 		{
+ 			white.a = 1f;
+ 		}
+-		base.renderer.material.SetColor(colorPropertyName, white);
++		base.GetComponent<Renderer>().material.SetColor(colorPropertyName, white);
+ 	}
+ }

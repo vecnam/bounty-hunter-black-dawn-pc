@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/FrDestroyMyself.cs b/Scripts/Assembly-CSharp/FrDestroyMyself.cs
+index 593903e..5ed2071 100644
+--- a/Scripts/Assembly-CSharp/FrDestroyMyself.cs
++++ b/Scripts/Assembly-CSharp/FrDestroyMyself.cs
+@@ -1,7 +1,7 @@
+ using HutongGames.PlayMaker;
+ using UnityEngine;
+ 
+-[Tooltip("Custom Active...")]
++[HutongGames.PlayMaker.Tooltip("Custom Active...")]
+ [ActionCategory("GameEvent")]
+ public class FrDestroyMyself : FsmStateAction
+ {

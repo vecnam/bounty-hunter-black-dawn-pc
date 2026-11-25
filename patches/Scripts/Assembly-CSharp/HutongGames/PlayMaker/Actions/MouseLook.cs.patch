@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/MouseLook.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/MouseLook.cs
+index 88a1b29..e2b26b0 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/MouseLook.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/MouseLook.cs
+@@ -70,9 +70,9 @@ namespace HutongGames.PlayMaker.Actions
+ 				Finish();
+ 				return;
+ 			}
+-			if ((bool)ownerDefaultTarget.rigidbody)
++			if ((bool)ownerDefaultTarget.GetComponent<Rigidbody>())
+ 			{
+-				ownerDefaultTarget.rigidbody.freezeRotation = true;
++				ownerDefaultTarget.GetComponent<Rigidbody>().freezeRotation = true;
+ 			}
+ 			DoMouseLook();
+ 			if (!everyFrame)

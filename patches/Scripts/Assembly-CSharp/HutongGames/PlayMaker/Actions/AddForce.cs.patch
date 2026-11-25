@@ -1,0 +1,33 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddForce.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddForce.cs
+index 1fab09a..63c3f41 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddForce.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/AddForce.cs
+@@ -79,7 +79,7 @@ namespace HutongGames.PlayMaker.Actions
+ 			{
+ 				return;
+ 			}
+-			if (ownerDefaultTarget.rigidbody == null)
++			if (ownerDefaultTarget.GetComponent<Rigidbody>() == null)
+ 			{
+ 				LogWarning("Missing rigid body: " + ownerDefaultTarget.name);
+ 				return;
+@@ -101,16 +101,16 @@ namespace HutongGames.PlayMaker.Actions
+ 			{
+ 				if (!atPosition.IsNone)
+ 				{
+-					ownerDefaultTarget.rigidbody.AddForceAtPosition(force, atPosition.Value);
++					ownerDefaultTarget.GetComponent<Rigidbody>().AddForceAtPosition(force, atPosition.Value);
+ 				}
+ 				else
+ 				{
+-					ownerDefaultTarget.rigidbody.AddForce(force);
++					ownerDefaultTarget.GetComponent<Rigidbody>().AddForce(force);
+ 				}
+ 			}
+ 			else
+ 			{
+-				ownerDefaultTarget.rigidbody.AddRelativeForce(force);
++				ownerDefaultTarget.GetComponent<Rigidbody>().AddRelativeForce(force);
+ 			}
+ 		}
+ 	}

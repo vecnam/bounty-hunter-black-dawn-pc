@@ -1,0 +1,11 @@
+diff --git a/Scripts/Assembly-CSharp/Shell_ProtoType.cs b/Scripts/Assembly-CSharp/Shell_ProtoType.cs
+index bf220d5..fc78529 100644
+--- a/Scripts/Assembly-CSharp/Shell_ProtoType.cs
++++ b/Scripts/Assembly-CSharp/Shell_ProtoType.cs
+@@ -1,5 +1,6 @@
+ using System.Collections.Generic;
+ using UnityEngine;
++using UnityEngine.AI;
+ 
+ public class Shell_ProtoType : Shell
+ {

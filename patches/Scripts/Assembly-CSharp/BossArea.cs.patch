@@ -1,0 +1,13 @@
+diff --git a/Scripts/Assembly-CSharp/BossArea.cs b/Scripts/Assembly-CSharp/BossArea.cs
+index f2d926c..b419d5f 100644
+--- a/Scripts/Assembly-CSharp/BossArea.cs
++++ b/Scripts/Assembly-CSharp/BossArea.cs
+@@ -38,7 +38,7 @@ public class BossArea : MonoBehaviour
+ 		player.GetTransform().rotation = m_SpawnPoint[pos].transform.rotation;
+ 		if (player.IsLocal())
+ 		{
+-			FirstPersonCameraScript component = Camera.mainCamera.GetComponent<FirstPersonCameraScript>();
++			FirstPersonCameraScript component = Camera.main.GetComponent<FirstPersonCameraScript>();
+ 			if (null != component)
+ 			{
+ 				component.AngelH = m_SpawnPoint[pos].transform.rotation.eulerAngles.y;

@@ -1,0 +1,40 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetVisibility.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetVisibility.cs
+index 0dea46d..4320e6c 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetVisibility.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetVisibility.cs
+@@ -42,19 +42,19 @@ namespace HutongGames.PlayMaker.Actions
+ 			{
+ 				return;
+ 			}
+-			if (go.renderer == null)
++			if (go.GetComponent<Renderer>() == null)
+ 			{
+ 				LogError("Missing Renderer!");
+ 				return;
+ 			}
+-			initialVisibility = go.renderer.isVisible;
++			initialVisibility = go.GetComponent<Renderer>().isVisible;
+ 			if (!toggle.Value)
+ 			{
+-				go.renderer.enabled = visible.Value;
++				go.GetComponent<Renderer>().enabled = visible.Value;
+ 			}
+ 			else
+ 			{
+-				go.renderer.enabled = !go.renderer.isVisible;
++				go.GetComponent<Renderer>().enabled = !go.GetComponent<Renderer>().isVisible;
+ 			}
+ 		}
+ 
+@@ -69,9 +69,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void ResetVisibility()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (ownerDefaultTarget != null && ownerDefaultTarget.renderer != null)
++			if (ownerDefaultTarget != null && ownerDefaultTarget.GetComponent<Renderer>() != null)
+ 			{
+-				ownerDefaultTarget.renderer.enabled = initialVisibility;
++				ownerDefaultTarget.GetComponent<Renderer>().enabled = initialVisibility;
+ 			}
+ 		}
+ 	}

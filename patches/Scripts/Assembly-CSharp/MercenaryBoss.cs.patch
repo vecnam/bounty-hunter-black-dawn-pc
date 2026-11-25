@@ -1,0 +1,43 @@
+diff --git a/Scripts/Assembly-CSharp/MercenaryBoss.cs b/Scripts/Assembly-CSharp/MercenaryBoss.cs
+index 22d1598..305a50f 100644
+--- a/Scripts/Assembly-CSharp/MercenaryBoss.cs
++++ b/Scripts/Assembly-CSharp/MercenaryBoss.cs
+@@ -83,22 +83,22 @@ public class MercenaryBoss : EnemyBoss
+ 		animation[AnimationString.MERCENARY_BOSS_IDLE_FIRE].speed = 2f / 15f / mRangedOneShotTime1;
+ 		animation[AnimationString.MERCENARY_BOSS_AIR_ATTACK].speed = 2f / 3f / mRangedOneShotTime2;
+ 		animation[AnimationString.MERCENARY_BOSS_ATTACK].speed = 2f / 3f / mRangedOneShotTime2;
+-		Transform parent = entityObject.transform.FindChild(BoneName.MercenaryBossLeftHandPoint);
++		Transform parent = entityObject.transform.Find(BoneName.MercenaryBossLeftHandPoint);
+ 		GameObject original = Resources.Load("WeaponL/assault05_l") as GameObject;
+ 		GameObject gameObject = UnityEngine.Object.Instantiate(original) as GameObject;
+ 		gameObject.name = "Gun";
+ 		gameObject.transform.parent = parent;
+ 		gameObject.transform.localPosition = Vector3.zero;
+ 		gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
+-		mRightHandPointTransform = entityObject.transform.FindChild(BoneName.MercenaryBossRightHandPoint);
++		mRightHandPointTransform = entityObject.transform.Find(BoneName.MercenaryBossRightHandPoint);
+ 		GameObject original2 = Resources.Load("WeaponL/rpg01_l") as GameObject;
+ 		GameObject gameObject2 = UnityEngine.Object.Instantiate(original2) as GameObject;
+ 		gameObject2.name = "Gun";
+ 		gameObject2.transform.parent = mRightHandPointTransform;
+ 		gameObject2.transform.localPosition = Vector3.zero;
+ 		gameObject2.transform.localRotation = Quaternion.Euler(Vector3.zero);
+-		mWeaponRifleTransform = entityObject.transform.FindChild(BoneName.MercenaryBossWeaponRifleFire);
+-		mWeaponRpgTransform = entityObject.transform.FindChild(BoneName.MercenaryBossWeaponRpgFire);
++		mWeaponRifleTransform = entityObject.transform.Find(BoneName.MercenaryBossWeaponRifleFire);
++		mWeaponRpgTransform = entityObject.transform.Find(BoneName.MercenaryBossWeaponRpgFire);
+ 		GameObject original3 = Resources.Load("RPG_effect/RPG_BossGYB_001") as GameObject;
+ 		leftJet = entityTransform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/bone_l_fasheqi/bone_l_fasheqi_Point");
+ 		rightJet = entityTransform.Find("Bip01/Bip01 Pelvis/Bip01 Spine/Bip01 Spine1/bone_r_fasheqi/bone_r_fasheqi_Point");
+@@ -262,9 +262,9 @@ public class MercenaryBoss : EnemyBoss
+ 	protected override void ChangeShader()
+ 	{
+ 		base.ChangeShader();
+-		GameObject gameObject = entityObject.transform.FindChild(BoneName.MercenaryBossWeaponRifle).gameObject;
++		GameObject gameObject = entityObject.transform.Find(BoneName.MercenaryBossWeaponRifle).gameObject;
+ 		gameObject.SetActive(false);
+-		GameObject gameObject2 = entityObject.transform.FindChild(BoneName.MercenaryBossWeaponRpg).gameObject;
++		GameObject gameObject2 = entityObject.transform.Find(BoneName.MercenaryBossWeaponRpg).gameObject;
+ 		gameObject2.SetActive(false);
+ 	}
+ 

@@ -1,0 +1,22 @@
+diff --git a/Scripts/Assembly-CSharp/BossAreaTrigger.cs b/Scripts/Assembly-CSharp/BossAreaTrigger.cs
+index 5ea70c7..18bf705 100644
+--- a/Scripts/Assembly-CSharp/BossAreaTrigger.cs
++++ b/Scripts/Assembly-CSharp/BossAreaTrigger.cs
+@@ -140,7 +140,7 @@ public class BossAreaTrigger : MonoBehaviour
+ 			if (mTrigger.mIsCutSceneFinish)
+ 			{
+ 				mTrigger.m_CameraBoss.enabled = false;
+-				Camera.mainCamera.enabled = true;
++				Camera.main.enabled = true;
+ 				NextState(STATE_UNLOCK_CONTROL);
+ 			}
+ 		}
+@@ -275,7 +275,7 @@ public class BossAreaTrigger : MonoBehaviour
+ 			GameObject[] array4 = array3;
+ 			foreach (GameObject gameObject2 in array4)
+ 			{
+-				int childCount = gameObject2.transform.GetChildCount();
++				int childCount = gameObject2.transform.childCount;
+ 				for (int k = 0; k < childCount; k++)
+ 				{
+ 					gameObject2.transform.GetChild(k).gameObject.SetActive(true);

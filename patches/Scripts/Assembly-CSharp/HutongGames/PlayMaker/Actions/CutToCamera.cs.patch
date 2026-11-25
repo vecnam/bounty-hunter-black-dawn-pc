@@ -1,0 +1,15 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/CutToCamera.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/CutToCamera.cs
+index bfb7cb4..7742196 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/CutToCamera.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/CutToCamera.cs
+@@ -29,8 +29,8 @@ namespace HutongGames.PlayMaker.Actions
+ 				LogError("Missing camera!");
+ 				return;
+ 			}
+-			oldCamera = Camera.mainCamera;
+-			SwitchCamera(Camera.mainCamera, camera);
++			oldCamera = Camera.main;
++			SwitchCamera(Camera.main, camera);
+ 			if (makeMainCamera)
+ 			{
+ 				camera.tag = "MainCamera";

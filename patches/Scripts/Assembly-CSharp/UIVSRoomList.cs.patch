@@ -1,0 +1,49 @@
+diff --git a/Scripts/Assembly-CSharp/UIVSRoomList.cs b/Scripts/Assembly-CSharp/UIVSRoomList.cs
+index 6f2a39c..1c00f93 100644
+--- a/Scripts/Assembly-CSharp/UIVSRoomList.cs
++++ b/Scripts/Assembly-CSharp/UIVSRoomList.cs
+@@ -155,7 +155,7 @@ public class UIVSRoomList : MonoBehaviour, InGameMenuListener, UIMsgListener
+ 			float num = 50f;
+ 			if (m_container.transform.parent.localPosition.y < m_initContainer.y - num)
+ 			{
+-				UISprite component = m_refresh.transform.FindChild("Sprite").GetComponent<UISprite>();
++				UISprite component = m_refresh.transform.Find("Sprite").GetComponent<UISprite>();
+ 				if (!component.spriteName.Equals("update"))
+ 				{
+ 					component.spriteName = "update";
+@@ -165,7 +165,7 @@ public class UIVSRoomList : MonoBehaviour, InGameMenuListener, UIMsgListener
+ 			}
+ 			else if (Mathf.Abs(m_container.transform.parent.localPosition.y - m_initContainer.y) <= 10f)
+ 			{
+-				UISprite component2 = m_refresh.transform.FindChild("Sprite").GetComponent<UISprite>();
++				UISprite component2 = m_refresh.transform.Find("Sprite").GetComponent<UISprite>();
+ 				if (!component2.spriteName.Equals("pulldown"))
+ 				{
+ 					component2.spriteName = "pulldown";
+@@ -334,7 +334,7 @@ public class UIVSRoomList : MonoBehaviour, InGameMenuListener, UIMsgListener
+ 			bool bRecommend = ((i < m_recommendRoomNumber) ? true : false);
+ 			component.SetRoom(room, bRecommend);
+ 			component.m_id = room.getRoomID();
+-			BoxCollider boxCollider = gameObject.collider as BoxCollider;
++			BoxCollider boxCollider = gameObject.GetComponent<Collider>() as BoxCollider;
+ 			Bounds bounds = NGUIMath.CalculateRelativeWidgetBounds(trans);
+ 			boxCollider.center = new Vector3(bounds.center.x, bounds.center.y, 0f);
+ 			boxCollider.size = new Vector3(bounds.size.x, bounds.size.y, 0f);
+@@ -407,7 +407,7 @@ public class UIVSRoomList : MonoBehaviour, InGameMenuListener, UIMsgListener
+ 		gameObject.transform.localPosition = offset;
+ 		gameObject.transform.localRotation = Quaternion.identity;
+ 		gameObject.transform.localScale = Vector3.one;
+-		GameObject gameObject2 = gameObject.transform.FindChild("Background").gameObject;
++		GameObject gameObject2 = gameObject.transform.Find("Background").gameObject;
+ 		return gameObject2.transform.localScale.y - 10f;
+ 	}
+ 
+@@ -424,7 +424,7 @@ public class UIVSRoomList : MonoBehaviour, InGameMenuListener, UIMsgListener
+ 		uICountDownButton.label = label;
+ 		uICountDownButton.receiver = m_join;
+ 		uICountDownButton.functionName = "OnClick";
+-		GameObject gameObject2 = gameObject.transform.FindChild("Background").gameObject;
++		GameObject gameObject2 = gameObject.transform.Find("Background").gameObject;
+ 		return gameObject2.transform.localScale.y;
+ 	}
+ 

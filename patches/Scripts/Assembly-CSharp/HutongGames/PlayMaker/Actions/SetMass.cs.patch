@@ -1,0 +1,16 @@
+diff --git a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetMass.cs b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetMass.cs
+index 3f8dccb..b676ed5 100644
+--- a/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetMass.cs
++++ b/Scripts/Assembly-CSharp/HutongGames/PlayMaker/Actions/SetMass.cs
+@@ -29,9 +29,9 @@ namespace HutongGames.PlayMaker.Actions
+ 		private void DoSetMass()
+ 		{
+ 			GameObject ownerDefaultTarget = base.Fsm.GetOwnerDefaultTarget(gameObject);
+-			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.rigidbody == null))
++			if (!(ownerDefaultTarget == null) && !(ownerDefaultTarget.GetComponent<Rigidbody>() == null))
+ 			{
+-				ownerDefaultTarget.rigidbody.mass = mass.Value;
++				ownerDefaultTarget.GetComponent<Rigidbody>().mass = mass.Value;
+ 			}
+ 		}
+ 	}
